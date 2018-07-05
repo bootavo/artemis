@@ -12,6 +12,15 @@
 		8713E2B020EE79AE004C6167 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8713E2AE20EE79AE004C6167 /* Main.storyboard */; };
 		8713E2B220EE79AF004C6167 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8713E2B120EE79AF004C6167 /* Assets.xcassets */; };
 		8713E2B520EE79AF004C6167 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8713E2B320EE79AF004C6167 /* LaunchScreen.storyboard */; };
+		8713E2C120EE7A06004C6167 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713E2C020EE7A06004C6167 /* LoginController.swift */; };
+		8713E2C320EE7A25004C6167 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713E2C220EE7A25004C6167 /* MenuBar.swift */; };
+		8713E2C520EE7A46004C6167 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713E2C420EE7A46004C6167 /* LoginView.swift */; };
+		8713E2C720EE7A53004C6167 /* ViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713E2C620EE7A53004C6167 /* ViewCell.swift */; };
+		8713E2C920EE7A5F004C6167 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713E2C820EE7A5F004C6167 /* Buttons.swift */; };
+		8713E2CB20EE7A77004C6167 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713E2CA20EE7A77004C6167 /* HomeController.swift */; };
+		8713E2CD20EE7A96004C6167 /* YoutubeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713E2CC20EE7A96004C6167 /* YoutubeController.swift */; };
+		8713E2CF20EE7B27004C6167 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713E2CE20EE7B27004C6167 /* Video.swift */; };
+		8713E2D120EE7B5B004C6167 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713E2D020EE7B5B004C6167 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +31,15 @@
 		8713E2B120EE79AF004C6167 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8713E2B420EE79AF004C6167 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8713E2B620EE79AF004C6167 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8713E2C020EE7A06004C6167 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		8713E2C220EE7A25004C6167 /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
+		8713E2C420EE7A46004C6167 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		8713E2C620EE7A53004C6167 /* ViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCell.swift; sourceTree = "<group>"; };
+		8713E2C820EE7A5F004C6167 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		8713E2CA20EE7A77004C6167 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		8713E2CC20EE7A96004C6167 /* YoutubeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeController.swift; sourceTree = "<group>"; };
+		8713E2CE20EE7B27004C6167 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		8713E2D020EE7B5B004C6167 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +72,10 @@
 		8713E2A920EE79AE004C6167 /* artemis */ = {
 			isa = PBXGroup;
 			children = (
+				8713E2BF20EE79F8004C6167 /* views */,
+				8713E2BE20EE79F3004C6167 /* utilities */,
+				8713E2BD20EE79E9004C6167 /* model */,
+				8713E2BC20EE79DE004C6167 /* controller */,
 				8713E2AA20EE79AE004C6167 /* AppDelegate.swift */,
 				8713E2AC20EE79AE004C6167 /* ViewController.swift */,
 				8713E2AE20EE79AE004C6167 /* Main.storyboard */,
@@ -62,6 +84,43 @@
 				8713E2B620EE79AF004C6167 /* Info.plist */,
 			);
 			path = artemis;
+			sourceTree = "<group>";
+		};
+		8713E2BC20EE79DE004C6167 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				8713E2C020EE7A06004C6167 /* LoginController.swift */,
+				8713E2CA20EE7A77004C6167 /* HomeController.swift */,
+				8713E2CC20EE7A96004C6167 /* YoutubeController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		8713E2BD20EE79E9004C6167 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				8713E2CE20EE7B27004C6167 /* Video.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		8713E2BE20EE79F3004C6167 /* utilities */ = {
+			isa = PBXGroup;
+			children = (
+				8713E2D020EE7B5B004C6167 /* Extensions.swift */,
+			);
+			path = utilities;
+			sourceTree = "<group>";
+		};
+		8713E2BF20EE79F8004C6167 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				8713E2C220EE7A25004C6167 /* MenuBar.swift */,
+				8713E2C420EE7A46004C6167 /* LoginView.swift */,
+				8713E2C620EE7A53004C6167 /* ViewCell.swift */,
+				8713E2C820EE7A5F004C6167 /* Buttons.swift */,
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +194,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8713E2C920EE7A5F004C6167 /* Buttons.swift in Sources */,
+				8713E2C720EE7A53004C6167 /* ViewCell.swift in Sources */,
 				8713E2AD20EE79AE004C6167 /* ViewController.swift in Sources */,
+				8713E2C120EE7A06004C6167 /* LoginController.swift in Sources */,
+				8713E2CB20EE7A77004C6167 /* HomeController.swift in Sources */,
+				8713E2CF20EE7B27004C6167 /* Video.swift in Sources */,
+				8713E2CD20EE7A96004C6167 /* YoutubeController.swift in Sources */,
+				8713E2C320EE7A25004C6167 /* MenuBar.swift in Sources */,
+				8713E2C520EE7A46004C6167 /* LoginView.swift in Sources */,
+				8713E2D120EE7B5B004C6167 /* Extensions.swift in Sources */,
 				8713E2AB20EE79AE004C6167 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
