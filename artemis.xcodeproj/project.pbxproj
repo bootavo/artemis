@@ -21,6 +21,12 @@
 		8713E2CD20EE7A96004C6167 /* YoutubeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713E2CC20EE7A96004C6167 /* YoutubeController.swift */; };
 		8713E2CF20EE7B27004C6167 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713E2CE20EE7B27004C6167 /* Video.swift */; };
 		8713E2D120EE7B5B004C6167 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713E2D020EE7B5B004C6167 /* Extensions.swift */; };
+		875E23B520EEE08D0047C845 /* ScreenHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875E23B420EEE08D0047C845 /* ScreenHelper.swift */; };
+		8770238120EFBB4F00C5B07F /* ActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8770238020EFBB4F00C5B07F /* ActivityController.swift */; };
+		8770238320EFC3C800C5B07F /* ElementsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8770238220EFC3C800C5B07F /* ElementsHelper.swift */; };
+		87BFC47320F281D400B24E19 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BFC47220F281D400B24E19 /* Constants.swift */; };
+		87F8601F20EE927D00B4DB89 /* LoginControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F8601E20EE927D00B4DB89 /* LoginControllerTest.swift */; };
+		E642B9433A02C55485278CF6 /* Pods_artemis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB1DE65EC5E1FE0E86A4DF6 /* Pods_artemis.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +46,14 @@
 		8713E2CC20EE7A96004C6167 /* YoutubeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeController.swift; sourceTree = "<group>"; };
 		8713E2CE20EE7B27004C6167 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		8713E2D020EE7B5B004C6167 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		875E23B420EEE08D0047C845 /* ScreenHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenHelper.swift; sourceTree = "<group>"; };
+		8770238020EFBB4F00C5B07F /* ActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityController.swift; sourceTree = "<group>"; };
+		8770238220EFC3C800C5B07F /* ElementsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsHelper.swift; sourceTree = "<group>"; };
+		87BFC47220F281D400B24E19 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		87F8601E20EE927D00B4DB89 /* LoginControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginControllerTest.swift; sourceTree = "<group>"; };
+		E11716F0982CC7E464834D0C /* Pods-artemis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-artemis.debug.xcconfig"; path = "Pods/Target Support Files/Pods-artemis/Pods-artemis.debug.xcconfig"; sourceTree = "<group>"; };
+		E3CAA6C375DE836F8E0A0E24 /* Pods-artemis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-artemis.release.xcconfig"; path = "Pods/Target Support Files/Pods-artemis/Pods-artemis.release.xcconfig"; sourceTree = "<group>"; };
+		EEB1DE65EC5E1FE0E86A4DF6 /* Pods_artemis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_artemis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,17 +61,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E642B9433A02C55485278CF6 /* Pods_artemis.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20F6299C6FEC74FA7060A745 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E11716F0982CC7E464834D0C /* Pods-artemis.debug.xcconfig */,
+				E3CAA6C375DE836F8E0A0E24 /* Pods-artemis.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		35525FBD3788D11EDAC5361C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EEB1DE65EC5E1FE0E86A4DF6 /* Pods_artemis.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8713E29E20EE79AE004C6167 = {
 			isa = PBXGroup;
 			children = (
 				8713E2A920EE79AE004C6167 /* artemis */,
 				8713E2A820EE79AE004C6167 /* Products */,
+				20F6299C6FEC74FA7060A745 /* Pods */,
+				35525FBD3788D11EDAC5361C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,8 +124,10 @@
 			isa = PBXGroup;
 			children = (
 				8713E2C020EE7A06004C6167 /* LoginController.swift */,
-				8713E2CA20EE7A77004C6167 /* HomeController.swift */,
 				8713E2CC20EE7A96004C6167 /* YoutubeController.swift */,
+				8713E2CA20EE7A77004C6167 /* HomeController.swift */,
+				87F8601E20EE927D00B4DB89 /* LoginControllerTest.swift */,
+				8770238020EFBB4F00C5B07F /* ActivityController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -108,6 +144,9 @@
 			isa = PBXGroup;
 			children = (
 				8713E2D020EE7B5B004C6167 /* Extensions.swift */,
+				875E23B420EEE08D0047C845 /* ScreenHelper.swift */,
+				8770238220EFC3C800C5B07F /* ElementsHelper.swift */,
+				87BFC47220F281D400B24E19 /* Constants.swift */,
 			);
 			path = utilities;
 			sourceTree = "<group>";
@@ -130,9 +169,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8713E2B920EE79AF004C6167 /* Build configuration list for PBXNativeTarget "artemis" */;
 			buildPhases = (
+				FB5062D8FE520B4F22F50F81 /* [CP] Check Pods Manifest.lock */,
 				8713E2A320EE79AE004C6167 /* Sources */,
 				8713E2A420EE79AE004C6167 /* Frameworks */,
 				8713E2A520EE79AE004C6167 /* Resources */,
+				0241DDBC5F7A8EB114D350B7 /* [CP] Embed Pods Frameworks */,
+				01D041EF870F0AB1BF2E6D2E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -189,22 +231,93 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		01D041EF870F0AB1BF2E6D2E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-artemis/Pods-artemis-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0241DDBC5F7A8EB114D350B7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-artemis/Pods-artemis-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyTimer/SwiftyTimer.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework",
+				"${BUILT_PRODUCTS_DIR}/Toast/Toast.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyTimer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyUserDefaults.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-artemis/Pods-artemis-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB5062D8FE520B4F22F50F81 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-artemis-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8713E2A320EE79AE004C6167 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				8713E2C920EE7A5F004C6167 /* Buttons.swift in Sources */,
+				875E23B520EEE08D0047C845 /* ScreenHelper.swift in Sources */,
 				8713E2C720EE7A53004C6167 /* ViewCell.swift in Sources */,
 				8713E2AD20EE79AE004C6167 /* ViewController.swift in Sources */,
+				8770238120EFBB4F00C5B07F /* ActivityController.swift in Sources */,
 				8713E2C120EE7A06004C6167 /* LoginController.swift in Sources */,
 				8713E2CB20EE7A77004C6167 /* HomeController.swift in Sources */,
+				87BFC47320F281D400B24E19 /* Constants.swift in Sources */,
+				87F8601F20EE927D00B4DB89 /* LoginControllerTest.swift in Sources */,
 				8713E2CF20EE7B27004C6167 /* Video.swift in Sources */,
 				8713E2CD20EE7A96004C6167 /* YoutubeController.swift in Sources */,
 				8713E2C320EE7A25004C6167 /* MenuBar.swift in Sources */,
 				8713E2C520EE7A46004C6167 /* LoginView.swift in Sources */,
 				8713E2D120EE7B5B004C6167 /* Extensions.swift in Sources */,
 				8713E2AB20EE79AE004C6167 /* AppDelegate.swift in Sources */,
+				8770238320EFC3C800C5B07F /* ElementsHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,11 +459,13 @@
 		};
 		8713E2BA20EE79AF004C6167 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E11716F0982CC7E464834D0C /* Pods-artemis.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3839PKNVT3;
 				INFOPLIST_FILE = artemis/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -364,11 +479,13 @@
 		};
 		8713E2BB20EE79AF004C6167 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3CAA6C375DE836F8E0A0E24 /* Pods-artemis.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3839PKNVT3;
 				INFOPLIST_FILE = artemis/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

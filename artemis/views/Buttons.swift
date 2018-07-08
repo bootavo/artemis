@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RoundedButton: UIButton {
+class Buttons: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         layer.masksToBounds = true

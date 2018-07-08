@@ -1,0 +1,30 @@
+PODS:
+  - Alamofire (4.6.0)
+  - IQKeyboardManagerSwift (5.0.7)
+  - SnapKit (4.0.0)
+  - SwiftyJSON (4.0.0)
+  - SwiftyTimer (2.0.0)
+  - SwiftyUserDefaults (3.0.1)
+  - Toast (4.0.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - IQKeyboardManagerSwift
+  - SnapKit
+  - SwiftyJSON
+  - SwiftyTimer
+  - SwiftyUserDefaults
+  - Toast (~> 4.0)
+
+SPEC CHECKSUMS:
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  IQKeyboardManagerSwift: 30fb3a61de1af53a95e02b80fb54ed0a19d5ede5
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+  SwiftyTimer: 2efd74b060d69ad4f1496baf5bbedbe132125fcf
+  SwiftyUserDefaults: 3d273b1739b68ada3145dc754a70ec775bc5c8be
+  Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
+
+PODFILE CHECKSUM: 25f0cd63e1a8ad8a974d88132c394d3c56c1b339
+
+COCOAPODS: 1.4.0

@@ -7,13 +7,18 @@
 //
 
 import UIKit
+import SnapKit
 
-class LoginView: UIView{
+class LoginView: UIViewController{
     
+    /*
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
+ */
+    
+    var logoImageViewTopConstraint: Constraint? = nil
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -85,15 +90,37 @@ class LoginView: UIView{
         //Add background
         let stackView = mainStackView()
         
-        addSubview(backgroundImageView)
-        addSubview(stackView)
+        self.view.addSubview(backgroundImageView)
+        backgroundImageView.snp.makeConstraints{
+            (make) -> Void in
+            make.edges.equalTo(self.view)
+            
+        }
         
-        backgroundImageView.setAnchor(top: self.topAnchor, left: self.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0)
+        //self.view.addSubview(stackView)
+        
+        /*backgroundImageView.setAnchor(top: .topAnchor, left: self.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0)
+         */
         
         /*self.empezemosButton.setAnchor(top: self.topAnchor, left: self.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, paddingTop: 40, paddingLeft: 0, paddingBottom: 0)*/
         
-        stackView.setAnchor(width: self.frame.width-20, height: 150)
-        stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        self.view.addSubview(userName)
+        let viewHeight = self.view.frame.height
+        let centerY = viewHeight / 2.0
+        let topImageOffSet = centerY - 20
+
+        userName.snp.makeConstraints{
+            (make) -> Void in
+            make.centerX.equalToSuperview()
+            make.width.equalTo(128)
+            make.height.equalTo(40)
+            self.logoImageViewTopConstraint = make.top.equalToSuperview().offset(topImageOffSet).constraint
+
+        }
+        
+        //stackView.setAnchor(width: self.frame.width-20, height: 150)
+        //stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        //stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     }
     
     func mainStackView() -> UIStackView {

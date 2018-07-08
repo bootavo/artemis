@@ -14,7 +14,7 @@ class LoginController: UICollectionViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
+        //setupView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -22,11 +22,13 @@ class LoginController: UICollectionViewController{
         UIApplication.shared.statusBarStyle = .lightContent //.lightContent
     }
     
+    /*
     func setupView(){
         let mainView = LoginView(frame: self.view.frame)
         self.loginView = mainView
         self.view.addSubview(mainView)
         loginView.setAnchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0)
     }
+ */
     
 }

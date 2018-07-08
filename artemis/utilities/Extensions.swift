@@ -42,6 +42,9 @@ extension UIColor {
         return UIColor(red: 196/255, green: 196/255, blue: 196/255, alpha: 1)
     }
     
+    static func borderTextField(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
+        return UIColor(red: 237/255, green: 237/255, blue: 237/255, alpha: 1)
+    }
 }
 
 extension UIView{

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.sharedManager().enableAutoToolbar = true
         
         //Add Navigation View to the App
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -25,36 +29,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let youtubeController = YoutubeController(collectionViewLayout: UICollectionViewFlowLayout())
         
-        window?.rootViewController = UINavigationController(rootViewController: loginController)
+        //window?.rootViewController = UINavigationController(rootViewController: loginControllerTest)
+        
+        let loginControllerTest = LoginControllerTest()
+        let navController = UINavigationController(rootViewController: loginControllerTest)
+        window?.rootViewController = navController
         
         UINavigationBar.appearance().barTintColor = UIColor.primaryColor()
         
-        //Used for all Controllers
+        //StatusBar title white for all Controllers
         //application.statusBarStyle = .lightContent // This need add in info.plist -> View controller-based status bar appearance
         
         let statusBarBackgroundView = UIView()
         statusBarBackgroundView.backgroundColor = UIColor.primaryDarkColor()
         window?.addSubview(statusBarBackgroundView)
         
-        var size:String = "20"
-        
-        //Get status bar size
-        if UIDevice().userInterfaceIdiom == .phone {
-            switch UIScreen.main.nativeBounds.height {
-            case 1136:
-                print("iPhone 5 or 5S or 5C")
-            case 1334:
-                print("iPhone 6/6S/7/8")
-            case 1920, 2208:
-                print("iPhone 6+/6S+/7+/8+")
-            case 2436:
-                print("iPhone X")
-                size = "45"
-            default:
-                print("unknown")
-            }
-        }
-        
+        //Márgenes de status bar
+        let size: String = ScreenHelper.create().getDevice()
         window?.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarBackgroundView)
         window?.addConstraintsWithFormat(format: "V:|[v0(\(size))]", views: statusBarBackgroundView)
         
