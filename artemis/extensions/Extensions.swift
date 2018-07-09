@@ -42,8 +42,16 @@ extension UIColor {
         return UIColor(red: 196/255, green: 196/255, blue: 196/255, alpha: 1)
     }
     
-    static func borderTextField(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
+    static func borderTextField() -> UIColor {
         return UIColor(red: 237/255, green: 237/255, blue: 237/255, alpha: 1)
+    }
+    
+    static func scroll() -> UIColor {
+        return UIColor(red: 245/255, green: 247/255, blue: 248/255, alpha: 1)
+    }
+    
+    static func cellPerfil() -> UIColor {
+        return UIColor.lightGray.withAlphaComponent(0.3)
     }
 }
 

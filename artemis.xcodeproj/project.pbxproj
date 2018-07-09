@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E04157020F4064A001080D4 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04156F20F4064A001080D4 /* CustomCell.swift */; };
+		4E04157220F408F0001080D4 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04157120F408F0001080D4 /* ImageView.swift */; };
 		8713E2AB20EE79AE004C6167 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713E2AA20EE79AE004C6167 /* AppDelegate.swift */; };
 		8713E2AD20EE79AE004C6167 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713E2AC20EE79AE004C6167 /* LoginController.swift */; };
 		8713E2B020EE79AE004C6167 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8713E2AE20EE79AE004C6167 /* Main.storyboard */; };
 		8713E2B220EE79AF004C6167 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8713E2B120EE79AF004C6167 /* Assets.xcassets */; };
 		8713E2B520EE79AF004C6167 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8713E2B320EE79AF004C6167 /* LaunchScreen.storyboard */; };
 		8713E2C520EE7A46004C6167 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713E2C420EE7A46004C6167 /* LoginView.swift */; };
-		8713E2CB20EE7A77004C6167 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713E2CA20EE7A77004C6167 /* HomeController.swift */; };
 		8713E2D120EE7B5B004C6167 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713E2D020EE7B5B004C6167 /* Extensions.swift */; };
 		872985FB20F2B68300079961 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872985FA20F2B68300079961 /* TextField.swift */; };
 		872985FE20F2B96200079961 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872985FD20F2B96200079961 /* Button.swift */; };
@@ -32,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E04156F20F4064A001080D4 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		4E04157120F408F0001080D4 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		8713E2A720EE79AE004C6167 /* artemis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = artemis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8713E2AA20EE79AE004C6167 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8713E2AC20EE79AE004C6167 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -40,7 +43,6 @@
 		8713E2B420EE79AF004C6167 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8713E2B620EE79AF004C6167 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8713E2C420EE7A46004C6167 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		8713E2CA20EE7A77004C6167 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		8713E2D020EE7B5B004C6167 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		872985FA20F2B68300079961 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		872985FD20F2B96200079961 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
@@ -140,6 +142,8 @@
 				8713E2D020EE7B5B004C6167 /* Extensions.swift */,
 				872985FD20F2B96200079961 /* Button.swift */,
 				872985FA20F2B68300079961 /* TextField.swift */,
+				4E04156F20F4064A001080D4 /* CustomCell.swift */,
+				4E04157120F408F0001080D4 /* ImageView.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -149,7 +153,6 @@
 			children = (
 				8713E2C420EE7A46004C6167 /* LoginView.swift */,
 				8713E2AC20EE79AE004C6167 /* LoginController.swift */,
-				8713E2CA20EE7A77004C6167 /* HomeController.swift */,
 			);
 			path = login;
 			sourceTree = "<group>";
@@ -357,15 +360,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				875EDA1220F2EDD600CC09C3 /* UserController.swift in Sources */,
+				4E04157220F408F0001080D4 /* ImageView.swift in Sources */,
 				875E23B520EEE08D0047C845 /* ScreenHelper.swift in Sources */,
 				8713E2AD20EE79AE004C6167 /* LoginController.swift in Sources */,
 				875EDA1820F2EDF600CC09C3 /* AbsentController.swift in Sources */,
+				4E04157020F4064A001080D4 /* CustomCell.swift in Sources */,
 				875EDA0A20F2EB4E00CC09C3 /* TabBarController.swift in Sources */,
 				875EDA1420F2EDDF00CC09C3 /* ProjectController.swift in Sources */,
 				872985FB20F2B68300079961 /* TextField.swift in Sources */,
 				8770238120EFBB4F00C5B07F /* ActivityController.swift in Sources */,
 				875EDA1A20F2EE0100CC09C3 /* AssistanceController.swift in Sources */,
-				8713E2CB20EE7A77004C6167 /* HomeController.swift in Sources */,
 				87BFC47320F281D400B24E19 /* Constants.swift in Sources */,
 				875ED9FF20F2DE2A00CC09C3 /* ActivityView.swift in Sources */,
 				8713E2C520EE7A46004C6167 /* LoginView.swift in Sources */,
@@ -519,7 +523,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3839PKNVT3;
+				DEVELOPMENT_TEAM = 7KV35963M6;
 				INFOPLIST_FILE = artemis/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -539,7 +543,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3839PKNVT3;
+				DEVELOPMENT_TEAM = 7KV35963M6;
 				INFOPLIST_FILE = artemis/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = (

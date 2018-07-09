@@ -25,7 +25,7 @@ class LoginController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         
         //Title Satus Bar White
-        UIApplication.shared.statusBarStyle = .lightContent //.lightContent
+        UIApplication.shared.statusBarStyle = .lightContent
     }
     
     func setupView(){
