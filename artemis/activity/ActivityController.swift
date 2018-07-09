@@ -40,6 +40,7 @@ class ActivityController: UIViewController, UIApplicationDelegate{
         titleLabel.textColor = UIColor.title()
         titleLabel.textAlignment = .center
         navigationItem.titleView = titleLabel
+        
     }
     
     func setupView(){

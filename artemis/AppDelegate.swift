@@ -31,9 +31,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let loginController = LoginController()
         let navController = UINavigationController(rootViewController: loginController)
-        window?.rootViewController = navController
         
-        UINavigationBar.appearance().barTintColor = UIColor.primaryColor()
+        let tabBarController = TabBarController()
+        let navTabBarController = UINavigationController(rootViewController: tabBarController)
+        
+        let x:Int = 1
+        
+        if x == 2 {
+            window?.rootViewController = navController
+        }else {
+            window?.rootViewController = navTabBarController
+        }
+        
+        //Navigation Bar Colors
+        //UINavigationBar.appearance().barTintColor = UIColor.primaryColor()
         
         //StatusBar title white for all Controllers
         //application.statusBarStyle = .lightContent // This need add in info.plist -> View controller-based status bar appearance
