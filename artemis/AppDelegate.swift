@@ -55,8 +55,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Márgenes de status bar
         let size: String = ScreenHelper.create().getDevice()
+        
         window?.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarBackgroundView)
         window?.addConstraintsWithFormat(format: "V:|[v0(\(size))]", views: statusBarBackgroundView)
+        
+        UIApplication.shared.isStatusBarHidden = false
         
         return true
         

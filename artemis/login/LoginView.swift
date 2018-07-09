@@ -79,7 +79,8 @@ class LoginView: UIView, UITextFieldDelegate{
             addSubview(powered)
             powered.snp.makeConstraints{ (make) -> Void in
                 make.width.equalTo(screenWidth!)
-                make.bottom.bottomMargin.equalTo(-30)
+                make.bottom.bottomMargin.equalTo(-2sssss0)
+                //make.bottom.equalTo(superview.snp_bottom).offset(-20)
             }
         }else {
             addSubview(powered)
