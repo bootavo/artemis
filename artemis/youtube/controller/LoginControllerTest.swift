@@ -3,7 +3,7 @@
 //  youtube
 //
 //  Created by Gustavo Tufiño Fernandez on 7/4/18.
-//  Copyright © 2018 GAP GLOBAL SOLUTIONS S.A.C. All rights reserved.
+//  Copyright © 2018 GTUFINOF. All rights reserved.
 //
 
 import UIKit
@@ -45,9 +45,6 @@ class LoginControllerTest: UIViewController, UIApplicationDelegate, UITextFieldD
     }
     
     func setup(){
-        
-        //window = UIWindow(frame: UIScreen.main.bounds)
-        //window?.makeKeyAndVisible()
         
         self.navigationController?.isNavigationBarHidden = true
         UIApplication.shared.statusBarStyle = .lightContent //.lightContent
@@ -144,6 +141,7 @@ class LoginControllerTest: UIViewController, UIApplicationDelegate, UITextFieldD
         user.layer.masksToBounds = true
         user.layer.borderColor = UIColor.placeHolder().cgColor
         user.layer.borderWidth = 1.0
+        user.autocapitalizationType = .none
         
         var paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: user.frame.height))
         user.leftView = paddingView
@@ -169,6 +167,7 @@ class LoginControllerTest: UIViewController, UIApplicationDelegate, UITextFieldD
         user.layer.masksToBounds = true
         user.layer.borderColor = UIColor.placeHolder().cgColor
         user.layer.borderWidth = 1.0
+        user.autocapitalizationType = .none
         
         var paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: user.frame.height))
         user.leftView = paddingView

@@ -3,7 +3,7 @@
 //  youtube
 //
 //  Created by admin on 22/03/18.
-//  Copyright © 2018 GAP GLOBAL SOLUTIONS S.A.C. All rights reserved.
+//  Copyright © 2018 GTUFINOF. All rights reserved.
 //
 
 import UIKit

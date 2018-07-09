@@ -3,7 +3,7 @@
 //  artemis
 //
 //  Created by Gustavo Tufiño Fernandez on 7/8/18.
-//  Copyright © 2018 PatDevelop. All rights reserved.
+//  Copyright © 2018 GTUFINOF. All rights reserved.
 //
 
 import Foundation

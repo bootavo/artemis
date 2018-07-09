@@ -3,7 +3,7 @@
 //  youtube
 //
 //  Created by Gustavo Tufiño Fernandez on 7/4/18.
-//  Copyright © 2018 GAP GLOBAL SOLUTIONS S.A.C. All rights reserved.
+//  Copyright © 2018 GTUFINOF. All rights reserved.
 //
 
 import UIKit

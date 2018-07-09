@@ -3,7 +3,7 @@
 //  youtube
 //
 //  Created by admin on 22/03/18.
-//  Copyright © 2018 GAP GLOBAL SOLUTIONS S.A.C. All rights reserved.
+//  Copyright © 2018 GTUFINOF. All rights reserved.
 //
 
 import UIKit
@@ -23,16 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        let loginController = LoginController(collectionViewLayout: UICollectionViewFlowLayout())
+        //let homeController = HomeController(collectionViewLayout: UICollectionViewFlowLayout())
         
-        let homeController = HomeController(collectionViewLayout: UICollectionViewFlowLayout())
-        
-        let youtubeController = YoutubeController(collectionViewLayout: UICollectionViewFlowLayout())
+        //let youtubeController = YoutubeController(collectionViewLayout: UICollectionViewFlowLayout())
         
         //window?.rootViewController = UINavigationController(rootViewController: loginControllerTest)
         
-        let loginControllerTest = LoginControllerTest()
-        let navController = UINavigationController(rootViewController: loginControllerTest)
+        let loginController = LoginController()
+        let navController = UINavigationController(rootViewController: loginController)
         window?.rootViewController = navController
         
         UINavigationBar.appearance().barTintColor = UIColor.primaryColor()
