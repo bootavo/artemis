@@ -23,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .compact)
+        
         //let homeController = HomeController(collectionViewLayout: UICollectionViewFlowLayout())
         
         //let youtubeController = YoutubeController(collectionViewLayout: UICollectionViewFlowLayout())

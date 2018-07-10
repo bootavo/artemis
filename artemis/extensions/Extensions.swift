@@ -53,6 +53,10 @@ extension UIColor {
     static func cellPerfil() -> UIColor {
         return UIColor.lightGray.withAlphaComponent(0.3)
     }
+    
+    static func navBar() -> UIColor {
+        return UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
+    }
 }
 
 extension UIView{
