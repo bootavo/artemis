@@ -9,21 +9,26 @@
 import UIKit
 import SnapKit
 import SwiftyUserDefaults
-//import SDWebImage
+import SDWebImage
 import SwiftyTimer
 import Toast
+
+var user: User = User()
 
 class UserController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     public let heighOfNavigationBar: CGFloat = 60
     public let heightOfCells: CGFloat = 55
-    public let separationBetweenCells: CGFloat = 30
+    public let separationBetweenCells: CGFloat = 0 //30
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.primaryColor()
         navigationController?.navigationBar.prefersLargeTitles = false
         setupView()
+        self.fullNameLabel.text = "\(user.first_name) \(user.last_name)"
+        self.rolLabel.text = user.rol
+        self.profileImageView.imageView.sd_setImage(with: URL(string: user.photo), completed: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +49,7 @@ class UserController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: 650)
         
         self.view.addSubview(scrollView)
+        scrollView.backgroundColor = UIColor.primaryColor()
         scrollView.snp.makeConstraints { (make) in
             make.top.equalTo(60)
             make.width.equalToSuperview()
@@ -70,54 +76,64 @@ class UserController: UIViewController, UIImagePickerControllerDelegate, UINavig
         rolLabel.snp.makeConstraints { (make) in
             //make.top.bottom.equalTo(profileImageView)
             //make.left.equalTo(profileImageView.snp.right).offset(20)
-            make.top.equalTo(fullNameLabel.snp.bottom).offset(10)
+            make.top.bottom.equalTo(fullNameLabel).offset(15)
+            make.left.equalTo(profileImageView.snp.right).offset(20)
+            //make.top.equalTo(fullNameLabel.snp.bottom).offset(10)
             //make.top.equalTo(fullNameLabel.snp.bottom).offset(10)
             //make.centerX.equalToSuperview()
         }
         
-        scrollView.addSubview(miPerfilCell)
-        miPerfilCell.snp.makeConstraints { (make) in
+        scrollView.addSubview(projectsCell)
+        projectsCell.snp.makeConstraints { (make) in
             make.top.equalTo(profileImageView.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalTo(heightOfCells)
         }
         
-        scrollView.addSubview(miSuscripcionCell)
-        miSuscripcionCell.snp.makeConstraints { (make) in
-            make.top.equalTo(miPerfilCell.snp.bottom)
+        scrollView.addSubview(quantityProjects)
+        quantityProjects.snp.makeConstraints { (make) in
+            make.top.equalTo(projectsCell.snp.bottom).offset(separationBetweenCells)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalTo(heightOfCells)
         }
         
-        scrollView.addSubview(compartirCell)
-        compartirCell.snp.makeConstraints { (make) in
-            make.top.equalTo(miSuscripcionCell.snp.bottom).offset(separationBetweenCells)
+        scrollView.addSubview(finishedProjects)
+        finishedProjects.snp.makeConstraints { (make) in
+            make.top.equalTo(quantityProjects.snp.bottom).offset(separationBetweenCells)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalTo(heightOfCells)
         }
         
-        scrollView.addSubview(terminosCell)
-        terminosCell.snp.makeConstraints { (make) in
-            make.top.equalTo(compartirCell.snp.bottom).offset(separationBetweenCells)
+        scrollView.addSubview(proy1)
+        proy1.snp.makeConstraints { (make) in
+            make.top.equalTo(finishedProjects.snp.bottom).offset(separationBetweenCells)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalTo(heightOfCells)
         }
         
-        scrollView.addSubview(cambiarContrasenaCell)
-        cambiarContrasenaCell.snp.makeConstraints { (make) in
-            make.top.equalTo(terminosCell.snp.bottom)
+        scrollView.addSubview(proy2)
+        proy2.snp.makeConstraints { (make) in
+            make.top.equalTo(proy1.snp.bottom)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalTo(heightOfCells)
         }
         
-        scrollView.addSubview(acercaCell)
-        acercaCell.snp.makeConstraints { (make) in
-            make.top.equalTo(cambiarContrasenaCell.snp.bottom).offset(separationBetweenCells)
+        scrollView.addSubview(blankSpace)
+        blankSpace.snp.makeConstraints { (make) in
+            make.top.equalTo(proy2.snp.bottom).offset(separationBetweenCells)
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalTo(heightOfCells)
+        }
+        
+        scrollView.addSubview(endSession)
+        endSession.snp.makeConstraints { (make) in
+            make.top.equalTo(blankSpace.snp.bottom).offset(separationBetweenCells)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalTo(heightOfCells)
@@ -137,10 +153,21 @@ class UserController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imgView.isUserInteractionEnabled = true
         return imgView
     }()
+    
+    let detailTitle: UILabel = {
+        let label = UILabel()
+        label.text = ""
+        label.isHidden = true
+        label.textAlignment = NSTextAlignment.right
+        label.textColor = UIColor.lightGray
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.sizeToFit()
+        return label
+    }()
 
     let fullNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Gustavo Tufinho Fernandez"
+        label.text = ""
         label.textColor = UIColor.title()
         label.font = UIFont.systemFont(ofSize: 16)
         label.sizeToFit()
@@ -149,57 +176,77 @@ class UserController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     let rolLabel: UILabel = {
         let label = UILabel()
-        label.text = "Desarrollador"
+        label.text = ""
         label.textColor = UIColor.subTitleList()
         label.font = UIFont.systemFont(ofSize: 12)
         label.sizeToFit()
         return label
     }()
     
-    lazy var miPerfilCell: MiCuentaCell = {
-        let view = MiCuentaCell()
+    lazy var projectsCell: MyAccountCell = {
+        let view = MyAccountCell()
         view.addTarget(self, action: #selector(miCuentaTapped), for: UIControlEvents.touchUpInside)
-        view.type = MiCuentaCell.TypeOfCell.first
+        view.title.text = "PROYECTOS EN CURSO"
+        view.type = MyAccountCell.TypeOfCell.first
+        view.backgroundColor = UIColor.scroll()
+        view.detailImageView.isHidden = true
         return view
     }()
     
-    lazy var miSuscripcionCell: MiCuentaCell = {
-        let view = MiCuentaCell()
-        view.addTarget(self, action: #selector(miSuscripcionTapped), for: UIControlEvents.touchUpInside)
-        view.title.text = "Mi suscripción"
-        view.type = MiCuentaCell.TypeOfCell.last
+    lazy var quantityProjects: MyAccountCell = {
+        let view = MyAccountCell()
+        view.addTarget(self, action: #selector(miCuentaTapped), for: UIControlEvents.touchUpInside)
+        view.title.text = "3 Proyectos"
+        view.type = MyAccountCell.TypeOfCell.between
         return view
     }()
     
-    lazy var compartirCell: MiCuentaCell = {
-        let view = MiCuentaCell()
-        view.addTarget(self, action: #selector(compartirTapped(_ :)), for: UIControlEvents.touchUpInside)
-        view.title.text = "Compartir la aplicación"
-        view.type = MiCuentaCell.TypeOfCell.alone
+    lazy var finishedProjects: MyAccountCell = {
+        let view = MyAccountCell()
+        view.addTarget(self, action: #selector(miCuentaTapped), for: UIControlEvents.touchUpInside)
+        view.title.text = "PROYECTOS FINALIZADOS"
+        view.type = MyAccountCell.TypeOfCell.between
+        view.backgroundColor = UIColor.scroll()
+        view.detailImageView.isHidden = true
         return view
     }()
     
-    lazy var terminosCell: MiCuentaCell = {
-        let view = MiCuentaCell()
+    lazy var proy1: MyAccountCell = {
+        let view = MyAccountCell()
         view.addTarget(self, action: #selector(terminosTapped), for: UIControlEvents.touchUpInside)
-        view.title.text = "Términos y condiciones"
-        view.type = MiCuentaCell.TypeOfCell.first
+        view.title.text = "PRY-072-NOMBREPROYECTO"
+        view.type = MyAccountCell.TypeOfCell.between
         return view
     }()
     
-    lazy var cambiarContrasenaCell: MiCuentaCell = {
-        let view = MiCuentaCell()
+    lazy var proy2: MyAccountCell = {
+        let view = MyAccountCell()
         view.addTarget(self, action: #selector(cambiarContrasenaTapped), for: UIControlEvents.touchUpInside)
-        view.title.text = "Cambiar contraseña"
-        view.type = MiCuentaCell.TypeOfCell.last
+        view.title.text = "PRY-072-NOMBREPROYECTO"
+        view.type = MyAccountCell.TypeOfCell.between
         return view
     }()
     
-    lazy var acercaCell: MiCuentaCell = {
-        let view = MiCuentaCell()
-        view.addTarget(self, action: #selector(acercaTapped), for: UIControlEvents.touchUpInside)
-        view.title.text = "Acerca de Midoc"
-        view.type = MiCuentaCell.TypeOfCell.alone
+    lazy var blankSpace: MyAccountCell = {
+        let view = MyAccountCell()
+        view.addTarget(self, action: #selector(miCuentaTapped), for: UIControlEvents.touchUpInside)
+        view.title.text = ""
+        view.type = MyAccountCell.TypeOfCell.between
+        view.backgroundColor = UIColor.scroll()
+        view.detailImageView.isHidden = true
+        return view
+    }()
+    
+    lazy var endSession: MyAccountCellRed = {
+        let view = MyAccountCellRed()
+        view.addTarget(self, action: #selector(closeSession), for: UIControlEvents.touchUpInside)
+        view.title.text = "Cerrar Sesion"
+        view.type = MyAccountCellRed.TypeOfCell.alone
+        view.backgroundColor = UIColor.primaryDarkColor()
+        view.title.textColor = UIColor.primaryColor()
+        //view.backgroundColor = view.isHighlighted ? UIColor.primaryDarkColor() : UIColor.primaryDarkColor()
+        //view.backgroundColor = view.isSelected ? UIColor.primaryDarkColor() : UIColor.primaryDarkColor()
+        view.detailImageView.isHidden = true
         return view
     }()
     
@@ -243,10 +290,10 @@ class UserController: UIViewController, UIImagePickerControllerDelegate, UINavig
         print("cambiarContrasenaTapped()")
     }
     
-    @objc func acercaTapped() {
+    @objc func closeSession() {
         //let vc = MiPerfilViewController()
         //self.present(vc, animated: true, completion: nil)
-        print("acercaTapped()")
+        print("endSession()")
     }
     
 }

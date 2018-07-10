@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4E04157020F4064A001080D4 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04156F20F4064A001080D4 /* CustomCell.swift */; };
 		4E04157220F408F0001080D4 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04157120F408F0001080D4 /* ImageView.swift */; };
+		4E04157520F5029D001080D4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04157420F5029D001080D4 /* Model.swift */; };
+		4E04157820F52BDA001080D4 /* CustomCellRed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04157720F52BDA001080D4 /* CustomCellRed.swift */; };
 		8713E2AB20EE79AE004C6167 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713E2AA20EE79AE004C6167 /* AppDelegate.swift */; };
 		8713E2AD20EE79AE004C6167 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713E2AC20EE79AE004C6167 /* LoginController.swift */; };
 		8713E2B020EE79AE004C6167 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8713E2AE20EE79AE004C6167 /* Main.storyboard */; };
@@ -35,6 +37,8 @@
 /* Begin PBXFileReference section */
 		4E04156F20F4064A001080D4 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		4E04157120F408F0001080D4 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		4E04157420F5029D001080D4 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		4E04157720F52BDA001080D4 /* CustomCellRed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellRed.swift; sourceTree = "<group>"; };
 		8713E2A720EE79AE004C6167 /* artemis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = artemis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8713E2AA20EE79AE004C6167 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8713E2AC20EE79AE004C6167 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -91,6 +95,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4E04157320F5024F001080D4 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				4E04157420F5029D001080D4 /* Model.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		8713E29E20EE79AE004C6167 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +124,7 @@
 		8713E2A920EE79AE004C6167 /* artemis */ = {
 			isa = PBXGroup;
 			children = (
+				4E04157320F5024F001080D4 /* model */,
 				875EDA0420F2E21100CC09C3 /* activity */,
 				875EDA0320F2E20600CC09C3 /* login */,
 				875EDA0720F2E36200CC09C3 /* tabbar */,
@@ -139,11 +152,12 @@
 		872985FC20F2B8B900079961 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
+				4E04156F20F4064A001080D4 /* CustomCell.swift */,
 				8713E2D020EE7B5B004C6167 /* Extensions.swift */,
 				872985FD20F2B96200079961 /* Button.swift */,
 				872985FA20F2B68300079961 /* TextField.swift */,
-				4E04156F20F4064A001080D4 /* CustomCell.swift */,
 				4E04157120F408F0001080D4 /* ImageView.swift */,
+				4E04157720F52BDA001080D4 /* CustomCellRed.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -231,7 +245,6 @@
 				8713E2A420EE79AE004C6167 /* Frameworks */,
 				8713E2A520EE79AE004C6167 /* Resources */,
 				0241DDBC5F7A8EB114D350B7 /* [CP] Embed Pods Frameworks */,
-				01D041EF870F0AB1BF2E6D2E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -289,21 +302,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		01D041EF870F0AB1BF2E6D2E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-artemis/Pods-artemis-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		0241DDBC5F7A8EB114D350B7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -312,7 +310,9 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-artemis/Pods-artemis-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/IGListKit/IGListKit.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyTimer/SwiftyTimer.framework",
@@ -322,7 +322,9 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IGListKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyTimer.framework",
@@ -365,11 +367,13 @@
 				8713E2AD20EE79AE004C6167 /* LoginController.swift in Sources */,
 				875EDA1820F2EDF600CC09C3 /* AbsentController.swift in Sources */,
 				4E04157020F4064A001080D4 /* CustomCell.swift in Sources */,
+				4E04157520F5029D001080D4 /* Model.swift in Sources */,
 				875EDA0A20F2EB4E00CC09C3 /* TabBarController.swift in Sources */,
 				875EDA1420F2EDDF00CC09C3 /* ProjectController.swift in Sources */,
 				872985FB20F2B68300079961 /* TextField.swift in Sources */,
 				8770238120EFBB4F00C5B07F /* ActivityController.swift in Sources */,
 				875EDA1A20F2EE0100CC09C3 /* AssistanceController.swift in Sources */,
+				4E04157820F52BDA001080D4 /* CustomCellRed.swift in Sources */,
 				87BFC47320F281D400B24E19 /* Constants.swift in Sources */,
 				875ED9FF20F2DE2A00CC09C3 /* ActivityView.swift in Sources */,
 				8713E2C520EE7A46004C6167 /* LoginView.swift in Sources */,

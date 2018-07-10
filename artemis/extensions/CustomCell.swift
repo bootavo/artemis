@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class MiCuentaCell: UIButton {
+class MyAccountCell: UIButton {
     
     enum TypeOfCell {
         case alone
@@ -56,9 +56,8 @@ class MiCuentaCell: UIButton {
         super.init(frame: frame)
         self.backgroundColor = UIColor.white
         self.setupViews()
-        
-        
     }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

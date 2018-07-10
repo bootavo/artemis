@@ -9,10 +9,14 @@ target 'artemis' do
 pod 'Alamofire'
 pod 'SwiftyJSON'
 
+pod 'IGListKit'
+
+pod 'SnapKit'
+pod 'Toast', '~> 4.0'
+pod 'SDWebImage'
+
 pod 'SwiftyUserDefaults'
 pod 'SwiftyTimer'
 pod 'IQKeyboardManagerSwift'
-pod 'Toast', '~> 4.0'
-pod 'SnapKit'
 
 end

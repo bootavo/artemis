@@ -1,6 +1,14 @@
 PODS:
   - Alamofire (4.6.0)
+  - IGListKit (3.4.0):
+    - IGListKit/Default (= 3.4.0)
+  - IGListKit/Default (3.4.0):
+    - IGListKit/Diffing
+  - IGListKit/Diffing (3.4.0)
   - IQKeyboardManagerSwift (5.0.7)
+  - SDWebImage (4.4.1):
+    - SDWebImage/Core (= 4.4.1)
+  - SDWebImage/Core (4.4.1)
   - SnapKit (4.0.0)
   - SwiftyJSON (4.0.0)
   - SwiftyTimer (2.0.0)
@@ -9,22 +17,38 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - IGListKit
   - IQKeyboardManagerSwift
+  - SDWebImage
   - SnapKit
   - SwiftyJSON
   - SwiftyTimer
   - SwiftyUserDefaults
   - Toast (~> 4.0)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - IGListKit
+    - IQKeyboardManagerSwift
+    - SDWebImage
+    - SnapKit
+    - SwiftyJSON
+    - SwiftyTimer
+    - SwiftyUserDefaults
+    - Toast
+
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  IGListKit: 7a5d788e9fb746bcd402baa8e8b24bc3bd2a5a07
   IQKeyboardManagerSwift: 30fb3a61de1af53a95e02b80fb54ed0a19d5ede5
+  SDWebImage: 47e9b5b925cbce75946c23f0c42dd19464189af4
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   SwiftyTimer: 2efd74b060d69ad4f1496baf5bbedbe132125fcf
   SwiftyUserDefaults: 3d273b1739b68ada3145dc754a70ec775bc5c8be
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
 
-PODFILE CHECKSUM: 25f0cd63e1a8ad8a974d88132c394d3c56c1b339
+PODFILE CHECKSUM: 8756b70c6a3a2b4f053b67917532627113e69772
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3
