@@ -43,7 +43,7 @@ class UserController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
         titleLabel.text = "Usuario"
         titleLabel.font = UIFont.systemFont(ofSize: 20)
-        titleLabel.textColor = UIColor.title()
+        titleLabel.textColor = UIColor.primaryColor()
         titleLabel.textAlignment = .center
         self.tabBarController?.navigationItem.titleView = titleLabel
     }

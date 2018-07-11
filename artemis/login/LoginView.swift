@@ -22,6 +22,8 @@ class LoginView: UIView, UITextFieldDelegate{
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
+        tf_username.text = "gustavo.tufino@vfcons.com"
+        tf_password.text = "STAFF2018"
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -117,11 +119,13 @@ class LoginView: UIView, UITextFieldDelegate{
     
     let tf_username: UITextField = {
         let tf = UITextField(placeholder: "Usuario")
+        tf.keyboardType = UIKeyboardType.emailAddress
         return tf
     }()
     
     let tf_password: UITextField = {
         let tf = UITextField(placeholder: "Contraseña")
+        tf.isSecureTextEntry = true
         return tf
     }()
     

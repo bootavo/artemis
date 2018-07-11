@@ -9,9 +9,10 @@
 import UIKit
 import Toast
 
-class LoginController: UIViewController {
+class LoginController: UIViewController, UIApplicationDelegate {
     
     var loginView: LoginView!
+    var window: UIWindow?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,12 +43,31 @@ class LoginController: UIViewController {
         print("login")
         if self.loginView.verifyLogin() {
             self.view.makeToast("Go")
-            let activityController = ActivityController()
-            //present(activityController, animated: true, completion: nil)
-            self.navigationController?.pushViewController(activityController, animated: true)
+            //self.navigationController?.pushViewController(activityController, animated: true)
+            //present(TabBarController(), animated: true, completion: nil)
+            
+            //let vc = TabBarController()
+            //self.present(vc, animated: true, completion: nil)
+            
+            print("\(loginView.tf_username.text!)")
+            print("\(loginView.tf_password.text!)")
+            
+            if loginView.tf_username.text! == "gustavo.tufino@vfcons.com" && loginView.tf_password.text! == "STAFF2018" {
+                pushToNextVC()
+            }else{
+                self.loginView.makeToast("Datos incorrectos")
+            }
+            
         }else {
             self.view.makeToast("Complete sus datos")
         }
+    }
+    
+    func pushToNextVC() {
+        let newVC = TabBarController()
+        newVC.navigationItem.hidesBackButton = true;
+        self.navigationController?.pushViewController(newVC, animated:
+            true)
     }
 
 }

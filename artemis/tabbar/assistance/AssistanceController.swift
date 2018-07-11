@@ -10,6 +10,8 @@ import UIKit
 
 class AssistanceController: UIViewController{
     
+    var assistanceView: AssistanceView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.primaryColor()
@@ -28,7 +30,7 @@ class AssistanceController: UIViewController{
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
         titleLabel.text = "Asistencia"
         titleLabel.font = UIFont.systemFont(ofSize: 20)
-        titleLabel.textColor = UIColor.title()
+        titleLabel.textColor = UIColor.primaryColor()
         titleLabel.textAlignment = .center
         self.tabBarController?.navigationItem.titleView = titleLabel
     }
@@ -41,14 +43,21 @@ class AssistanceController: UIViewController{
     func setupMenuBar(){
         view.addSubview(menuBar)
         menuBar.snp.makeConstraints { (make) in
-           // make.top.equalTo().offset(0)
-            //make.width.equalToSuperview()
-            //make.height.equalTo(50)
-            //make.top.bottom.equalTo(self.view).offset(0)
-            //make.right.lessThanOrEqualTo(20)
+            make.height.equalTo(50)
+            make.width.equalToSuperview()
+            make.top.equalTo(self.view.snp.top).offset(0)
         }
-        view.addConstraintsWithFormat(format: "H:|[v0]|", views: menuBar)
-        view.addConstraintsWithFormat(format: "V:|[v0(50)]", views: menuBar)
+        //view.addConstraintsWithFormat(format: "H:|[v0]|", views: menuBar)
+        //view.addConstraintsWithFormat(format: "V:|[v0(50)]", views: menuBar)
+        
+        assistanceView = AssistanceView(frame: self.view.frame)
+        self.view.addSubview(assistanceView)
+        assistanceView.snp.makeConstraints{
+            (make) -> Void in
+            //make.edges.equalTo(self.view)
+            make.width.equalToSuperview()
+            make.top.bottom.equalTo(menuBar).offset(50)
+        }
     }
     
 }

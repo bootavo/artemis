@@ -40,14 +40,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let x:Int = 1
         
-        if x == 2 {
+        if x == 1 {
             window?.rootViewController = navController
         }else {
             window?.rootViewController = navTabBarController
         }
         
         //Navigation Bar Colors
-        //UINavigationBar.appearance().barTintColor = UIColor.primaryColor()
+        UINavigationBar.appearance().barTintColor = UIColor.primaryDarkColor()
+        UINavigationBar.appearance().isTranslucent = true
         
         //StatusBar title white for all Controllers
         //application.statusBarStyle = .lightContent // This need add in info.plist -> View controller-based status bar appearance
