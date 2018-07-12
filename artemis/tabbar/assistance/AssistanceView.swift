@@ -33,7 +33,7 @@ class AssistanceView: UIView {
         addSubview(btn_assistance)
         btn_assistance.snp.makeConstraints{
             (make) -> Void in
-            make.width.equalTo(250)
+            make.width.equalTo(280)
             make.height.equalTo(40)
             make.topMargin.equalTo(400)
             make.centerX.equalToSuperview()
@@ -45,17 +45,27 @@ class AssistanceView: UIView {
             make.width.equalTo(100)
             make.height.equalTo(50)
             make.topMargin.equalTo(200)
-            make.centerX.equalToSuperview().offset(10)
+            make.centerX.equalToSuperview().offset(-25)
         }
         
         addSubview(tv_minutes)
-        tv_minutes.text = ": 50"
+        tv_minutes.text = ":50"
         tv_minutes.snp.makeConstraints{
             (make) -> Void in
             make.width.equalTo(100)
             make.height.equalTo(50)
             make.topMargin.equalTo(200)
-            make.centerX.equalToSuperview().offset(20)
+            make.centerX.equalToSuperview().offset(35)
+        }
+        
+        addSubview(tv_date)
+        tv_date.text = "Mar 26 Jun"
+        tv_date.snp.makeConstraints{
+            (make) -> Void in
+            make.width.equalTo(100)
+            make.height.equalTo(50)
+            make.topMargin.equalTo(250)
+            make.centerX.equalToSuperview()
         }
         
     }
@@ -70,17 +80,22 @@ class AssistanceView: UIView {
     let tv_hour: UILabel = {
         var tv = UILabel()
         tv.textColor = UIColor.primaryDarkColor()
-        tv.font = UIFont.systemFont(ofSize: 50)
+        tv.font = UIFont.systemFont(ofSize: 60)
         return tv
     }()
     
     let tv_minutes: UILabel = {
         var tv = UILabel()
+        tv.textColor = UIColor.primaryDarkColor()
+        tv.font = UIFont.systemFont(ofSize: 60)
         return tv
     }()
     
     let tv_date: UILabel = {
         var tv = UILabel()
+        tv.textColor = UIColor.primaryDarkColor()
+        tv.font = UIFont.systemFont(ofSize: 18)
+        tv.textAlignment = .center
         return tv
     }()
     

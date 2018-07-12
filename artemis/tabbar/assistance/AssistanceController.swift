@@ -7,16 +7,27 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+import SwiftyUserDefaults
+import Toast
+import CoreLocation
 
-class AssistanceController: UIViewController{
+class AssistanceController: UIViewController, CLLocationManagerDelegate{
     
     var assistanceView: AssistanceView!
+    
+    var locationManager = CLLocationManager()
+    var lat:Double?
+    var lng:Double?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.primaryColor()
         navigationController?.navigationBar.prefersLargeTitles = false
         setupMenuBar()
+        configLocationManager()
+        showTimer()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,6 +69,82 @@ class AssistanceController: UIViewController{
             make.width.equalToSuperview()
             make.top.bottom.equalTo(menuBar).offset(50)
         }
+    }
+    
+    func configLocationManager(){
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        
+        switch CLLocationManager.authorizationStatus() {
+        case .notDetermined:
+            // Request when-in-use authorization initially
+            locationManager.requestWhenInUseAuthorization()
+            print("NotDetermined")
+            break
+            
+        case .restricted, .denied:
+            // Disable location features
+            print("Restricted")
+            break
+            
+        case .authorizedWhenInUse, .authorizedAlways:
+            // Enable location features
+            print("AuthorizedWhenInUse")
+            locationManager.startUpdatingLocation()
+            guard let locValue: CLLocationCoordinate2D = locationManager.location?.coordinate else { return }
+            print("locations = \(locValue.latitude) \(locValue.longitude)")
+            lat = locValue.latitude
+            lng = locValue.longitude
+            break
+        }
+    }
+
+    func showTimer(){
+        self.setTimer()
+        var timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {
+            (_) in
+            self.setTimer()
+        }
+    }
+    
+    
+    func setTimer(){
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM/d/MMM"
+        var dateFormat = formatter.string(from: Date())
+        
+        let fullNameArr = dateFormat.components(separatedBy: "/")
+        let day    = fullNameArr[0]
+        let numberDay = fullNameArr[1]
+        let month = fullNameArr[2]
+        dateFormat = "\(day)\(numberDay)\(month)"
+        
+        var dateString = NSMutableAttributedString (string: "\(dateFormat)")
+        let bigBoldFont = UIFont.boldSystemFont(ofSize: 18)
+        dateString.addAttribute(NSForegroundColorAttributeName, value: bigBoldFont, range: NSMakeRange(location: 3,length: 2))
+        
+        let date = Date()
+        let calendar = Calendar.current
+        
+        let hours = calendar.component(.hour, from: date)
+        let minutes = calendar.component(.minute, from: date)
+        let seconds = calendar.component(.second, from: date)
+        
+        if hours < 10 {
+            self.assistanceView.tv_hour.text = "0\(hours)"
+        }else {
+            self.assistanceView.tv_hour.text = "\(hours)"
+        }
+        
+        if minutes < 10 {
+            self.assistanceView.tv_minutes.text = ":0\(minutes)"
+        }else {
+            self.assistanceView.tv_minutes.text = ":\(minutes)"
+        }
+        
+        self.assistanceView.tv_date.attributedText = "\(dateString)"
     }
     
 }
