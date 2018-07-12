@@ -20,11 +20,7 @@ class AbsentController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.navigationBar.setBackgroundImage(nil, for:.default)
-        self.navigationController?.navigationBar.shadowImage = nil
-        
-        //Title Status Bar White
-        UIApplication.shared.statusBarStyle = .lightContent //.lightContent
+        self.navigationController?.navigationBar.isTranslucent = false
         
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
         titleLabel.text = "Reportes"

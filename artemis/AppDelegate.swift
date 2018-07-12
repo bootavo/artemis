@@ -10,7 +10,7 @@ import UIKit
 import IQKeyboardManagerSwift
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate{
     
     var window: UIWindow?
     
@@ -23,20 +23,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .compact)
-        
-        //let homeController = HomeController(collectionViewLayout: UICollectionViewFlowLayout())
-        
-        //let youtubeController = YoutubeController(collectionViewLayout: UICollectionViewFlowLayout())
-        
-        //window?.rootViewController = UINavigationController(rootViewController: loginControllerTest)
-        
         let loginController = LoginController()
         let navController = UINavigationController(rootViewController: loginController)
         
         let tabBarController = TabBarController()
         let navTabBarController = UINavigationController(rootViewController: tabBarController)
+        
+        //Navigation Bar Colors
+        UINavigationBar.appearance().barTintColor = UIColor.primaryDarkColor()
+       // UINavigationBar.appearance().isTranslucent = true
+        
+        let statusBar = UIApplication.shared.value(forKey: "statusBar") as! UIView
+        statusBar.backgroundColor = UIColor.primaryDarkColor()
+        
+        UIApplication.shared.isStatusBarHidden = false
+        UIApplication.shared.statusBarStyle = .lightContent
         
         let x:Int = 1
         
@@ -45,28 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }else {
             window?.rootViewController = navTabBarController
         }
-        
-        //Navigation Bar Colors
-        UINavigationBar.appearance().barTintColor = UIColor.primaryDarkColor()
-        UINavigationBar.appearance().isTranslucent = true
-        
-        //StatusBar title white for all Controllers
-        //application.statusBarStyle = .lightContent // This need add in info.plist -> View controller-based status bar appearance
-        
-        let statusBarBackgroundView = UIView()
-        statusBarBackgroundView.backgroundColor = UIColor.primaryDarkColor()
-        window?.addSubview(statusBarBackgroundView)
-        
-        //Márgenes de status bar
-        let size: String = ScreenHelper.create().getDevice()
-        
-        window?.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarBackgroundView)
-        window?.addConstraintsWithFormat(format: "V:|[v0(\(size))]", views: statusBarBackgroundView)
-        
-        UIApplication.shared.isStatusBarHidden = false
-        
         return true
-        
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

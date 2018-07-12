@@ -33,12 +33,15 @@ class AssistanceController: UIViewController, CLLocationManagerDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for:.default)
+        self.navigationController?.navigationBar.shadowImage = nil
+        
         //Title Status Bar White
-        UIApplication.shared.statusBarStyle = .lightContent //.lightContent
-        navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.isTranslucent = false
         self.tabBarController?.navigationController?.isNavigationBarHidden = false
         
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
+        let bounds = navigationController?.navigationBar.bounds
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: (bounds?.width)!, height: (bounds?.height)!))
         titleLabel.text = "Asistencia"
         titleLabel.font = UIFont.systemFont(ofSize: 20)
         titleLabel.textColor = UIColor.primaryColor()
@@ -56,7 +59,8 @@ class AssistanceController: UIViewController, CLLocationManagerDelegate{
         menuBar.snp.makeConstraints { (make) in
             make.height.equalTo(50)
             make.width.equalToSuperview()
-            make.top.equalTo(self.view.snp.top).offset(0)
+            make.top.equalTo(self.view.snp.top)
+            //make.top.equalTo(self.view.snp.top).offset(50)
         }
         //view.addConstraintsWithFormat(format: "H:|[v0]|", views: menuBar)
         //view.addConstraintsWithFormat(format: "V:|[v0(50)]", views: menuBar)
@@ -122,8 +126,9 @@ class AssistanceController: UIViewController, CLLocationManagerDelegate{
         dateFormat = "\(day)\(numberDay)\(month)"
         
         var dateString = NSMutableAttributedString (string: "\(dateFormat)")
-        let bigBoldFont = UIFont.boldSystemFont(ofSize: 18)
-        dateString.addAttribute(NSForegroundColorAttributeName, value: bigBoldFont, range: NSMakeRange(location: 3,length: 2))
+        let bigBoldFont = UIFont.boldSystemFont(ofSize: 26)
+        let bigFont = UIFont.systemFont(ofSize: 26)
+        dateString.addAttribute(NSAttributedStringKey.font, value: bigFont, range: NSRange(location: 3,length: 2))
         
         let date = Date()
         let calendar = Calendar.current
@@ -144,7 +149,7 @@ class AssistanceController: UIViewController, CLLocationManagerDelegate{
             self.assistanceView.tv_minutes.text = ":\(minutes)"
         }
         
-        self.assistanceView.tv_date.attributedText = "\(dateString)"
+        self.assistanceView.tv_date.attributedText = dateString
     }
     
 }

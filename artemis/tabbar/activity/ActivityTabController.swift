@@ -23,9 +23,6 @@ class ActivityTabController: UIViewController, UIApplicationDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.navigationBar.setBackgroundImage(nil, for:.default)
-        self.navigationController?.navigationBar.shadowImage = nil
-        
         //Title Status Bar White
         UIApplication.shared.statusBarStyle = .lightContent //.lightContent
         

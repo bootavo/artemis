@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProjectController: UIViewController{
+class ProjectController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,18 +20,18 @@ class ProjectController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.navigationBar.setBackgroundImage(nil, for:.default)
-        self.navigationController?.navigationBar.shadowImage = nil
-        
-        //Title Status Bar White
-        UIApplication.shared.statusBarStyle = .lightContent //.lightContent
-        
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
-        titleLabel.text = "Actividades"
+        let bounds = navigationController?.navigationBar.bounds
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: (bounds?.width)!, height: (bounds?.height)!))
+        titleLabel.text = "Proyectos"
         titleLabel.font = UIFont.systemFont(ofSize: 20)
         titleLabel.textColor = UIColor.primaryColor()
         titleLabel.textAlignment = .center
         self.tabBarController?.navigationItem.titleView = titleLabel
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        <#code#>
     }
     
 }

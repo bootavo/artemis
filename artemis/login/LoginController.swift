@@ -20,13 +20,9 @@ class LoginController: UIViewController, UIApplicationDelegate {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        
         //NavigationBar
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
-        
-        //Title Satus Bar White
-        UIApplication.shared.statusBarStyle = .lightContent
     }
     
     func setupView(){

@@ -10,6 +10,8 @@ pod 'Alamofire'
 pod 'SwiftyJSON'
 
 pod 'IGListKit'
+pod 'DatePickerDialog'
+pod 'BEMCheckBox'
 
 pod 'SnapKit'
 pod 'Toast', '~> 4.0'
