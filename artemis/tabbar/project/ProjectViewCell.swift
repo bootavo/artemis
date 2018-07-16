@@ -8,23 +8,7 @@
 
 import UIKit
 
-class BasesCell: UICollectionViewCell {
-    
-    override init(frame: CGRect){
-        super.init(frame: frame)
-        setupViews()
-    }
-    
-    func setupViews(){
-        
-    }
-    
-    required init?(coder aDecoder: NSCoder){
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-class ProjectViewCell: BasesCell {
+class ProjectViewCell: UICollectionViewCell {
     
     @IBOutlet weak var tv_project_code: UILabel!
     @IBOutlet weak var tv_project_name: UILabel!
@@ -33,14 +17,30 @@ class ProjectViewCell: BasesCell {
     
     @IBOutlet weak var iv_status: UIImageView!
     
-    var project:Project? {
+    var project: Project! = nil {
         didSet {
             
-            self.tv_project_code.text = project?.project_code
-            self.tv_project_name.text = project?.project_name
-            self.tv_project_date.text = project?.project_date
+            if let code = project.project_code {
+                print("\(code)")
+                self.tv_project_code.text = code
+            }
             
-            if let status = project?.project_status {
+            if let name = project.project_name {
+                print("\(name)")
+                self.tv_project_name.text = name
+            }
+            
+            if let date = project.project_date {
+                print("\(date)")
+                self.tv_project_date.text = date
+                
+                //Departamento Prejudicial - Banco de crédito
+                //937509559 Doctora Liza
+            }
+            
+            if let status = project.project_status {
+                print("\(status)")
+                self.tv_project_status.text = status
                 if status == "A"{
                     self.iv_status.image = UIImage(named: "ic_circle_green")
                 }else if status == "I" {

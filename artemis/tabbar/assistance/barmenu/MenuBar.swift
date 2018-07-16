@@ -47,7 +47,7 @@ class MenuBar:UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICo
     
     //Items del CollectionView
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 2
     }
     
     //Items dinamicos del CollectionView

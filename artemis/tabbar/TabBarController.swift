@@ -28,11 +28,13 @@ class TabBarController: UITabBarController {
         absents.tabBarItem.image = UIImage(named: "ic_absent_gray")
         absents.tabBarItem.selectedImage = UIImage(named: "ic_absent_red")
         
-        let activity = UINavigationController(rootViewController: ActivityTabController())
+        //let activity = UINavigationController(rootViewController: RegisterActivityController())
+        let activity = Util.getVCRef("Activity", nameFile: "Main") as! ActivityController
         activity.tabBarItem.image = UIImage(named: "ic_activity_gray")
         activity.tabBarItem.selectedImage = UIImage(named: "ic_activity_red")
         
-        let projects = UINavigationController(rootViewController: ProjectController())
+        //let projects = UINavigationController(rootViewController: ProjectController())
+        let projects = Util.getVCRef("Project", nameFile: "Main") as! ProjectController
         projects.tabBarItem.image = UIImage(named: "ic_project_gray")
         projects.tabBarItem.selectedImage = UIImage(named: "ic_project_red")
         

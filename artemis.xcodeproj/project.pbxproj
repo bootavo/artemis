@@ -16,6 +16,8 @@
 		4E04157F20F6A3EA001080D4 /* AssistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04157E20F6A3E9001080D4 /* AssistanceView.swift */; };
 		4E04158120F7E939001080D4 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04158020F7E939001080D4 /* Project.swift */; };
 		4E04158320F7EBBB001080D4 /* ProjectViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04158220F7EBBB001080D4 /* ProjectViewCell.swift */; };
+		870DE0B820F8652C00D162B2 /* InstanceVCWSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DE0B720F8652C00D162B2 /* InstanceVCWSB.swift */; };
+		870DE0BA20F8F31200D162B2 /* PopUpTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DE0B920F8F31200D162B2 /* PopUpTime.swift */; };
 		8713E2AB20EE79AE004C6167 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713E2AA20EE79AE004C6167 /* AppDelegate.swift */; };
 		8713E2AD20EE79AE004C6167 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713E2AC20EE79AE004C6167 /* LoginController.swift */; };
 		8713E2B020EE79AE004C6167 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8713E2AE20EE79AE004C6167 /* Main.storyboard */; };
@@ -25,17 +27,28 @@
 		8713E2D120EE7B5B004C6167 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713E2D020EE7B5B004C6167 /* Extensions.swift */; };
 		872985FB20F2B68300079961 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872985FA20F2B68300079961 /* TextField.swift */; };
 		872985FE20F2B96200079961 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872985FD20F2B96200079961 /* Button.swift */; };
+		872C0F0B20F944FF00709522 /* WorkStations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0F0A20F944FF00709522 /* WorkStations.swift */; };
+		872C0F0D20F9458700709522 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0F0C20F9458700709522 /* UserModel.swift */; };
+		872C0F0F20F9462C00709522 /* VerifyAssistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0F0E20F9462C00709522 /* VerifyAssistance.swift */; };
+		8730DA4220F9827D009691E0 /* ProgressDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8730DA4120F9827D009691E0 /* ProgressDialog.swift */; };
 		875E23B520EEE08D0047C845 /* ScreenHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875E23B420EEE08D0047C845 /* ScreenHelper.swift */; };
-		875ED9FF20F2DE2A00CC09C3 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875ED9FE20F2DE2A00CC09C3 /* ActivityView.swift */; };
+		875ED9FF20F2DE2A00CC09C3 /* RegisterActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875ED9FE20F2DE2A00CC09C3 /* RegisterActivityView.swift */; };
 		875EDA0A20F2EB4E00CC09C3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875EDA0920F2EB4E00CC09C3 /* TabBarController.swift */; };
 		875EDA1220F2EDD600CC09C3 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875EDA1120F2EDD600CC09C3 /* UserController.swift */; };
 		875EDA1420F2EDDF00CC09C3 /* ProjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875EDA1320F2EDDF00CC09C3 /* ProjectController.swift */; };
-		875EDA1620F2EDEE00CC09C3 /* ActivityTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875EDA1520F2EDEE00CC09C3 /* ActivityTabController.swift */; };
 		875EDA1820F2EDF600CC09C3 /* AbsentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875EDA1720F2EDF600CC09C3 /* AbsentController.swift */; };
 		875EDA1A20F2EE0100CC09C3 /* AssistanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875EDA1920F2EE0100CC09C3 /* AssistanceController.swift */; };
-		8770238120EFBB4F00C5B07F /* ActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8770238020EFBB4F00C5B07F /* ActivityController.swift */; };
+		8766A99020F91C4D009BBFFE /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8766A98F20F91C4D009BBFFE /* Activity.swift */; };
+		8770238120EFBB4F00C5B07F /* RegisterActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8770238020EFBB4F00C5B07F /* RegisterActivityController.swift */; };
 		8770238320EFC3C800C5B07F /* ElementsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8770238220EFC3C800C5B07F /* ElementsHelper.swift */; };
 		87BFC47320F281D400B24E19 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BFC47220F281D400B24E19 /* Constants.swift */; };
+		87C0D91F20F8FD1400E04E66 /* PopUpProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C0D91E20F8FD1400E04E66 /* PopUpProject.swift */; };
+		87C0D92220F9137D00E04E66 /* ActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C0D92120F9137D00E04E66 /* ActivityController.swift */; };
+		87C0D92420F919D600E04E66 /* ActivityViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C0D92320F919D600E04E66 /* ActivityViewCell.swift */; };
+		87C3F84F20F84A150005CAAB /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3F84E20F84A150005CAAB /* NetworkHelper.swift */; };
+		87C3F85120F84A270005CAAB /* SSIDHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3F85020F84A270005CAAB /* SSIDHelper.swift */; };
+		87C3F85320F84A3F0005CAAB /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3F85220F84A3F0005CAAB /* LocationHelper.swift */; };
+		87C3F85620F84AA20005CAAB /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3F85520F84AA20005CAAB /* ApiService.swift */; };
 		E642B9433A02C55485278CF6 /* Pods_artemis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB1DE65EC5E1FE0E86A4DF6 /* Pods_artemis.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +62,8 @@
 		4E04157E20F6A3E9001080D4 /* AssistanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistanceView.swift; sourceTree = "<group>"; };
 		4E04158020F7E939001080D4 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		4E04158220F7EBBB001080D4 /* ProjectViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewCell.swift; sourceTree = "<group>"; };
+		870DE0B720F8652C00D162B2 /* InstanceVCWSB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceVCWSB.swift; sourceTree = "<group>"; };
+		870DE0B920F8F31200D162B2 /* PopUpTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpTime.swift; sourceTree = "<group>"; };
 		8713E2A720EE79AE004C6167 /* artemis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = artemis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8713E2AA20EE79AE004C6167 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8713E2AC20EE79AE004C6167 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -60,17 +75,28 @@
 		8713E2D020EE7B5B004C6167 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		872985FA20F2B68300079961 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		872985FD20F2B96200079961 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		872C0F0A20F944FF00709522 /* WorkStations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkStations.swift; sourceTree = "<group>"; };
+		872C0F0C20F9458700709522 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		872C0F0E20F9462C00709522 /* VerifyAssistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyAssistance.swift; sourceTree = "<group>"; };
+		8730DA4120F9827D009691E0 /* ProgressDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDialog.swift; sourceTree = "<group>"; };
 		875E23B420EEE08D0047C845 /* ScreenHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenHelper.swift; sourceTree = "<group>"; };
-		875ED9FE20F2DE2A00CC09C3 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		875ED9FE20F2DE2A00CC09C3 /* RegisterActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterActivityView.swift; sourceTree = "<group>"; };
 		875EDA0920F2EB4E00CC09C3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		875EDA1120F2EDD600CC09C3 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		875EDA1320F2EDDF00CC09C3 /* ProjectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectController.swift; sourceTree = "<group>"; };
-		875EDA1520F2EDEE00CC09C3 /* ActivityTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTabController.swift; sourceTree = "<group>"; };
 		875EDA1720F2EDF600CC09C3 /* AbsentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbsentController.swift; sourceTree = "<group>"; };
 		875EDA1920F2EE0100CC09C3 /* AssistanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistanceController.swift; sourceTree = "<group>"; };
-		8770238020EFBB4F00C5B07F /* ActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityController.swift; sourceTree = "<group>"; };
+		8766A98F20F91C4D009BBFFE /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		8770238020EFBB4F00C5B07F /* RegisterActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterActivityController.swift; sourceTree = "<group>"; };
 		8770238220EFC3C800C5B07F /* ElementsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsHelper.swift; sourceTree = "<group>"; };
 		87BFC47220F281D400B24E19 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		87C0D91E20F8FD1400E04E66 /* PopUpProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpProject.swift; sourceTree = "<group>"; };
+		87C0D92120F9137D00E04E66 /* ActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityController.swift; sourceTree = "<group>"; };
+		87C0D92320F919D600E04E66 /* ActivityViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewCell.swift; sourceTree = "<group>"; };
+		87C3F84E20F84A150005CAAB /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		87C3F85020F84A270005CAAB /* SSIDHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSIDHelper.swift; sourceTree = "<group>"; };
+		87C3F85220F84A3F0005CAAB /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
+		87C3F85520F84AA20005CAAB /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		E11716F0982CC7E464834D0C /* Pods-artemis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-artemis.debug.xcconfig"; path = "Pods/Target Support Files/Pods-artemis/Pods-artemis.debug.xcconfig"; sourceTree = "<group>"; };
 		E3CAA6C375DE836F8E0A0E24 /* Pods-artemis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-artemis.release.xcconfig"; path = "Pods/Target Support Files/Pods-artemis/Pods-artemis.release.xcconfig"; sourceTree = "<group>"; };
 		EEB1DE65EC5E1FE0E86A4DF6 /* Pods_artemis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_artemis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +136,10 @@
 			children = (
 				4E04157420F5029D001080D4 /* Model.swift */,
 				4E04158020F7E939001080D4 /* Project.swift */,
+				8766A98F20F91C4D009BBFFE /* Activity.swift */,
+				872C0F0A20F944FF00709522 /* WorkStations.swift */,
+				872C0F0C20F9458700709522 /* UserModel.swift */,
+				872C0F0E20F9462C00709522 /* VerifyAssistance.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -143,6 +173,8 @@
 		8713E2A920EE79AE004C6167 /* artemis */ = {
 			isa = PBXGroup;
 			children = (
+				87C3F85420F84A800005CAAB /* services */,
+				87C3F84D20F849C70005CAAB /* utilities */,
 				4E04157320F5024F001080D4 /* model */,
 				875EDA0320F2E20600CC09C3 /* login */,
 				875EDA0720F2E36200CC09C3 /* tabbar */,
@@ -177,6 +209,7 @@
 				4E04157120F408F0001080D4 /* ImageView.swift */,
 				4E04157720F52BDA001080D4 /* CustomCellRed.swift */,
 				4E04157C20F53F56001080D4 /* BaseCell.swift */,
+				8730DA4120F9827D009691E0 /* ProgressDialog.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -224,9 +257,9 @@
 		875EDA0D20F2EDA800CC09C3 /* activity */ = {
 			isa = PBXGroup;
 			children = (
-				875ED9FE20F2DE2A00CC09C3 /* ActivityView.swift */,
-				8770238020EFBB4F00C5B07F /* ActivityController.swift */,
-				875EDA1520F2EDEE00CC09C3 /* ActivityTabController.swift */,
+				87C0D92020F9131800E04E66 /* register_activity */,
+				87C0D92120F9137D00E04E66 /* ActivityController.swift */,
+				87C0D92320F919D600E04E66 /* ActivityViewCell.swift */,
 			);
 			path = activity;
 			sourceTree = "<group>";
@@ -234,8 +267,8 @@
 		875EDA0E20F2EDAE00CC09C3 /* project */ = {
 			isa = PBXGroup;
 			children = (
-				875EDA1320F2EDDF00CC09C3 /* ProjectController.swift */,
 				4E04158220F7EBBB001080D4 /* ProjectViewCell.swift */,
+				875EDA1320F2EDDF00CC09C3 /* ProjectController.swift */,
 			);
 			path = project;
 			sourceTree = "<group>";
@@ -246,6 +279,37 @@
 				875EDA1120F2EDD600CC09C3 /* UserController.swift */,
 			);
 			path = user;
+			sourceTree = "<group>";
+		};
+		87C0D92020F9131800E04E66 /* register_activity */ = {
+			isa = PBXGroup;
+			children = (
+				875ED9FE20F2DE2A00CC09C3 /* RegisterActivityView.swift */,
+				8770238020EFBB4F00C5B07F /* RegisterActivityController.swift */,
+				870DE0B920F8F31200D162B2 /* PopUpTime.swift */,
+				87C0D91E20F8FD1400E04E66 /* PopUpProject.swift */,
+			);
+			path = register_activity;
+			sourceTree = "<group>";
+		};
+		87C3F84D20F849C70005CAAB /* utilities */ = {
+			isa = PBXGroup;
+			children = (
+				87C3F84E20F84A150005CAAB /* NetworkHelper.swift */,
+				87C3F85020F84A270005CAAB /* SSIDHelper.swift */,
+				87C3F85220F84A3F0005CAAB /* LocationHelper.swift */,
+				870DE0B720F8652C00D162B2 /* InstanceVCWSB.swift */,
+			);
+			name = utilities;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		87C3F85420F84A800005CAAB /* services */ = {
+			isa = PBXGroup;
+			children = (
+				87C3F85520F84AA20005CAAB /* ApiService.swift */,
+			);
+			path = services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,31 +440,44 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				870DE0B820F8652C00D162B2 /* InstanceVCWSB.swift in Sources */,
+				87C3F84F20F84A150005CAAB /* NetworkHelper.swift in Sources */,
 				875EDA1220F2EDD600CC09C3 /* UserController.swift in Sources */,
 				4E04157220F408F0001080D4 /* ImageView.swift in Sources */,
 				875E23B520EEE08D0047C845 /* ScreenHelper.swift in Sources */,
 				4E04158120F7E939001080D4 /* Project.swift in Sources */,
 				8713E2AD20EE79AE004C6167 /* LoginController.swift in Sources */,
+				872C0F0D20F9458700709522 /* UserModel.swift in Sources */,
 				875EDA1820F2EDF600CC09C3 /* AbsentController.swift in Sources */,
 				4E04158320F7EBBB001080D4 /* ProjectViewCell.swift in Sources */,
+				87C0D92420F919D600E04E66 /* ActivityViewCell.swift in Sources */,
+				87C3F85120F84A270005CAAB /* SSIDHelper.swift in Sources */,
 				4E04157020F4064A001080D4 /* CustomCell.swift in Sources */,
 				4E04157D20F53F56001080D4 /* BaseCell.swift in Sources */,
 				4E04157520F5029D001080D4 /* Model.swift in Sources */,
+				8730DA4220F9827D009691E0 /* ProgressDialog.swift in Sources */,
+				870DE0BA20F8F31200D162B2 /* PopUpTime.swift in Sources */,
+				87C3F85320F84A3F0005CAAB /* LocationHelper.swift in Sources */,
 				4E04157F20F6A3EA001080D4 /* AssistanceView.swift in Sources */,
 				875EDA0A20F2EB4E00CC09C3 /* TabBarController.swift in Sources */,
 				875EDA1420F2EDDF00CC09C3 /* ProjectController.swift in Sources */,
 				872985FB20F2B68300079961 /* TextField.swift in Sources */,
-				8770238120EFBB4F00C5B07F /* ActivityController.swift in Sources */,
+				8770238120EFBB4F00C5B07F /* RegisterActivityController.swift in Sources */,
 				875EDA1A20F2EE0100CC09C3 /* AssistanceController.swift in Sources */,
 				4E04157820F52BDA001080D4 /* CustomCellRed.swift in Sources */,
 				87BFC47320F281D400B24E19 /* Constants.swift in Sources */,
-				875ED9FF20F2DE2A00CC09C3 /* ActivityView.swift in Sources */,
+				875ED9FF20F2DE2A00CC09C3 /* RegisterActivityView.swift in Sources */,
+				87C0D91F20F8FD1400E04E66 /* PopUpProject.swift in Sources */,
 				8713E2C520EE7A46004C6167 /* LoginView.swift in Sources */,
-				875EDA1620F2EDEE00CC09C3 /* ActivityTabController.swift in Sources */,
 				8713E2D120EE7B5B004C6167 /* Extensions.swift in Sources */,
 				8713E2AB20EE79AE004C6167 /* AppDelegate.swift in Sources */,
+				872C0F0B20F944FF00709522 /* WorkStations.swift in Sources */,
+				87C3F85620F84AA20005CAAB /* ApiService.swift in Sources */,
+				872C0F0F20F9462C00709522 /* VerifyAssistance.swift in Sources */,
+				8766A99020F91C4D009BBFFE /* Activity.swift in Sources */,
 				8770238320EFC3C800C5B07F /* ElementsHelper.swift in Sources */,
 				4E04157B20F53E04001080D4 /* MenuBar.swift in Sources */,
+				87C0D92220F9137D00E04E66 /* ActivityController.swift in Sources */,
 				872985FE20F2B96200079961 /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,65 +1,82 @@
 //
-//  ActivitiesController.swift
+//  ActivityController.swift
 //  artemis
 //
-//  Created by Gustavo Tufiño Fernandez on 7/6/18.
+//  Created by Gustavo Tufiño Fernandez on 7/13/18.
 //  Copyright © 2018 GTUFINOF. All rights reserved.
 //
 
 import UIKit
-import SnapKit
 
-class ActivityController: UIViewController, UIApplicationDelegate{
+class ActivityController: UIViewController, UICollectionViewDelegate {
     
-    var activityView: ActivityView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
-    var window2:UIWindow?
-    
-    var screen: CGRect? = nil
-    var screenWidth: CGFloat? = nil
-    var screenHeight: CGFloat? = nil
+    var activity:[Activity] = {
+        
+        // Activity #1
+        var activity1 = Activity()
+        activity1.id = 1
+        activity1.kind_of_activity = "DESARROLLO"
+        activity1.activity_hours = "12"
+        activity1.activity_minutes = "24"
+        activity1.project_code = "PROY032"
+        activity1.date = "27/06/2018"
+        
+        // Activity #2
+        var activity2 = Activity()
+        activity2.id = 1
+        activity2.kind_of_activity = "DESARROLLO"
+        activity2.activity_hours = "12"
+        activity2.activity_minutes = "24"
+        activity2.project_code = "PROY032"
+        activity2.date = "27/06/2018"
+        
+        // Activity #3
+        var activity3 = Activity()
+        activity3.id = 1
+        activity3.kind_of_activity = "DESARROLLO"
+        activity3.activity_hours = "12"
+        activity3.activity_minutes = "24"
+        activity3.project_code = "PROY032"
+        activity3.date = "27/06/2018"
+       
+        return [activity1, activity2, activity3]
+        
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.primaryColor()
-        setupView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
-        //NavigationBar
-        self.navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.prefersLargeTitles = false
         
-        //Title Status Bar White
-        UIApplication.shared.statusBarStyle = .lightContent //.lightContent
-        
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
+        let bounds = navigationController?.navigationBar.bounds
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: (bounds?.width)!, height: (bounds?.height)!))
         titleLabel.text = "Actividades"
         titleLabel.font = UIFont.systemFont(ofSize: 20)
-        titleLabel.textColor = UIColor.title()
+        titleLabel.textColor = UIColor.primaryColor()
         titleLabel.textAlignment = .center
-        navigationItem.titleView = titleLabel
+        self.tabBarController?.navigationItem.titleView = titleLabel
         
-    }
-    
-    func setupView(){
-        activityView = ActivityView(frame: self.view.frame)
-        self.view.addSubview(activityView)
-        activityView.snp.makeConstraints{
-            (make) -> Void in
-            make.edges.equalTo(self.view)
-        }
-        self.activityView.saveAction = save
-        self.activityView.doneAction = done
-    }
-    
-    func save(){
-        print("save")
-    }
-    
-    func done(){
-        print("done")
     }
     
 }
+
+extension ActivityController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return activity.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellActivity", for: indexPath) as! ActivityViewCell
+        cell.activity = self.activity[indexPath.row]
+        
+        return cell
+    }
+    
+}
+
+
+

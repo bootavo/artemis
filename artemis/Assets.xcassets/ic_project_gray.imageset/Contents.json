@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "ic_project_gray.png",
+      "filename" : "Icon-50 (9).png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "icon_folder_gray-1.png",
+      "filename" : "Icon-50 (9)-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "icon_folder_gray.png",
+      "filename" : "Icon-88 (9).png",
       "scale" : "3x"
     }
   ],

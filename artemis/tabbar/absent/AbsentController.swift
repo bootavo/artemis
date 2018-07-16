@@ -20,8 +20,6 @@ class AbsentController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.navigationBar.isTranslucent = false
-        
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
         titleLabel.text = "Reportes"
         titleLabel.font = UIFont.systemFont(ofSize: 20)

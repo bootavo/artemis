@@ -10,6 +10,8 @@ import UIKit
 
 class AssistanceView: UIView {
     
+    var loginAction: (() -> Void)?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -45,7 +47,7 @@ class AssistanceView: UIView {
             make.width.equalTo(100)
             make.height.equalTo(50)
             make.topMargin.equalTo(200)
-            make.centerX.equalToSuperview().offset(-25)
+            make.centerX.equalToSuperview().offset(-30)
         }
         
         addSubview(tv_minutes)
@@ -55,7 +57,7 @@ class AssistanceView: UIView {
             make.width.equalTo(100)
             make.height.equalTo(50)
             make.topMargin.equalTo(200)
-            make.centerX.equalToSuperview().offset(35)
+            make.centerX.equalToSuperview().offset(37)
         }
         
         addSubview(tv_date)
@@ -66,6 +68,24 @@ class AssistanceView: UIView {
             make.height.equalTo(50)
             make.topMargin.equalTo(250)
             make.centerX.equalToSuperview()
+        }
+        
+        //Another
+        addSubview(iv_network)
+        iv_network.snp.makeConstraints{
+            (make) -> Void in
+            make.width.equalTo(30)
+            make.height.equalTo(30)
+            make.topMargin.equalTo(100)
+            make.centerX.equalToSuperview().offset(-30)
+        }
+        addSubview(tv_network)
+        tv_network.snp.makeConstraints{
+            (make) -> Void in
+            make.width.equalTo(30)
+            make.height.equalTo(30)
+            make.topMargin.equalTo(100)
+            make.centerX.equalToSuperview().offset(30)
         }
         
     }
@@ -101,33 +121,37 @@ class AssistanceView: UIView {
     
     let tv_network: UILabel = {
         var tv = UILabel()
+        tv.text = "Conectado a la red "
         return tv
     }()
     
     let iv_network: UIImageView = {
         var iv = UIImageView()
+        iv.image = UIImage(named: "ic_wifi_green")
         return iv
     }()
     
     let tv_message: UILabel = {
         var tv = UILabel()
+        tv.text = "message"
         return tv
     }()
     
     let iv_not_wifi: UIImageView = {
         var iv = UIImageView()
+        iv.image = UIImage(named: "ic_wifi_icono")
         return iv
     }()
     
     let btn_assistance: RoundedButton = {
         var btn = RoundedButton()
-        btn.addTarget(self, action: #selector(clickButton), for: .touchUpInside)
-        btn.setTitle(title: "MARCAR ASISTENCIA", color: UIColor.primaryColor())
+        btn.addTarget(self, action: #selector(login), for: .touchUpInside)
+        btn.setTitle(title: "XD", color: UIColor.primaryColor())
         return btn
     }()
     
-    @objc func clickButton(){
-        print("click")
+    @objc func login() {
+        loginAction?()
     }
     
 }

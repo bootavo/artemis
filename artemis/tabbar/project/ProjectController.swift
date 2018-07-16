@@ -8,9 +8,12 @@
 
 import UIKit
 
-class ProjectController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
+class ProjectController: UIViewController, UICollectionViewDelegate{
+    
+    @IBOutlet weak var collectionView: UICollectionView?
     
     var project:[Project] = {
+        
         // Project #1
         var proj1 = Project()
         proj1.project_code = "PROY032"
@@ -27,11 +30,10 @@ class ProjectController: UIViewController, UICollectionViewDataSource, UICollect
         
         // Project #1
         var proj3 = Project()
-        proj3.project_code = "BSCS"
-        proj3.project_name = "ARTEMIS"
+        proj3.project_code = "PROY034"
+        proj3.project_name = "BSCS"
         proj3.project_status = "A"
-        proj3
-            .project_date = "28/05/2018 28/06/2018"
+        proj3.project_date = "28/05/2018 28/06/2018"
         
         return [proj1, proj2, proj3]
         
@@ -40,8 +42,17 @@ class ProjectController: UIViewController, UICollectionViewDataSource, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.primaryColor()
-        
+    
         navigationController?.navigationBar.prefersLargeTitles = false
+        
+        /*
+        self.collectionView?.register(ProjectViewCell.self, forCellWithReuseIdentifier: "cell")
+        self.collectionView?.dataSource = self
+        self.collectionView?.delegate = self
+         */
+        
+        //self.collectionView?.register(ProjectViewCell.self, forCellWithReuseIdentifier: "cell")
+        //self.collectionView?.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,7 +65,12 @@ class ProjectController: UIViewController, UICollectionViewDataSource, UICollect
         titleLabel.textColor = UIColor.primaryColor()
         titleLabel.textAlignment = .center
         self.tabBarController?.navigationItem.titleView = titleLabel
+        
     }
+    
+}
+
+extension ProjectController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return project.count
@@ -62,9 +78,10 @@ class ProjectController: UIViewController, UICollectionViewDataSource, UICollect
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ProjectViewCell
+        cell.project = self.project[indexPath.row]
         
-        cell.project = project[indexPath.row]
         return cell
     }
+    
     
 }
