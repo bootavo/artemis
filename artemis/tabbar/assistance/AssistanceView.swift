@@ -37,7 +37,7 @@ class AssistanceView: UIView {
             (make) -> Void in
             make.width.equalTo(280)
             make.height.equalTo(40)
-            make.topMargin.equalTo(400)
+            make.topMargin.equalTo(430)
             make.centerX.equalToSuperview()
         }
         addSubview(tv_hour)
@@ -71,21 +71,32 @@ class AssistanceView: UIView {
         }
         
         //Another
+        addSubview(tv_network)
+        tv_network.snp.makeConstraints{
+            (make) -> Void in
+            make.width.equalTo(300)
+            make.height.equalTo(30)
+            make.topMargin.equalTo(50)
+            make.centerX.equalToSuperview()
+        }
+        
         addSubview(iv_network)
         iv_network.snp.makeConstraints{
             (make) -> Void in
             make.width.equalTo(30)
             make.height.equalTo(30)
-            make.topMargin.equalTo(100)
-            make.centerX.equalToSuperview().offset(-30)
+            make.topMargin.equalTo(50)
+            make.left.equalTo(tv_network).offset(20)
         }
-        addSubview(tv_network)
-        tv_network.snp.makeConstraints{
+        
+        //Another
+        addSubview(tv_message)
+        tv_message.snp.makeConstraints{
             (make) -> Void in
-            make.width.equalTo(30)
+            make.width.equalTo(300)
             make.height.equalTo(30)
-            make.topMargin.equalTo(100)
-            make.centerX.equalToSuperview().offset(30)
+            make.topMargin.equalTo(370)
+            make.centerX.equalToSuperview()
         }
         
     }
@@ -122,18 +133,25 @@ class AssistanceView: UIView {
     let tv_network: UILabel = {
         var tv = UILabel()
         tv.text = "Conectado a la red "
+        tv.textAlignment = .center
+        tv.baselineAdjustment = .alignCenters
+        tv.numberOfLines = 2
         return tv
     }()
     
     let iv_network: UIImageView = {
         var iv = UIImageView()
-        iv.image = UIImage(named: "ic_wifi_green")
+        iv.contentMode = .scaleAspectFill
+        iv.image = UIImage(named: "ic_circle_green")//"ic_wifi_green")
         return iv
     }()
     
     let tv_message: UILabel = {
         var tv = UILabel()
         tv.text = "message"
+        tv.textAlignment = .center
+        tv.baselineAdjustment = .alignCenters
+        tv.numberOfLines = 2
         return tv
     }()
     
@@ -146,7 +164,7 @@ class AssistanceView: UIView {
     let btn_assistance: RoundedButton = {
         var btn = RoundedButton()
         btn.addTarget(self, action: #selector(login), for: .touchUpInside)
-        btn.setTitle(title: "XD", color: UIColor.primaryColor())
+        btn.setTitle(title: "MARCAR ASISTENCIA", color: UIColor.primaryColor())
         return btn
     }()
     

@@ -14,6 +14,7 @@ extension DefaultsKeys {
     static let name = DefaultsKey<String?>("name")
     static let patternLastName = DefaultsKey<String?>("patternLastName")
     static let matternLastName = DefaultsKey<String?>("matternLastName")
+    static let foto = DefaultsKey<String?>("foto")
 }
 
 class UserModel: Decodable {
@@ -23,6 +24,7 @@ class UserModel: Decodable {
     var patternLastName: String?
     var matternLastName: String?
     var modules: [Module]?
+    var foto: String?
     
     private enum CodingKeys: String, CodingKey {
         case employee_code = "cod_empleado"
@@ -30,6 +32,7 @@ class UserModel: Decodable {
         case patternLastName = "apellido_paterno"
         case matternLastName = "apellido_materno"
         case modules = "modulos"
+        case foto = "foto"
     }
     
     required init(from decoder: Decoder) throws {
@@ -39,6 +42,7 @@ class UserModel: Decodable {
         patternLastName = try container.decode(String?.self, forKey: .patternLastName)
         matternLastName = try container.decode(String?.self, forKey: .matternLastName)
         modules = try container.decode([Module]?.self, forKey: .modules)
+        foto = try container.decode(String?.self, forKey: .foto)
     }
     
 }

@@ -16,6 +16,7 @@
 		4E04157F20F6A3EA001080D4 /* AssistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04157E20F6A3E9001080D4 /* AssistanceView.swift */; };
 		4E04158120F7E939001080D4 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04158020F7E939001080D4 /* Project.swift */; };
 		4E04158320F7EBBB001080D4 /* ProjectViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04158220F7EBBB001080D4 /* ProjectViewCell.swift */; };
+		4EC2F7E620FD0EC3002BC8DF /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC2F7E520FD0EC3002BC8DF /* HistoryCell.swift */; };
 		870DE0B820F8652C00D162B2 /* InstanceVCWSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DE0B720F8652C00D162B2 /* InstanceVCWSB.swift */; };
 		870DE0BA20F8F31200D162B2 /* PopUpTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DE0B920F8F31200D162B2 /* PopUpTime.swift */; };
 		8713E2AB20EE79AE004C6167 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713E2AA20EE79AE004C6167 /* AppDelegate.swift */; };
@@ -62,6 +63,7 @@
 		4E04157E20F6A3E9001080D4 /* AssistanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistanceView.swift; sourceTree = "<group>"; };
 		4E04158020F7E939001080D4 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		4E04158220F7EBBB001080D4 /* ProjectViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewCell.swift; sourceTree = "<group>"; };
+		4EC2F7E520FD0EC3002BC8DF /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		870DE0B720F8652C00D162B2 /* InstanceVCWSB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceVCWSB.swift; sourceTree = "<group>"; };
 		870DE0B920F8F31200D162B2 /* PopUpTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpTime.swift; sourceTree = "<group>"; };
 		8713E2A720EE79AE004C6167 /* artemis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = artemis.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,6 +244,7 @@
 				4E04157920F53DE9001080D4 /* barmenu */,
 				875EDA1920F2EE0100CC09C3 /* AssistanceController.swift */,
 				4E04157E20F6A3E9001080D4 /* AssistanceView.swift */,
+				4EC2F7E520FD0EC3002BC8DF /* HistoryCell.swift */,
 			);
 			path = assistance;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				87C3F85120F84A270005CAAB /* SSIDHelper.swift in Sources */,
 				4E04157020F4064A001080D4 /* CustomCell.swift in Sources */,
 				4E04157D20F53F56001080D4 /* BaseCell.swift in Sources */,
+				4EC2F7E620FD0EC3002BC8DF /* HistoryCell.swift in Sources */,
 				4E04157520F5029D001080D4 /* Model.swift in Sources */,
 				8730DA4220F9827D009691E0 /* ProgressDialog.swift in Sources */,
 				870DE0BA20F8F31200D162B2 /* PopUpTime.swift in Sources */,

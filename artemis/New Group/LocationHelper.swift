@@ -11,8 +11,7 @@ import CoreLocation
 import UIKit
 
 class LocationHelper: UIView {
-    static func isLocationPermissionGranted() -> Bool
-    {
+    static func isLocationPermissionGranted() -> Bool{
         guard CLLocationManager.locationServicesEnabled() else { return false }
         return [.authorizedAlways, .authorizedWhenInUse].contains(CLLocationManager.authorizationStatus())
     }

@@ -44,14 +44,12 @@ class AssistanceController: UIViewController, CLLocationManagerDelegate{
         view.backgroundColor = UIColor.primaryColor()
         navigationController?.navigationBar.prefersLargeTitles = false
         
-        /*
         configLocationManager()
         //serviceGetWorkStations()
         showTimer()
         defaultUI()
         verifySSIDWifi()
         serviceVerifyAssistance()
-        */
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,17 +86,10 @@ class AssistanceController: UIViewController, CLLocationManagerDelegate{
         
         self.view.addSubview(assistanceView)
         
-        /*
-        assistanceView.snp.makeConstraints{
-            (make) -> Void in
-            make.width.equalToSuperview()
-            //make.top.bottom.equalTo(menuBar).offset(50)
-        }*/
-        
         self.view.addSubview(assistanceView)
         assistanceView.snp.makeConstraints{
             (make) -> Void in
-            make.edges.equalTo(self.view)
+            make.edges.equalTo(self.view).inset(UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0))
         }
         self.assistanceView.loginAction = assistanceAction
         
@@ -718,7 +709,6 @@ class AssistanceController: UIViewController, CLLocationManagerDelegate{
                                     print("no se ha podido registrar, Intentelo nuevamente")
                                     self.view.makeToast("No se ha podido registrar, Intentlo nuevamente")
                                 }
-                                
                             }
                             
                         }catch let error {

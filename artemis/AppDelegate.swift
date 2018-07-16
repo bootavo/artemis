@@ -8,6 +8,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import SwiftyUserDefaults
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate{
@@ -24,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         window?.makeKeyAndVisible()
         
         let loginController = LoginController()
-        let navController = UINavigationController(rootViewController: loginController)
+        let navLoginController = UINavigationController(rootViewController: loginController)
         
         let tabBarController = TabBarController()
         let navTabBarController = UINavigationController(rootViewController: tabBarController)
@@ -41,12 +42,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         
         let x:Int = 1
         
-        if x == 1 {
-            window?.rootViewController = navController
-        }else {
+        if verifyUser() {
             window?.rootViewController = navTabBarController
+        }else {
+            window?.rootViewController = navLoginController
         }
         return true
+    }
+    
+    func verifyUser() -> Bool {
+        var state = false
+        if let code = Defaults[.employee_code], let _ = Defaults[.name], let _ = Defaults[.patternLastName], let _ = Defaults[.matternLastName] {
+            if code != "" {
+                state = true
+            }else {
+                state = false
+            }
+        }
+        return state
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

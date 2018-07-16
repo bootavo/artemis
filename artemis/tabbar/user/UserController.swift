@@ -26,9 +26,7 @@ class UserController: UIViewController, UIImagePickerControllerDelegate, UINavig
         view.backgroundColor = UIColor.primaryColor()
         navigationController?.navigationBar.prefersLargeTitles = false
         setupView()
-        self.fullNameLabel.text = "\(user.first_name) \(user.last_name)"
-        self.rolLabel.text = user.rol
-        self.profileImageView.imageView.sd_setImage(with: URL(string: user.photo), completed: nil)
+        setupUserInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,6 +44,13 @@ class UserController: UIViewController, UIImagePickerControllerDelegate, UINavig
         titleLabel.textColor = UIColor.primaryColor()
         titleLabel.textAlignment = .center
         self.tabBarController?.navigationItem.titleView = titleLabel
+    }
+    
+    func setupUserInfo(){
+        fullNameLabel.text = "\(Defaults[.name]!)"
+        rolLabel.text = "\(Defaults[.name]!)"
+        print("\(Defaults[.foto]!)")
+        profileImageView.imageView.sd_setImage(with: URL(string: "\(Defaults[.foto]!)"), completed: nil)
     }
     
     func setupView(){

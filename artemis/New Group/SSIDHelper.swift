@@ -17,10 +17,8 @@ internal class SSIDHelper {
                 let rec = unsafeBitCast(interfaceName, to: AnyObject.self)
                 let unsafeInterfaceData = CNCopyCurrentNetworkInfo("\(rec)" as CFString)
                 if unsafeInterfaceData != nil {
-                    
                     let interfaceData = unsafeInterfaceData! as Dictionary!
                     currentSSID = ((interfaceData as? [String : AnyObject])?["SSID"])! as! String
-                    
                 }
             }
         }

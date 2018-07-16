@@ -62,16 +62,14 @@ class LoginController: UIViewController, UIApplicationDelegate {
                     let user = json["usuario"]
                     do {
                         let user = try JSONDecoder().decode(UserModel.self, from: user.rawData())
-                        //Guardamos en celular
+                        //Save data similar to SharedPreferences
                         Defaults[.employee_code] = user.employee_code!
                         Defaults[.name] = user.name!
                         Defaults[.patternLastName] = user.patternLastName!
                         Defaults[.matternLastName] = user.matternLastName!
-                        
-                        print("guardado papu")
-                        
+                        Defaults[.foto] = user.foto!
+                        print("save data")
                         self.pushToNextVC()
-                        
                     }catch let error {
                         print("no se pudo decodificar",error)
                         self.view.makeToast("Datos incorrectos")
@@ -103,8 +101,6 @@ class LoginController: UIViewController, UIApplicationDelegate {
             }}))
         self.present(alert, animated: true, completion: nil)
     }
-    
-    
     
     func pushToNextVC() {
         let newVC = TabBarController()
