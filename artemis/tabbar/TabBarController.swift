@@ -24,7 +24,7 @@ class TabBarController: UITabBarController {
         assistances.tabBarItem.image = UIImage(named: "ic_assistance_gray")
         assistances.tabBarItem.selectedImage = UIImage(named: "ic_assistance_red")
         
-        let absents = UINavigationController(rootViewController: AbsentController())
+        let absents = Util.getVCRef("KindOfReport", nameFile: "Main") as! AbsentController
         absents.tabBarItem.image = UIImage(named: "ic_absent_gray")
         absents.tabBarItem.selectedImage = UIImage(named: "ic_absent_red")
         

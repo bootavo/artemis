@@ -17,6 +17,9 @@ class AssistanceController: UIViewController, CLLocationManagerDelegate{
     
     var assistanceView: AssistanceView!
     
+    let cellId = "AssistanceCell"
+    let trendingCellId = "HistoryCell"
+    
     var locationManager = CLLocationManager()
     var lat:Double?
     var lng:Double?
@@ -173,9 +176,8 @@ class AssistanceController: UIViewController, CLLocationManagerDelegate{
     }
     
     func defaultUI(){
-        self.assistanceView.btn_assistance.setTitle("Verificando...", for: .normal)
+        self.assistanceView.btn_assistance.setTitle(title: "Verificando...", color: UIColor.primaryColor())
         self.assistanceView.btn_assistance.isEnabled = false
-        self.assistanceView.btn_assistance.setTitleColor(UIColor.white, for: .normal)
         self.assistanceView.btn_assistance.backgroundColor = UIColor.primaryDarkColor()
         self.assistanceView.iv_not_wifi.isHidden = true
         self.assistanceView.tv_message.isHidden = true
@@ -219,10 +221,10 @@ class AssistanceController: UIViewController, CLLocationManagerDelegate{
     func showNetworkProblems(){
         //Show UI Network Problems with image
         self.assistanceView.iv_not_wifi.isHidden = false
+        self.assistanceView.iv_not_wifi.image = UIImage(named: "ic_disconnect")
         self.assistanceView.tv_message.isHidden = false
         self.assistanceView.tv_message.text = "Problemas de Conexión a Internet"
-        self.assistanceView.btn_assistance.setTitle("INTENTAR NUEVAMENTE", for: .normal)
-        self.assistanceView.btn_assistance.setTitleColor(UIColor.white, for: .normal)
+        self.assistanceView.btn_assistance.setTitle(title: "INTENTAR NUEVAMENTE", color: UIColor.primaryColor())
         self.assistanceView.btn_assistance.isHidden = false
         self.assistanceView.btn_assistance.isEnabled = true
     }
@@ -234,15 +236,14 @@ class AssistanceController: UIViewController, CLLocationManagerDelegate{
     
     func showFarAway(){
         self.assistanceView.iv_not_wifi.isHidden = false
-        self.assistanceView.iv_not_wifi.image = UIImage(named: "ic_build_icono")
+        self.assistanceView.iv_not_wifi.image = UIImage(named: "ic_faraway")
         self.assistanceView.tv_message.isHidden = false
         self.assistanceView.tv_message.text = """
         Te encuentras lejos de una red VF
         Estación de trabajo más cercana:
         \(early_roouter)
         """
-        self.assistanceView.btn_assistance.setTitle("INTENTAR NUEVAMENTE", for: .normal)
-        self.assistanceView.btn_assistance.setTitleColor(UIColor.white, for: .normal)
+        self.assistanceView.btn_assistance.setTitle(title: "INTENTAR NUEVAMENTE", color: UIColor.primaryColor())
         self.assistanceView.btn_assistance.isHidden = false
     }
     
@@ -321,8 +322,9 @@ class AssistanceController: UIViewController, CLLocationManagerDelegate{
         self.assistanceView.btn_assistance.isHidden = false
         self.assistanceView.btn_assistance.isEnabled = false
         if !isFakeLocation {
-            self.assistanceView.btn_assistance.setTitle("ASISTENCIAS COMPLETADAS", for: .disabled)
-            self.assistanceView.btn_assistance.setTitleColor(UIColor.white, for: .normal)
+            print("isFakeLocation")
+            self.assistanceView.btn_assistance.setTitle(title: "ASISTENCIAS COMPLETADAS", color: UIColor.primaryColor())
+            self.assistanceView.btn_assistance.backgroundColor = UIColor.darkGray
         }
     }
     
@@ -332,9 +334,8 @@ class AssistanceController: UIViewController, CLLocationManagerDelegate{
         self.assistanceView.btn_assistance.isHidden = false
         self.assistanceView.btn_assistance.isEnabled = true
         if !isFakeLocation {
-            self.assistanceView.btn_assistance.setTitle("MARCAR ENTRADA", for: .normal)
+            self.assistanceView.btn_assistance.setTitle(title: "MARCAR ENTRADA", color: UIColor.primaryColor())
             self.assistanceView.btn_assistance.backgroundColor = UIColor.primaryDarkColor()
-            self.assistanceView.btn_assistance.setTitleColor(UIColor.white, for: .normal)
         }
     }
     
@@ -344,9 +345,8 @@ class AssistanceController: UIViewController, CLLocationManagerDelegate{
         self.assistanceView.btn_assistance.isHidden = false
         self.assistanceView.btn_assistance.isEnabled = true
         if !isFakeLocation {
-            self.assistanceView.btn_assistance.setTitle("MARCAR SALIDA", for: .normal)
+            self.assistanceView.btn_assistance.setTitle(title: "MARCAR SALIDA", color: UIColor.primaryColor())
             self.assistanceView.btn_assistance.backgroundColor = UIColor.primaryDarkColor()
-            self.assistanceView.btn_assistance.setTitleColor(UIColor.white, for: .normal)
         }
     }
     
@@ -576,6 +576,7 @@ class AssistanceController: UIViewController, CLLocationManagerDelegate{
                 }else {
                     print("not yet")
                 }
+
             }else {
                 showButtonName()
                 print("Asegurate de estar conectado a una red WIFI test");
@@ -591,8 +592,9 @@ class AssistanceController: UIViewController, CLLocationManagerDelegate{
         hideTimer()
     }
     
+    //Register Assitance
     func assistanceAction(){
-        print("xd")
+        print("assistanceAction")
         let network:Bool = verifyNetwork()
         if network {
             clearInterfaces()

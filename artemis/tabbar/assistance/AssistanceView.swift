@@ -75,8 +75,8 @@ class AssistanceView: UIView {
         tv_network.snp.makeConstraints{
             (make) -> Void in
             make.width.equalTo(300)
-            make.height.equalTo(30)
-            make.topMargin.equalTo(50)
+            make.height.equalTo(60)
+            make.topMargin.equalTo(30)
             make.centerX.equalToSuperview()
         }
         
@@ -85,7 +85,7 @@ class AssistanceView: UIView {
             (make) -> Void in
             make.width.equalTo(30)
             make.height.equalTo(30)
-            make.topMargin.equalTo(50)
+            make.topMargin.equalTo(30)
             make.left.equalTo(tv_network).offset(20)
         }
         
@@ -96,6 +96,15 @@ class AssistanceView: UIView {
             make.width.equalTo(300)
             make.height.equalTo(30)
             make.topMargin.equalTo(370)
+            make.centerX.equalToSuperview()
+        }
+        
+        addSubview(iv_not_wifi)
+        iv_not_wifi.snp.makeConstraints{
+            (make) -> Void in
+            make.width.equalTo(250)
+            make.height.equalTo(250)
+            make.topMargin.equalTo(100)
             make.centerX.equalToSuperview()
         }
         
@@ -132,7 +141,7 @@ class AssistanceView: UIView {
     
     let tv_network: UILabel = {
         var tv = UILabel()
-        tv.text = "Conectado a la red "
+        tv.text = "Conectado a la red"
         tv.textAlignment = .center
         tv.baselineAdjustment = .alignCenters
         tv.numberOfLines = 2
@@ -142,7 +151,7 @@ class AssistanceView: UIView {
     let iv_network: UIImageView = {
         var iv = UIImageView()
         iv.contentMode = .scaleAspectFill
-        iv.image = UIImage(named: "ic_circle_green")//"ic_wifi_green")
+        iv.image = UIImage(named: "ic_wifi_green")//"ic_wifi_green")
         return iv
     }()
     
@@ -157,7 +166,7 @@ class AssistanceView: UIView {
     
     let iv_not_wifi: UIImageView = {
         var iv = UIImageView()
-        iv.image = UIImage(named: "ic_wifi_icono")
+        iv.image = UIImage(named: "ic_disconnect")
         return iv
     }()
     

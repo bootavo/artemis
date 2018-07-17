@@ -40,8 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         UIApplication.shared.isStatusBarHidden = false
         UIApplication.shared.statusBarStyle = .lightContent
         
-        let x:Int = 1
-        
         if verifyUser() {
             window?.rootViewController = navTabBarController
         }else {

@@ -12,11 +12,13 @@
 		4E04157520F5029D001080D4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04157420F5029D001080D4 /* Model.swift */; };
 		4E04157820F52BDA001080D4 /* CustomCellRed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04157720F52BDA001080D4 /* CustomCellRed.swift */; };
 		4E04157B20F53E04001080D4 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04157A20F53E04001080D4 /* MenuBar.swift */; };
-		4E04157D20F53F56001080D4 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04157C20F53F56001080D4 /* BaseCell.swift */; };
 		4E04157F20F6A3EA001080D4 /* AssistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04157E20F6A3E9001080D4 /* AssistanceView.swift */; };
 		4E04158120F7E939001080D4 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04158020F7E939001080D4 /* Project.swift */; };
 		4E04158320F7EBBB001080D4 /* ProjectViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04158220F7EBBB001080D4 /* ProjectViewCell.swift */; };
+		4E56053920FD602800C774B1 /* KindOfReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56053820FD602800C774B1 /* KindOfReport.swift */; };
 		4EC2F7E620FD0EC3002BC8DF /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC2F7E520FD0EC3002BC8DF /* HistoryCell.swift */; };
+		4EC2F7E820FD287C002BC8DF /* ViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC2F7E720FD287C002BC8DF /* ViewCell.swift */; };
+		4EC2F7EA20FD5EAF002BC8DF /* ReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC2F7E920FD5EAF002BC8DF /* ReportCell.swift */; };
 		870DE0B820F8652C00D162B2 /* InstanceVCWSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DE0B720F8652C00D162B2 /* InstanceVCWSB.swift */; };
 		870DE0BA20F8F31200D162B2 /* PopUpTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DE0B920F8F31200D162B2 /* PopUpTime.swift */; };
 		8713E2AB20EE79AE004C6167 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713E2AA20EE79AE004C6167 /* AppDelegate.swift */; };
@@ -59,11 +61,13 @@
 		4E04157420F5029D001080D4 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		4E04157720F52BDA001080D4 /* CustomCellRed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellRed.swift; sourceTree = "<group>"; };
 		4E04157A20F53E04001080D4 /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
-		4E04157C20F53F56001080D4 /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		4E04157E20F6A3E9001080D4 /* AssistanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistanceView.swift; sourceTree = "<group>"; };
 		4E04158020F7E939001080D4 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		4E04158220F7EBBB001080D4 /* ProjectViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewCell.swift; sourceTree = "<group>"; };
+		4E56053820FD602800C774B1 /* KindOfReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KindOfReport.swift; sourceTree = "<group>"; };
 		4EC2F7E520FD0EC3002BC8DF /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
+		4EC2F7E720FD287C002BC8DF /* ViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCell.swift; sourceTree = "<group>"; };
+		4EC2F7E920FD5EAF002BC8DF /* ReportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCell.swift; sourceTree = "<group>"; };
 		870DE0B720F8652C00D162B2 /* InstanceVCWSB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceVCWSB.swift; sourceTree = "<group>"; };
 		870DE0B920F8F31200D162B2 /* PopUpTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpTime.swift; sourceTree = "<group>"; };
 		8713E2A720EE79AE004C6167 /* artemis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = artemis.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +146,7 @@
 				872C0F0A20F944FF00709522 /* WorkStations.swift */,
 				872C0F0C20F9458700709522 /* UserModel.swift */,
 				872C0F0E20F9462C00709522 /* VerifyAssistance.swift */,
+				4E56053820FD602800C774B1 /* KindOfReport.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -210,7 +215,6 @@
 				872985FA20F2B68300079961 /* TextField.swift */,
 				4E04157120F408F0001080D4 /* ImageView.swift */,
 				4E04157720F52BDA001080D4 /* CustomCellRed.swift */,
-				4E04157C20F53F56001080D4 /* BaseCell.swift */,
 				8730DA4120F9827D009691E0 /* ProgressDialog.swift */,
 			);
 			path = extensions;
@@ -245,6 +249,7 @@
 				875EDA1920F2EE0100CC09C3 /* AssistanceController.swift */,
 				4E04157E20F6A3E9001080D4 /* AssistanceView.swift */,
 				4EC2F7E520FD0EC3002BC8DF /* HistoryCell.swift */,
+				4EC2F7E720FD287C002BC8DF /* ViewCell.swift */,
 			);
 			path = assistance;
 			sourceTree = "<group>";
@@ -253,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				875EDA1720F2EDF600CC09C3 /* AbsentController.swift */,
+				4EC2F7E920FD5EAF002BC8DF /* ReportCell.swift */,
 			);
 			path = absent;
 			sourceTree = "<group>";
@@ -453,10 +459,10 @@
 				872C0F0D20F9458700709522 /* UserModel.swift in Sources */,
 				875EDA1820F2EDF600CC09C3 /* AbsentController.swift in Sources */,
 				4E04158320F7EBBB001080D4 /* ProjectViewCell.swift in Sources */,
+				4E56053920FD602800C774B1 /* KindOfReport.swift in Sources */,
 				87C0D92420F919D600E04E66 /* ActivityViewCell.swift in Sources */,
 				87C3F85120F84A270005CAAB /* SSIDHelper.swift in Sources */,
 				4E04157020F4064A001080D4 /* CustomCell.swift in Sources */,
-				4E04157D20F53F56001080D4 /* BaseCell.swift in Sources */,
 				4EC2F7E620FD0EC3002BC8DF /* HistoryCell.swift in Sources */,
 				4E04157520F5029D001080D4 /* Model.swift in Sources */,
 				8730DA4220F9827D009691E0 /* ProgressDialog.swift in Sources */,
@@ -466,6 +472,8 @@
 				875EDA0A20F2EB4E00CC09C3 /* TabBarController.swift in Sources */,
 				875EDA1420F2EDDF00CC09C3 /* ProjectController.swift in Sources */,
 				872985FB20F2B68300079961 /* TextField.swift in Sources */,
+				4EC2F7E820FD287C002BC8DF /* ViewCell.swift in Sources */,
+				4EC2F7EA20FD5EAF002BC8DF /* ReportCell.swift in Sources */,
 				8770238120EFBB4F00C5B07F /* RegisterActivityController.swift in Sources */,
 				875EDA1A20F2EE0100CC09C3 /* AssistanceController.swift in Sources */,
 				4E04157820F52BDA001080D4 /* CustomCellRed.swift in Sources */,
