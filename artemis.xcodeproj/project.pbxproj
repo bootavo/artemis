@@ -18,6 +18,7 @@
 		4E56053920FD602800C774B1 /* KindOfReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56053820FD602800C774B1 /* KindOfReport.swift */; };
 		4E56053B20FE537500C774B1 /* AssistanceMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56053A20FE537500C774B1 /* AssistanceMain.swift */; };
 		4E56053D20FE581500C774B1 /* RegisterAssistanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56053C20FE581500C774B1 /* RegisterAssistanceCell.swift */; };
+		4E56053F20FE811800C774B1 /* DeviceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56053E20FE811800C774B1 /* DeviceHelper.swift */; };
 		4EC2F7E620FD0EC3002BC8DF /* AssistanceHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC2F7E520FD0EC3002BC8DF /* AssistanceHistoryCell.swift */; };
 		4EC2F7E820FD287C002BC8DF /* ViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC2F7E720FD287C002BC8DF /* ViewCell.swift */; };
 		4EC2F7EA20FD5EAF002BC8DF /* ReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC2F7E920FD5EAF002BC8DF /* ReportCell.swift */; };
@@ -69,6 +70,7 @@
 		4E56053820FD602800C774B1 /* KindOfReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KindOfReport.swift; sourceTree = "<group>"; };
 		4E56053A20FE537500C774B1 /* AssistanceMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistanceMain.swift; sourceTree = "<group>"; };
 		4E56053C20FE581500C774B1 /* RegisterAssistanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAssistanceCell.swift; sourceTree = "<group>"; };
+		4E56053E20FE811800C774B1 /* DeviceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceHelper.swift; sourceTree = "<group>"; };
 		4EC2F7E520FD0EC3002BC8DF /* AssistanceHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistanceHistoryCell.swift; sourceTree = "<group>"; };
 		4EC2F7E720FD287C002BC8DF /* ViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCell.swift; sourceTree = "<group>"; };
 		4EC2F7E920FD5EAF002BC8DF /* ReportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCell.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				87C3F85020F84A270005CAAB /* SSIDHelper.swift */,
 				87C3F85220F84A3F0005CAAB /* LocationHelper.swift */,
 				870DE0B720F8652C00D162B2 /* InstanceVCWSB.swift */,
+				4E56053E20FE811800C774B1 /* DeviceHelper.swift */,
 			);
 			name = utilities;
 			path = "New Group";
@@ -477,6 +480,7 @@
 				4E04157F20F6A3EA001080D4 /* AssistanceView.swift in Sources */,
 				875EDA0A20F2EB4E00CC09C3 /* TabBarController.swift in Sources */,
 				875EDA1420F2EDDF00CC09C3 /* ProjectController.swift in Sources */,
+				4E56053F20FE811800C774B1 /* DeviceHelper.swift in Sources */,
 				4E56053D20FE581500C774B1 /* RegisterAssistanceCell.swift in Sources */,
 				872985FB20F2B68300079961 /* TextField.swift in Sources */,
 				4EC2F7E820FD287C002BC8DF /* ViewCell.swift in Sources */,

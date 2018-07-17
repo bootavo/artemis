@@ -18,7 +18,7 @@ class AssistanceView: UIView {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) AssistanceView has not been implemented")
+        fatalError("init(coder:) AssistanceView has not been connection")
     }
     
     func setup(){

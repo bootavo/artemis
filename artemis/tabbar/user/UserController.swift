@@ -32,12 +32,6 @@ class UserController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.navigationBar.setBackgroundImage(nil, for:.default)
-        self.navigationController?.navigationBar.shadowImage = nil
-        
-        //Title Status Bar White
-        UIApplication.shared.statusBarStyle = .lightContent //.lightContent
-        
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
         titleLabel.text = "Usuario"
         titleLabel.font = UIFont.systemFont(ofSize: 20)
@@ -54,7 +48,8 @@ class UserController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func setupView(){
-        self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: 650)
+        self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame
+        .height)
         
         self.view.addSubview(scrollView)
         scrollView.backgroundColor = UIColor.primaryColor()

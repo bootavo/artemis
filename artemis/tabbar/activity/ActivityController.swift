@@ -45,13 +45,27 @@ class ActivityController: UIViewController, UICollectionViewDelegate {
         super.viewDidLoad()
         view.backgroundColor = UIColor.primaryColor()
         
+        var marginBottom: Float = 0
+        var marginTopFilter: Float = 0
+        
+        let device = DeviceHelper()
+        let isIphoneX: Bool = device.isIphoneX()
+        
+        if isIphoneX {
+            marginBottom = -100
+            marginTopFilter = 105
+        } else {
+            marginBottom = -80
+            marginTopFilter = 80
+        }
+        
         self.view.addSubview(btn_new_activity)
         btn_new_activity.snp.makeConstraints{
             (make) -> Void in
             make.width.equalTo(50)
             make.height.equalTo(50)
-            make.bottom.equalToSuperview().offset(-80)
-            make.right.equalToSuperview().offset(-40)
+            make.bottom.equalToSuperview().offset(marginBottom)
+            make.right.equalToSuperview().offset(-48)
         }
         self.btn_new_activity.titleLabel?.font = UIFont.systemFont(ofSize: 60.0)
         
@@ -60,7 +74,7 @@ class ActivityController: UIViewController, UICollectionViewDelegate {
             (make) -> Void in
             make.width.equalTo(180)
             make.height.equalTo(60)
-            make.top.equalToSuperview().offset(80)
+            make.top.equalToSuperview().offset(marginTopFilter)
             make.centerX.equalToSuperview()
         }
         
@@ -78,7 +92,6 @@ class ActivityController: UIViewController, UICollectionViewDelegate {
         titleLabel.textColor = UIColor.primaryColor()
         titleLabel.textAlignment = .center
         self.tabBarController?.navigationItem.titleView = titleLabel
-        
     }
     
     var activity:[Activity] = {
