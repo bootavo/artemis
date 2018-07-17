@@ -18,7 +18,6 @@ class AssistanceController: UIViewController, CLLocationManagerDelegate{
     var assistanceView: AssistanceView!
     
     let cellId = "AssistanceCell"
-    let trendingCellId = "HistoryCell"
     
     var locationManager = CLLocationManager()
     var lat:Double?
@@ -79,21 +78,25 @@ class AssistanceController: UIViewController, CLLocationManagerDelegate{
     func setupMenuBar(){
         
         view.addSubview(menuBar)
-        menuBar.snp.makeConstraints { (make) in
-            make.height.equalTo(50)
+        view.addConstraintsWithFormat(format: "H:|[v0]|", views: menuBar)
+        view.addConstraintsWithFormat(format: "V:[v0(50)]", views: menuBar)
+        /*menuBar.snp.makeConstraints { (make) in
+            make.height.equalTo(100)
             make.width.equalToSuperview()
             make.top.equalTo(self.view.snp.top)
-        }
+        }*/
         
         assistanceView = AssistanceView(frame: self.view.frame)
         
         self.view.addSubview(assistanceView)
         
         self.view.addSubview(assistanceView)
-        assistanceView.snp.makeConstraints{
+        view.addConstraintsWithFormat(format: "H:|[v0]|", views: assistanceView)
+        view.addConstraintsWithFormat(format: "V:[v0(100)]", views: assistanceView)
+        /*assistanceView.snp.makeConstraints{
             (make) -> Void in
             make.edges.equalTo(self.view).inset(UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0))
-        }
+        }*/
         self.assistanceView.loginAction = assistanceAction
         
         print("assistanceAction")

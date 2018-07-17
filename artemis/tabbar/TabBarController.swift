@@ -20,7 +20,16 @@ class TabBarController: UITabBarController {
         self.tabBar.isTranslucent = true
         self.tabBar.tintColor = UIColor.primaryDarkColor()
         
+        /*
         let assistances = UINavigationController(rootViewController: AssistanceController())
+        assistances.tabBarItem.image = UIImage(named: "ic_assistance_gray")
+        assistances.tabBarItem.selectedImage = UIImage(named: "ic_assistance_red")
+        */
+        
+        let layout = UICollectionViewFlowLayout()
+        let loginController = AssistanceMain(collectionViewLayout: layout)
+        
+        let assistances = UINavigationController(rootViewController: loginController)
         assistances.tabBarItem.image = UIImage(named: "ic_assistance_gray")
         assistances.tabBarItem.selectedImage = UIImage(named: "ic_assistance_red")
         

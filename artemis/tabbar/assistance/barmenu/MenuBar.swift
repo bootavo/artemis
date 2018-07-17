@@ -10,6 +10,12 @@ import UIKit
 
 class MenuBar:UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
+    var homeController: AssistanceMain?
+    
+    //Cells
+    let cellId = "cellid"
+    let menuNames = ["MARCAR", "HISTORIAL"]
+    
     //Creación del CollectionView
     lazy var collectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -19,11 +25,6 @@ class MenuBar:UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICo
         cv.delegate = self
         return cv
     }()
-    
-    //Cells
-    let cellId = "cellid"
-    let imageNames = ["home", "trending", "subscriptions", "account"]
-    let menuNames = ["MARCAR", "HISTORIAL"]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -88,6 +89,11 @@ class MenuBar:UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICo
         return 0
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.item)
+        homeController?.scrollToMenuIndex(menuIndex: indexPath.item)
+    }
+    
 }
 
 class MenuCell: BaseCell {
@@ -113,7 +119,7 @@ class MenuCell: BaseCell {
     let lineView : UIView = {
         var lv = UIView(frame: CGRect(x: 0, y: 100, width: 320, height: 1.0))
         lv.layer.borderWidth = 0.5
-        lv.layer.borderColor = UIColor.black.cgColor
+        lv.layer.borderColor = UIColor.gray.cgColor
         return lv
     }()
     
@@ -154,7 +160,7 @@ class MenuCell: BaseCell {
         lineView.snp.makeConstraints{
             (make) -> Void in
             make.width.equalToSuperview()
-            make.bottom.equalTo(title.snp.bottom).offset(10)
+            make.bottom.equalTo(title.snp.bottom).offset(11)
             make.height.equalTo(0.5)
         }
         
