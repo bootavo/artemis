@@ -41,42 +41,48 @@ class LoginController: UIViewController, UIApplicationDelegate {
         
         let sv = UIViewController.displaySpinner(onView: self.view)
         
-        let user = self.loginView.tf_username.text
-        let pass = self.loginView.tf_password.text
-        let accessToken = "TVNfTE9HSU46VkYkQ09OU1VMVElOR19MT0dJTg=="
-        if user == "" || pass == "" {
-            print("Ingrese su usuario y/o contraseña")
-            self.view.makeToast("Ingrese su usuario y/o contraseña")
-            //self.alerta(mensaje: "Ingrese su usuario y/o contraseña")
-        }else {
-            let parameters = ["username" : user!,"password" : pass!]
-            
-            ApiService.sharedInstance.login(parameters: parameters) { (err, statusCode, json) in
-                if let error = err {
-                    print(error)
-                    UIViewController.removeSpinner(spinner: sv)
-                    return
-                }
-                print(statusCode)
-                if let json = json {
-                    let user = json["usuario"]
-                    do {
-                        let user = try JSONDecoder().decode(UserModel.self, from: user.rawData())
-                        //Save data similar to SharedPreferences
-                        Defaults[.employee_code] = user.employee_code!
-                        Defaults[.name] = user.name!
-                        Defaults[.patternLastName] = user.patternLastName!
-                        Defaults[.matternLastName] = user.matternLastName!
-                        Defaults[.foto] = user.foto!
-                        print("save data")
-                        self.pushToNextVC()
-                    }catch let error {
-                        print("no se pudo decodificar",error)
-                        self.view.makeToast("Datos incorrectos")
+        if NetworkHelper.isConnectedToNetwork() {
+            let user = self.loginView.tf_username.text
+            let pass = self.loginView.tf_password.text
+            let accessToken = "TVNfTE9HSU46VkYkQ09OU1VMVElOR19MT0dJTg=="
+            if user == "" || pass == "" {
+                print("Ingrese su usuario y/o contraseña")
+                self.view.makeToast("Ingrese su usuario y/o contraseña")
+                //self.alerta(mensaje: "Ingrese su usuario y/o contraseña")
+            }else {
+                let parameters = ["username" : user!,"password" : pass!]
+                
+                ApiService.sharedInstance.login(parameters: parameters) { (err, statusCode, json) in
+                    if let error = err {
+                        print(error)
                         UIViewController.removeSpinner(spinner: sv)
+                        return
+                    }
+                    print(statusCode)
+                    if let json = json {
+                        let user = json["usuario"]
+                        do {
+                            let user = try JSONDecoder().decode(UserModel.self, from: user.rawData())
+                            //Save data similar to SharedPreferences
+                            Defaults[.employee_code] = user.employee_code!
+                            Defaults[.name] = user.name!
+                            Defaults[.patternLastName] = user.patternLastName!
+                            Defaults[.matternLastName] = user.matternLastName!
+                            Defaults[.foto] = user.foto!
+                            print("save data")
+                            self.pushToNextVC()
+                        }catch let error {
+                            print("no se pudo decodificar",error)
+                            self.view.makeToast("Datos incorrectos")
+                            UIViewController.removeSpinner(spinner: sv)
+                        }
                     }
                 }
             }
+        }else {
+            let toastPosition = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height - 60)
+            self.view.makeToast("Verifique la conexión a internet", duration: 1.0, position: toastPosition)
+            UIViewController.removeSpinner(spinner: sv)
         }
     }
     

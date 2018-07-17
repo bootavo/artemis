@@ -27,11 +27,11 @@ class WorkStations:Decodable {
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        cod_inst_trab = try container.decode(String?.self, forKey: .cod_inst_trab)
         dir_inst_trab = try container.decode(String?.self, forKey: .dir_inst_trab)
         nom_inst_trab = try container.decode(String?.self, forKey: .nom_inst_trab)
         lat_inst_trab = try container.decode(Double?.self, forKey: .lat_inst_trab)
         log_inst_trab = try container.decode(Double?.self, forKey: .log_inst_trab)
-        dir_inst_trab = try container.decode(String?.self, forKey: .dir_inst_trab)
         puntoAccesos = try container.decode([AccessPoint]?.self, forKey: .puntoAccesos)
     }
     

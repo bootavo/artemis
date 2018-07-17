@@ -76,7 +76,7 @@ class AssistanceView: UIView {
             (make) -> Void in
             make.width.equalTo(300)
             make.height.equalTo(60)
-            make.topMargin.equalTo(30)
+            make.topMargin.equalTo(15)
             make.centerX.equalToSuperview()
         }
         
@@ -167,6 +167,7 @@ class AssistanceView: UIView {
     let iv_not_wifi: UIImageView = {
         var iv = UIImageView()
         iv.image = UIImage(named: "ic_disconnect")
+        iv.contentMode = .scaleAspectFill
         return iv
     }()
     

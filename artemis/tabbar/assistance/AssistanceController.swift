@@ -48,7 +48,7 @@ class AssistanceController: UIViewController, CLLocationManagerDelegate{
         navigationController?.navigationBar.prefersLargeTitles = false
         
         configLocationManager()
-        //serviceGetWorkStations()
+        serviceGetWorkStations()
         showTimer()
         defaultUI()
         verifySSIDWifi()
@@ -180,6 +180,8 @@ class AssistanceController: UIViewController, CLLocationManagerDelegate{
         self.assistanceView.btn_assistance.isEnabled = false
         self.assistanceView.btn_assistance.backgroundColor = UIColor.primaryDarkColor()
         self.assistanceView.iv_not_wifi.isHidden = true
+        self.assistanceView.tv_network.isHidden = false
+        self.assistanceView.iv_network.isHidden = false
         self.assistanceView.tv_message.isHidden = true
     }
     
@@ -419,12 +421,12 @@ class AssistanceController: UIViewController, CLLocationManagerDelegate{
     }
     
     func calculateMetters() -> Double{
-        print("----->")
+        print("-----> calculateMetters()")
         let current_coordinate = CLLocation(latitude: lat!, longitude: lng!)
         let work_coordinate = CLLocation(latitude: lat_work, longitude: lng_work)
         
         let distanceInMeters = current_coordinate.distance(from: work_coordinate)
-        print("----------> calculateMetters(): \(distanceInMeters)")
+        print("calculateMetters: \(distanceInMeters)")
         print("CC: \(current_coordinate)")
         print("lat: \(lat) - Lng: \(lng)")
         print("WTD: \(work_coordinate)")
@@ -448,7 +450,7 @@ class AssistanceController: UIViewController, CLLocationManagerDelegate{
                 self.cod_inst_trab = workStations.cod_inst_trab!
                 
                 let new_distance = self.calculateMetters()
-                distanceInMeters == new_distance
+                distanceInMeters = new_distance
                 print("Distancia en metros: \(new_distance)")
                 
                 if(new_distance < minDistance){
@@ -581,6 +583,7 @@ class AssistanceController: UIViewController, CLLocationManagerDelegate{
                 showButtonName()
                 print("Asegurate de estar conectado a una red WIFI test");
                 self.view.makeToast("Asegurate de estar conectado a una red autorizada")
+                
             }
         }
         
@@ -607,11 +610,9 @@ class AssistanceController: UIViewController, CLLocationManagerDelegate{
             
             if(!networkState){
                 print("Se ha vuelto a reconectar a internet")
-                
                 if(isFakeLocation){
                     print("Se ha vuelto a estar dentro del rango")
                 }
-                
             }else{
                 serviceMark()
             }
