@@ -46,7 +46,7 @@ class AssistanceMain: UICollectionViewController, UICollectionViewDelegateFlowLa
     }()
     
     func setupCollectionView(){
-        collectionView?.backgroundColor = UIColor.white
+        collectionView?.backgroundColor = UIColor.blue
         
         collectionView?.register(RegisterAssistanceCell.self, forCellWithReuseIdentifier: registerCell)
         collectionView?.register(AssistanceHistoryCell.self, forCellWithReuseIdentifier: assistanceHistoryCell)
@@ -60,7 +60,7 @@ class AssistanceMain: UICollectionViewController, UICollectionViewDelegateFlowLa
     private func setupMenuBar(){
         
         //HideNavigationBar when scroll down
-        navigationController?.hidesBarsOnSwipe = true
+        navigationController?.hidesBarsOnSwipe = false
         
         let redView = UIView()
         redView.backgroundColor = UIColor.rgb(red: 230, green: 32, blue: 31)

@@ -127,7 +127,6 @@ class MenuCell: BaseCell {
     override var isHighlighted: Bool {
         didSet {
             title.highlightedTextColor = isHighlighted ? UIColor.primaryDarkColor() : UIColor.rgb(red: 91, green: 14, blue: 13)
-            print(123)
         }
     }
     
@@ -135,7 +134,6 @@ class MenuCell: BaseCell {
     override var isSelected: Bool {
         didSet {
             title.highlightedTextColor = isSelected ? UIColor.primaryDarkColor() : UIColor.rgb(red: 91, green: 14, blue: 13)
-            print(123)
         }
     }
     
