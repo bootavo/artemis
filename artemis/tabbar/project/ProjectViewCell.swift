@@ -33,9 +33,6 @@ class ProjectViewCell: UICollectionViewCell {
             if let date = project.project_date {
                 print("\(date)")
                 self.tv_project_date.text = date
-                
-                //Departamento Prejudicial - Banco de crédito
-                //937509559 Doctora Liza
             }
             
             if let status = project.project_status {

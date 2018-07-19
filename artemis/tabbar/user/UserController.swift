@@ -48,21 +48,20 @@ class UserController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func setupView(){
-        self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame
-        .height)
+        //self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
         
         self.view.addSubview(scrollView)
         scrollView.backgroundColor = UIColor.primaryColor()
         scrollView.snp.makeConstraints { (make) in
             make.top.equalTo(60)
             make.width.equalToSuperview()
+            make.size.equalToSuperview()
             make.centerX.equalToSuperview()
             make.bottom.equalTo(self.view.safeAreaLayoutGuide)
         }
         
         scrollView.addSubview(profileImageView)
         profileImageView.snp.makeConstraints { (make) in
-            //make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(0)
             make.leftMargin.equalTo(20)
             make.size.equalTo(CGSize(width: 80, height: 80))
@@ -72,18 +71,12 @@ class UserController: UIViewController, UIImagePickerControllerDelegate, UINavig
         fullNameLabel.snp.makeConstraints { (make) in
             make.top.bottom.equalTo(profileImageView).offset(0)
             make.left.equalTo(profileImageView.snp.right).offset(20)
-            //make.right.lessThanOrEqualTo(20)
         }
         
         scrollView.addSubview(rolLabel)
         rolLabel.snp.makeConstraints { (make) in
-            //make.top.bottom.equalTo(profileImageView)
-            //make.left.equalTo(profileImageView.snp.right).offset(20)
             make.top.bottom.equalTo(fullNameLabel).offset(15)
             make.left.equalTo(profileImageView.snp.right).offset(20)
-            //make.top.equalTo(fullNameLabel.snp.bottom).offset(10)
-            //make.top.equalTo(fullNameLabel.snp.bottom).offset(10)
-            //make.centerX.equalToSuperview()
         }
         
         scrollView.addSubview(projectsCell)

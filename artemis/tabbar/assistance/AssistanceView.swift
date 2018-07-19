@@ -175,6 +175,7 @@ class AssistanceView: UIView {
         var btn = RoundedButton()
         btn.addTarget(self, action: #selector(login), for: .touchUpInside)
         btn.setTitle(title: "MARCAR ASISTENCIA", color: UIColor.primaryColor())
+        btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
     

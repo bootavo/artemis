@@ -109,6 +109,7 @@ class AssistanceMain: UICollectionViewController, UICollectionViewDelegateFlowLa
             identifier = registerCell
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+        cell.contentView.isUserInteractionEnabled = false
         return cell
     }
     
