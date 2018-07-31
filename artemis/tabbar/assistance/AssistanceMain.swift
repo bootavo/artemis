@@ -75,6 +75,7 @@ class AssistanceMain: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         //HideNavigationBar when scroll down
         menuBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {

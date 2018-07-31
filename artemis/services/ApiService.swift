@@ -35,6 +35,19 @@ class ApiService: NSObject {
         request(url: url, httpMethod: .post, headers: headers, parameters: parameters, encoding: JSONEncoding.default, completion: completion)
     }
     
+    func getActivities(parameters: Parameters,_ completion: @escaping (Error?,Int,JSON?) -> () ) {
+        var url = "https://ck5hd1j060.execute-api.us-east-1.amazonaws.com/dev/artemis/activities"
+        let headers = [
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Authorization": "Basic YXJ0ZW1pczpyM2JWVTFsZDNyTDRi",
+            "Cache-Control": "no-cache",
+            "Postman-Token": "b1c0bbff-267f-4306-a29b-b915c37005ea"
+            ]
+        
+        request(url: url, httpMethod: .get, headers: headers, parameters: parameters, encoding: URLEncoding.default, completion: completion)
+    }
+    
     func getWorkStations(parameters: Parameters?, completion: @escaping (Error?,Int,JSON?) -> () ){
         let url = "https://nyxt07jpb8.execute-api.us-east-1.amazonaws.com/PRODENV/LugarTrabajo/listar"
         let headers = [
@@ -87,7 +100,10 @@ class ApiService: NSObject {
                  encoding: ParameterEncoding,
                  completion: @escaping (Error?,Int,JSON?) -> ()) {
         
-        Alamofire.request(url, method: httpMethod, parameters: parameters, encoding: encoding, headers: headers).responseJSON { (dataResponse) in
+        Alamofire.request(url, method: httpMethod, parameters: parameters, encoding: encoding, headers: headers).responseString { (dataResponse) in
+            
+            print("dataResponse \(dataResponse)")
+            
             if let error = dataResponse.error {
                 DispatchQueue.main.async(execute: {
                     if let statusCode = dataResponse.response?.statusCode {

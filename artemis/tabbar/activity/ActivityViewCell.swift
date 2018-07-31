@@ -27,20 +27,20 @@ class ActivityViewCell: UICollectionViewCell {
     var activity: Activity! = nil {
         didSet {
             
-            if let kind_of_activity = activity.kind_of_activity {
+            if let kind_of_activity = activity.str_taskname {
                 self.tv_kind_of_activity.text = kind_of_activity
             }
             
-            if let activity_date = activity.date, let project_code = activity.project_code {
+            if let activity_date = activity.dte_activitydate, let project_code = activity.str_project_cod {
                 self.tv_activity_info.text = "\(activity_date) - \(project_code)"
             }
             
-            if let hours = activity.activity_hours {
-                self.tv_hour.text = hours
+            if let hours = activity.num_registered_hours {
+                self.tv_hour.text = "\(hours)"
             }
             
-            if let minutes = activity.activity_minutes {
-                self.tv_minute.text = minutes
+            if let minutes = activity.num_registered_minutes {
+                self.tv_minute.text = "\(minutes)"
             }
             
         }

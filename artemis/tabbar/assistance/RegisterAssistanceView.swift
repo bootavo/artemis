@@ -8,9 +8,9 @@
 
 import UIKit
 
-class AssistanceView: UIView {
+class RegisterAssistanceView: UIView {
     
-    var loginAction: (() -> Void)?
+    var registerAction: (() -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -173,14 +173,14 @@ class AssistanceView: UIView {
     
     let btn_assistance: RoundedButton = {
         var btn = RoundedButton()
-        btn.addTarget(self, action: #selector(login), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(register), for: .touchUpInside)
         btn.setTitle(title: "MARCAR ASISTENCIA", color: UIColor.primaryColor())
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
     
-    @objc func login() {
-        loginAction?()
+    @objc func register() {
+        registerAction?()
     }
     
 }

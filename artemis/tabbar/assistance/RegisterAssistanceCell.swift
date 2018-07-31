@@ -15,7 +15,7 @@ import CoreLocation
 
 class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
     
-    var registerView: AssistanceView!
+    var registerView: RegisterAssistanceView!
     
     var locationManager = CLLocationManager()
     var lat:Double?
@@ -65,9 +65,11 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": registerCollectionView]))
         
-        var rect = CGRect(x: 0, y: 50, width: self.frame.width, height: self.frame.height)
-        registerView = AssistanceView(frame: rect)
+        let rect = CGRect(x: 0, y: 50, width: self.frame.width, height: self.frame.height)
+        registerView = RegisterAssistanceView(frame: rect)
         registerCollectionView.addSubview(registerView!)
+        
+        self.registerView.registerAction = assistanceAction
         
         //Used in another interface
         //addConstraintsWithFormat(format: "H:|[v0]|", views: registerView)

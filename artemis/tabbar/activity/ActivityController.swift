@@ -7,11 +7,17 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+import SwiftyUserDefaults
 
 class ActivityController: UIViewController, UICollectionViewDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     private var lastContentOffset: CGFloat = 0
+    
+    var listActivities:[Activity] = []
+    var items = [Activity]()
     
     let btn_new_activity: UIButton = {
         var btn = UIButton()
@@ -92,64 +98,53 @@ class ActivityController: UIViewController, UICollectionViewDelegate {
         titleLabel.textColor = UIColor.primaryColor()
         titleLabel.textAlignment = .center
         self.tabBarController?.navigationItem.titleView = titleLabel
+        
+        self.getService()
+        
     }
     
-    var activity:[Activity] = {
+    func getService() {
+        _ = Defaults[.employee_code]!
+        let cod_empleado = 145
+        let parameters = ["str_resource_id": "145"] as [String : Any]
         
-        // Activity #1
-        var activity1 = Activity()
-        activity1.id = 1
-        activity1.kind_of_activity = "DESARROLLO"
-        activity1.activity_hours = "12"
-        activity1.activity_minutes = "24"
-        activity1.project_code = "PROY032"
-        activity1.date = "27/06/2018"
-        
-        // Activity #2
-        var activity2 = Activity()
-        activity2.id = 1
-        activity2.kind_of_activity = "DESARROLLO"
-        activity2.activity_hours = "12"
-        activity2.activity_minutes = "24"
-        activity2.project_code = "PROY032"
-        activity2.date = "27/06/2018"
-        
-        // Activity #3
-        var activity3 = Activity()
-        activity3.id = 1
-        activity3.kind_of_activity = "DESARROLLO"
-        activity3.activity_hours = "12"
-        activity3.activity_minutes = "24"
-        activity3.project_code = "PROY032"
-        activity3.date = "27/06/2018"
-        
-        var activity4 = Activity()
-        activity4.id = 1
-        activity4.kind_of_activity = "DESARROLLO"
-        activity4.activity_hours = "12"
-        activity4.activity_minutes = "24"
-        activity4.project_code = "PROY032"
-        activity4.date = "27/06/2018"
-        
-        var activity5 = Activity()
-        activity5.id = 1
-        activity5.kind_of_activity = "DESARROLLO"
-        activity5.activity_hours = "12"
-        activity5.activity_minutes = "24"
-        activity5.project_code = "PROY032"
-        activity5.date = "27/06/2018"
-        
-        var activity6 = Activity()
-        activity6.id = 1
-        activity6.kind_of_activity = "DESARROLLO"
-        activity6.activity_hours = "12"
-        activity6.activity_minutes = "24"
-        activity6.project_code = "PROY032"
-        activity6.date = "27/06/2018"
-        
-        return [activity1, activity2, activity3, activity4, activity5, activity6]
-        
-    }()
+        ApiService.sharedInstance.getActivities(parameters: parameters) { (err, statusCode, json) in
+            
+            print("before error")
+            
+            if let error = err {
+                print("Error: \(error)")
+                return
+            }
+            
+            print("statusCode: \(statusCode)")
+            if let json = json {
+                let content = json["content"]
+                print("Content: \(content)")
+                
+                if !content.isEmpty {
+                    do {
+                        print("activities")
+                        
+                        let activities = content["activities"]
+                        if !activities.isEmpty {
+                            print("Activities: \(activities)")
+                            self.listActivities = try JSONDecoder().decode([Activity].self, from: activities.rawData())
+                            self.collectionView.reloadData()
+                        }else {
+                            print("Actividades vacias")
+                        }
+                    }catch let error {
+                        print("no se pudo decodificar",error)
+                        self.view.makeToast("Datos incorrectos")
+                    }
+                } else {
+                    print("Contenido vacio")
+                    self.view.makeToast("No se ha podido cargar los lugares de trabajo")
+                }
+            }
+        }
+    }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
@@ -188,7 +183,7 @@ class ActivityController: UIViewController, UICollectionViewDelegate {
         */
         
         //self.lastContentOffset = scrollView.contentOffset.y
-        print("\(translation)")
+        print("Translation: \(translation)")
     }
     
 }
@@ -196,12 +191,12 @@ class ActivityController: UIViewController, UICollectionViewDelegate {
 extension ActivityController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return activity.count
+        return listActivities.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellActivity", for: indexPath) as! ActivityViewCell
-        cell.activity = self.activity[indexPath.row]
+        cell.activity = self.listActivities[indexPath.row]
         
         return cell
     }
