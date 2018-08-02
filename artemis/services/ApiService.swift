@@ -35,16 +35,67 @@ class ApiService: NSObject {
         request(url: url, httpMethod: .post, headers: headers, parameters: parameters, encoding: JSONEncoding.default, completion: completion)
     }
     
-    func getActivities(parameters: Parameters,_ completion: @escaping (Error?,Int,JSON?) -> () ) {
+    func getActivitiesByResourceId(parameters: Parameters,_ completion: @escaping (Error?,Int,JSON?) -> () ) {
         var url = "https://ck5hd1j060.execute-api.us-east-1.amazonaws.com/dev/artemis/activities"
         let headers = [
             "Content-Type": "application/json",
             "Accept": "application/json",
             "Authorization": "Basic YXJ0ZW1pczpyM2JWVTFsZDNyTDRi",
-            "Cache-Control": "no-cache",
-            "Postman-Token": "b1c0bbff-267f-4306-a29b-b915c37005ea"
+            "Cache-Control": "no-cache"
+        ]
+        
+        request(url: url, httpMethod: .get, headers: headers, parameters: parameters, encoding: URLEncoding.default, completion: completion)
+    }
+    
+    func getTasksByProjectId(parameters: Parameters,_ completion: @escaping (Error?,Int,JSON?) -> () ) {
+        var url = "https://wf1tocu2xl.execute-api.us-east-1.amazonaws.com/dev/artemis/tasks"
+        let headers = [
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Authorization": "Basic YXJ0ZW1pczpyM2JWVTFsZDNyTDRi",
+            "Cache-Control": "no-cache"
             ]
         
+        request(url: url, httpMethod: .get, headers: headers, parameters: parameters, encoding: URLEncoding.default, completion: completion)
+    }
+    
+    func getProjectsByResourceId(parameters: Parameters,_ completion: @escaping (Error?,Int,JSON?) -> () ) {
+        var url = "https://1nwq4ulevd.execute-api.us-east-1.amazonaws.com/dev/artemis/project_teams"
+        let headers = [
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Authorization": "Basic YXJ0ZW1pczpyM2JWVTFsZDNyTDRi",
+            "Cache-Control": "no-cache"
+        ]
+        
+        request(url: url, httpMethod: .get, headers: headers, parameters: parameters, encoding: URLEncoding.default, completion: completion)
+    }
+    
+    func registerActivity(parameters: Parameters,_ completion: @escaping (Error?,Int,JSON?) -> () ) {
+        var url = "https://ck5hd1j060.execute-api.us-east-1.amazonaws.com/dev/artemis/activities"
+        let headers = [
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Authorization": "Basic YXJ0ZW1pczpyM2JWVTFsZDNyTDRi",
+            "Cache-Control": "no-cache"
+        ]
+        
+        print("parameters: \(parameters)")
+        
+        request(url: url, httpMethod: .post, headers: headers, parameters: parameters, encoding: JSONEncoding.default, completion: completion)
+    }
+    
+    func getKindOfActivities(parameters: Parameters,_ completion: @escaping (Error?,Int,JSON?) -> () ) {
+        print("Parameters: \(parameters)")
+        
+        var url = "https://wf1tocu2xl.execute-api.us-east-1.amazonaws.com/dev/artemis/tasks"
+        let headers = [
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Authorization": "Basic YXJ0ZW1pczpyM2JWVTFsZDNyTDRi",
+            "Cache-Control": "no-cache"
+        ]
+        print("Headers: \(headers)")
         request(url: url, httpMethod: .get, headers: headers, parameters: parameters, encoding: URLEncoding.default, completion: completion)
     }
     

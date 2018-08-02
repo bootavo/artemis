@@ -63,7 +63,6 @@ class MyAccountCellRed: UIButton {
     }
     
     //Components
-    
     let title: UILabel = {
         let label = UILabel()
         label.text = "Mi perfil"

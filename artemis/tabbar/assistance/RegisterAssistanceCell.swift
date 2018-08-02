@@ -130,7 +130,12 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
         let day    = fullNameArr[0]
         let numberDay = fullNameArr[1]
         let month = fullNameArr[2]
-        dateFormat = "\(day)\(numberDay)\(month)"
+        
+        if Int(numberDay)! < 10 {
+            dateFormat = "\(day)0\(numberDay)\(month)"
+        }else{
+            dateFormat = "\(day)\(numberDay)\(month)"
+        }
         
         var dateString = NSMutableAttributedString (string: "\(dateFormat)")
         let bigBoldFont = UIFont.boldSystemFont(ofSize: 26)

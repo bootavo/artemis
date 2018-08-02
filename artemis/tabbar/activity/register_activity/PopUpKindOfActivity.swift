@@ -7,28 +7,29 @@
 //
 
 import UIKit
-import SwiftyUserDefaults
 
-protocol PopUpProjectDelegate {
-    func didSelectItemProject(item: Project)
+protocol PopUpKindOfActivityDelegate {
+    func didSelectItemKindOfActivity(item: KindOfActivity)
 }
 
-class PopUpProject: UIViewController {
+class PopUpKindOfActivity: UIViewController {
     
     //array
-    var data:[Project] = []
+    var data:[KindOfActivity] = []
+    
     var selectedIndex = 0
     
-    var delegate: PopUpProjectDelegate? = nil
+    var delegate: PopUpKindOfActivityDelegate? = nil
+    
+    //Catch parameter id of project
+    var projectId = Int()
     
     @IBOutlet weak var pickerView: UIPickerView!
     
     func getService(){
-        
-        let code = Defaults[.employee_code]
-        let parameters = ["str_resource_id": code!] as [String : Any]
-        
-        ApiService.sharedInstance.getProjectsByResourceId(parameters: parameters) { (err, statusCode, json) in
+        let parameters = ["num_project_id": projectId] as [String : Any]
+
+        ApiService.sharedInstance.getKindOfActivities(parameters: parameters) { (err, statusCode, json) in
             print("before error")
             
             if let error = err {
@@ -45,10 +46,10 @@ class PopUpProject: UIViewController {
                     do {
                         print("attributes")
                         
-                        let attributes = content["project_teams"]
+                        let attributes = content["tasks"]
                         if !attributes.isEmpty {
-                            print("Activities: \(attributes)")
-                            self.data = try JSONDecoder().decode([Project].self, from: attributes.rawData())
+                            print("Tasks: \(attributes)")
+                            self.data = try JSONDecoder().decode([KindOfActivity].self, from: attributes.rawData())
                             self.pickerView.reloadAllComponents()
                         }else {
                             print("Actividades vacias")
@@ -68,6 +69,7 @@ class PopUpProject: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("PopUpKindOFActivity Id capturado: \(projectId)")
         getService()
     }
     
@@ -76,15 +78,14 @@ class PopUpProject: UIViewController {
     }
     
     @IBAction func popUpDone(_ sender: Any) {
-        
         let item = data[selectedIndex]
-        delegate?.didSelectItemProject(item: item)
+        delegate?.didSelectItemKindOfActivity(item: item)
         self.dismiss(animated: true, completion: nil)
     }
     
 }
 
-extension PopUpProject: UIPickerViewDataSource, UIPickerViewDelegate {
+extension PopUpKindOfActivity: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -94,7 +95,7 @@ extension PopUpProject: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return data[row].str_project_name
+        return data[row].str_taskname
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

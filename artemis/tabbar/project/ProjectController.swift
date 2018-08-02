@@ -12,24 +12,24 @@ class ProjectController: UIViewController, UICollectionViewDelegate{
     
     @IBOutlet weak var collectionView: UICollectionView?
     
-    var project:[Project] = {
+    var project:[ProjectHelper] = {
         
         // Project #1
-        var proj1 = Project()
+        var proj1 = ProjectHelper()
         proj1.project_code = "PROY032"
         proj1.project_name = "ARTEMIS"
         proj1.project_status = "A"
         proj1.project_date = "28/05/2018 28/06/2018"
         
         // Project #1
-        var proj2 = Project()
+        var proj2 = ProjectHelper()
         proj2.project_code = "PROY033"
         proj2.project_name = "CRM PORTAL"
         proj2.project_status = "A"
         proj2.project_date = "28/05/2018 28/06/2018"
         
         // Project #1
-        var proj3 = Project()
+        var proj3 = ProjectHelper()
         proj3.project_code = "PROY034"
         proj3.project_name = "BSCS"
         proj3.project_status = "A"

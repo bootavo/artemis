@@ -51,6 +51,7 @@ class MenuBar:UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICo
         horizontalBarView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(horizontalBarView)
         
+        //config tabs
         horizontalBarLeftAnchorConstraint = horizontalBarView.leftAnchor.constraint(equalTo: self.leftAnchor)
         horizontalBarLeftAnchorConstraint?.isActive = true
         horizontalBarView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
@@ -161,6 +162,12 @@ class MenuCell: BaseCell {
             make.bottom.equalTo(title.snp.bottom).offset(11)
             make.height.equalTo(0.5)
         }
+        
+        //Restricciones Horizontales
+        //addConstraint(NSLayoutConstraint(item: imageView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0))
+        
+        //Restricciones Verticales
+        //addConstraint(NSLayoutConstraint(item: imageView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
         
     }
     

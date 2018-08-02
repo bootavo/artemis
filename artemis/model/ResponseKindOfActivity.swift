@@ -1,16 +1,16 @@
 //
-//  ResponseActivity.swift
+//  ResponseKindOfActivity.swift
 //  artemis
 //
-//  Created by VF Consulting on 8/2/18.
+//  Created by VF Consulting on 7/31/18.
 //  Copyright © 2018 GTUFINOF. All rights reserved.
 //
 
 import Foundation
 
-class ResponseActivity: Decodable {
+class ResponseKindOfActivity: Decodable {
     var status: Int?
-    var content: [Activity]?
+    var content: [KindOfActivity]?
     var message: String?
     
     private enum CodingKeys: String, CodingKey {
@@ -22,13 +22,14 @@ class ResponseActivity: Decodable {
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         status = try container.decode(Int?.self, forKey: .status)
-        content = try container.decode([Activity]?.self, forKey: .content)
+        content = try container.decode([KindOfActivity]?.self, forKey: .content)
         message = try container.decode(String?.self, forKey: .message)
     }
     
 }
 
-class Activity:Decodable {
+class KindOfActivity:Decodable {
+    
     var str_project_name:String?
     var str_project_cod:String?
     var num_project_id:Int?
@@ -56,4 +57,3 @@ class Activity:Decodable {
     }
     
 }
-

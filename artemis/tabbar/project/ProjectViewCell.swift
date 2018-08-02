@@ -17,7 +17,7 @@ class ProjectViewCell: UICollectionViewCell {
     
     @IBOutlet weak var iv_status: UIImageView!
     
-    var project: Project! = nil {
+    var project: ProjectHelper! = nil {
         didSet {
             
             if let code = project.project_code {

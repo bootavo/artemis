@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        
         //Keyboard
         IQKeyboardManager.sharedManager().enable = true
         IQKeyboardManager.sharedManager().enableAutoToolbar = true
@@ -35,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         //Navigation Bar Colors
         UINavigationBar.appearance().barTintColor = UIColor.primaryDarkColor()
         UINavigationBar.appearance().isTranslucent = true
+        navTabBarController.automaticallyAdjustsScrollViewInsets = true
         
         let statusBar = UIApplication.shared.value(forKey: "statusBar") as! UIView
         statusBar.backgroundColor = UIColor.primaryDarkColor()

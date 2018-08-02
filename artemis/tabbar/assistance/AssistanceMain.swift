@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class AssistanceMain: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
@@ -16,16 +17,22 @@ class AssistanceMain: UICollectionViewController, UICollectionViewDelegateFlowLa
     let menuNames = ["MARCAR", "HISTORIAL"]
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = UIColor.primaryColor()
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.isTranslucent = false // need specificate when general trnasulcent is false
+        self.tabBarController?.navigationController?.isNavigationBarHidden = false
         
         //CollecitonView tab
         if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.scrollDirection = .horizontal
             flowLayout.minimumLineSpacing = 0
         }
-        
-        //Title Status Bar White
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.tabBarController?.navigationController?.isNavigationBarHidden = false
         
         let bounds = navigationController?.navigationBar.bounds
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: (bounds?.width)!, height: (bounds?.height)!))
@@ -60,7 +67,7 @@ class AssistanceMain: UICollectionViewController, UICollectionViewDelegateFlowLa
     private func setupMenuBar(){
         
         //HideNavigationBar when scroll down
-        navigationController?.hidesBarsOnSwipe = false
+        //navigationController?.hidesBarsOnSwipe = false
         
         let redView = UIView()
         redView.backgroundColor = UIColor.rgb(red: 230, green: 32, blue: 31)
@@ -115,7 +122,7 @@ class AssistanceMain: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: view.frame.height - 50)
+        return CGSize(width: view.frame.width, height: view.frame.height - 50) //50
     }
     
 }

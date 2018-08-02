@@ -23,21 +23,23 @@ class UserController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = UIColor.primaryColor()
         navigationController?.navigationBar.prefersLargeTitles = false
-        setupView()
-        setupUserInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
+        let bounds = navigationController?.navigationBar.bounds
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: (bounds?.width)!, height: (bounds?.height)!))
         titleLabel.text = "Usuario"
         titleLabel.font = UIFont.systemFont(ofSize: 20)
         titleLabel.textColor = UIColor.primaryColor()
         titleLabel.textAlignment = .center
         self.tabBarController?.navigationItem.titleView = titleLabel
+        setupView()
+        setupUserInfo()
     }
     
     func setupUserInfo(){

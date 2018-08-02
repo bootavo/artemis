@@ -16,8 +16,8 @@ class ActivityController: UIViewController, UICollectionViewDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
     private var lastContentOffset: CGFloat = 0
     
-    var listActivities:[Activity] = []
-    var items = [Activity]()
+    var listActivities:[Task] = []
+    var items = [Task]()
     
     let btn_new_activity: UIButton = {
         var btn = UIButton()
@@ -71,22 +71,22 @@ class ActivityController: UIViewController, UICollectionViewDelegate {
             make.width.equalTo(50)
             make.height.equalTo(50)
             make.bottom.equalToSuperview().offset(marginBottom)
-            make.right.equalToSuperview().offset(-48)
+            make.right.equalToSuperview().offset(-28)
         }
         self.btn_new_activity.titleLabel?.font = UIFont.systemFont(ofSize: 60.0)
         
-        self.view.addSubview(btn_filter)
+        /*self.view.addSubview(btn_filter)
         btn_filter.snp.makeConstraints{
             (make) -> Void in
             make.width.equalTo(180)
             make.height.equalTo(60)
             make.top.equalToSuperview().offset(marginTopFilter)
             make.centerX.equalToSuperview()
-        }
+        }*/
         
         //margin top
         if let layout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.sectionInset = UIEdgeInsetsMake(70, 0, 0, 0)
+            layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0) //70 marginTop
         }
         
         navigationController?.navigationBar.prefersLargeTitles = false
@@ -103,12 +103,15 @@ class ActivityController: UIViewController, UICollectionViewDelegate {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        viewDidLoad()
+    }
+    
     func getService() {
-        _ = Defaults[.employee_code]!
-        let cod_empleado = 145
-        let parameters = ["str_resource_id": "145"] as [String : Any]
+        let code = Defaults[.employee_code]!
+        let parameters = ["str_resource_id": code] as [String : Any]
         
-        ApiService.sharedInstance.getActivities(parameters: parameters) { (err, statusCode, json) in
+        ApiService.sharedInstance.getActivitiesByResourceId(parameters: parameters) { (err, statusCode, json) in
             
             print("before error")
             
@@ -129,7 +132,7 @@ class ActivityController: UIViewController, UICollectionViewDelegate {
                         let activities = content["activities"]
                         if !activities.isEmpty {
                             print("Activities: \(activities)")
-                            self.listActivities = try JSONDecoder().decode([Activity].self, from: activities.rawData())
+                            self.listActivities = try JSONDecoder().decode([Task].self, from: activities.rawData())
                             self.collectionView.reloadData()
                         }else {
                             print("Actividades vacias")
