@@ -15,12 +15,18 @@ class DateHelper{
         return self.init()
     }
     
-    func getDateNow() -> String {
-        let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-mm-dd"
-        let dateRegister = formatter.string(from: date)
-        return dateRegister
+    func getDateNowToPython() -> String {
+        let dateFormatterServer = DateFormatter()
+        dateFormatterServer.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatterServer.string(from: Date())
+        return date
+    }
+    
+    func getDateNowToJava() -> String {
+        let dateFormatterServer = DateFormatter()
+        dateFormatterServer.dateFormat = "dd/MM/yyyy"
+        let date = dateFormatterServer.string(from: Date())
+        return date
     }
     
 }

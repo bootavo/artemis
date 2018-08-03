@@ -42,9 +42,6 @@ class ProjectController: UIViewController, UICollectionViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.primaryColor()
-    
-        navigationController?.navigationBar.prefersLargeTitles = false
-        
         /*
         self.collectionView?.register(ProjectViewCell.self, forCellWithReuseIdentifier: "cell")
         self.collectionView?.dataSource = self
@@ -58,14 +55,19 @@ class ProjectController: UIViewController, UICollectionViewDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        tabBarController?.navigationController?.navigationBar.prefersLargeTitles = false
+        //self.navigationController?.navigationBar.isTranslucent = false // need specificate when general trnasulcent is false
+        self.tabBarController?.navigationController?.isNavigationBarHidden = true
+        
+        self.navigationController?.isNavigationBarHidden = false
+        
         let bounds = navigationController?.navigationBar.bounds
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: (bounds?.width)!, height: (bounds?.height)!))
         titleLabel.text = "Proyectos"
         titleLabel.font = UIFont.systemFont(ofSize: 20)
         titleLabel.textColor = UIColor.primaryColor()
         titleLabel.textAlignment = .center
-        self.tabBarController?.navigationItem.titleView = titleLabel
-        
+        self.navigationItem.titleView = titleLabel
     }
     
 }

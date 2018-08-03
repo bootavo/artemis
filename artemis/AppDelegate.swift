@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         
         //Navigation Bar Colors
         UINavigationBar.appearance().barTintColor = UIColor.primaryDarkColor()
-        UINavigationBar.appearance().isTranslucent = true
+        UINavigationBar.appearance().isTranslucent = false
         navTabBarController.automaticallyAdjustsScrollViewInsets = true
         
         let statusBar = UIApplication.shared.value(forKey: "statusBar") as! UIView

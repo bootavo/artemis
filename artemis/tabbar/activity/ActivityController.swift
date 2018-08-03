@@ -49,7 +49,7 @@ class ActivityController: UIViewController, UICollectionViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.primaryColor()
+        view.backgroundColor = UIColor.yellow
         
         var marginBottom: Float = 0
         var marginTopFilter: Float = 0
@@ -84,12 +84,21 @@ class ActivityController: UIViewController, UICollectionViewDelegate {
             make.centerX.equalToSuperview()
         }*/
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         //margin top
         if let layout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0) //70 marginTop
         }
         
-        navigationController?.navigationBar.prefersLargeTitles = false
+        tabBarController?.navigationController?.navigationBar.prefersLargeTitles = false
+        //self.navigationController?.navigationBar.isTranslucent = false // need specificate when general trnasulcent is false
+        self.tabBarController?.navigationController?.isNavigationBarHidden = true
+        
+        self.navigationController?.isNavigationBarHidden = false
         
         let bounds = navigationController?.navigationBar.bounds
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: (bounds?.width)!, height: (bounds?.height)!))
@@ -97,14 +106,9 @@ class ActivityController: UIViewController, UICollectionViewDelegate {
         titleLabel.font = UIFont.systemFont(ofSize: 20)
         titleLabel.textColor = UIColor.primaryColor()
         titleLabel.textAlignment = .center
-        self.tabBarController?.navigationItem.titleView = titleLabel
+        self.navigationItem.titleView = titleLabel
         
         self.getService()
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        viewDidLoad()
     }
     
     func getService() {

@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class AssistanceMain: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class AssistanceController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     let registerCell = "registerCell"
     let assistanceHistoryCell = "assistanceHistoryCell"
@@ -19,14 +19,14 @@ class AssistanceMain: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.primaryColor()
-        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.navigationBar.isTranslucent = false // need specificate when general trnasulcent is false
-        self.tabBarController?.navigationController?.isNavigationBarHidden = false
+        tabBarController?.navigationController?.navigationBar.prefersLargeTitles = false
+        //self.navigationController?.navigationBar.isTranslucent = false // need specificate when general trnasulcent is false
+        self.tabBarController?.navigationController?.isNavigationBarHidden = true
         
         //CollecitonView tab
         if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
@@ -40,14 +40,14 @@ class AssistanceMain: UICollectionViewController, UICollectionViewDelegateFlowLa
         titleLabel.font = UIFont.systemFont(ofSize: 20)
         titleLabel.textColor = UIColor.primaryColor()
         titleLabel.textAlignment = .center
-        self.tabBarController?.navigationItem.titleView = titleLabel
+        self.navigationItem.titleView = titleLabel
         
         setupCollectionView()
         setupMenuBar()
     }
     
-    lazy var menuBar: MenuBar = {
-        let mb = MenuBar()
+    lazy var menuBar: AssistanceMenuBar = {
+        let mb = AssistanceMenuBar()
         mb.homeController = self
         return mb
     }()
@@ -95,6 +95,7 @@ class AssistanceMain: UICollectionViewController, UICollectionViewDelegateFlowLa
         menuBar.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
     }
     
+    //Function used in AssistanceMenuBar
     func scrollToMenuIndex(menuIndex: Int){
         let indexPath = IndexPath(item: menuIndex, section: 0)
         collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
@@ -122,7 +123,7 @@ class AssistanceMain: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: view.frame.height - 100) //50
+        return CGSize(width: view.frame.width, height: view.frame.height - 50) //50
     }
     
 }

@@ -143,6 +143,39 @@ class ApiService: NSObject {
         request(url: url, httpMethod: .post, headers: headers, parameters: parameters, encoding: JSONEncoding.default, completion: completion)
     }
     
+    func getEmployees(parameters: Parameters?, completion: @escaping (Error?,Int,JSON?) -> () ){
+        let url = "https://knawll6ko9.execute-api.us-east-1.amazonaws.com/PRODENV/Asistencia/reporteEmpleado"
+        let headers = [
+            "content-type": "application/json",
+            "authorization": "Basic TVNfUkVQT1JURS1FTVBMRUFETzpWRiRDT05TVUxUSU5HX1JFUE9SVEUtRU1QTEVBRE8=",
+            "cache-control": "no-cache",
+            ]
+        
+        request(url: url, httpMethod: .post, headers: headers, parameters: parameters, encoding: JSONEncoding.default, completion: completion)
+    }
+    
+    func getAbsents(parameters: Parameters?, completion: @escaping (Error?,Int,JSON?) -> () ){
+        let url = "https://4wsmg3skw0.execute-api.us-east-1.amazonaws.com/PRODENV/Asistencia/reporteEmpleadoFaltas"
+        let headers = [
+            "content-type": "application/json",
+            "authorization": "Basic TVNfUkVQT1JURS1FTVBMRUFETy1GQUxUQVM6VkYkQ09OU1VMVElOR19SRVBPUlRFLUVNUExFQURPLUZBTFRBUw==",
+            "cache-control": "no-cache",
+            ]
+        
+        request(url: url, httpMethod: .post, headers: headers, parameters: parameters, encoding: JSONEncoding.default, completion: completion)
+    }
+    
+    func getLaters(parameters: Parameters?, completion: @escaping (Error?,Int,JSON?) -> () ){
+        let url = "https://qttdtifh38.execute-api.us-east-1.amazonaws.com/PRODENV/Asistencia/reporteEmpleadoTardanza"
+        let headers = [
+            "content-type": "application/json",
+            "authorization": "Basic TVNfUkVQT1JURS1FTVBMRUFETy1UQVJEQU5aQTpWRiRDT05TVUxUSU5HX1JFUE9SVEUtRU1QTEVBRE8tVEFSREFOWkE=",
+            "cache-control": "no-cache",
+            ]
+        
+        request(url: url, httpMethod: .post, headers: headers, parameters: parameters, encoding: JSONEncoding.default, completion: completion)
+    }
+    
     //MARK: Request for all methods
     func request(url: String,
                  httpMethod: HTTPMethod,
@@ -150,6 +183,8 @@ class ApiService: NSObject {
                  parameters: Parameters?,
                  encoding: ParameterEncoding,
                  completion: @escaping (Error?,Int,JSON?) -> ()) {
+        
+        print("parameters \(parameters)")
         
         Alamofire.request(url, method: httpMethod, parameters: parameters, encoding: encoding, headers: headers).responseString { (dataResponse) in
             

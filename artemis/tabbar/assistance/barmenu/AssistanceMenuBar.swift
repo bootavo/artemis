@@ -8,9 +8,9 @@
 
 import UIKit
 
-class MenuBar:UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class AssistanceMenuBar:UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    var homeController: AssistanceMain?
+    var homeController: AssistanceController?
     
     //Cells
     let cellId = "cellid"
@@ -20,7 +20,7 @@ class MenuBar:UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICo
     lazy var collectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = UIColor.navBar()
+        cv.backgroundColor = UIColor.white
         cv.dataSource = self
         cv.delegate = self
         return cv
@@ -112,8 +112,8 @@ class MenuCell: BaseCell {
         tv.text = "MARCAR"
         tv.textColor = UIColor.title()
         tv.highlightedTextColor = UIColor.rgb(red: 91, green: 14, blue: 13)
-        tv.backgroundColor = UIColor.navBar()
-        tv.font = UIFont.systemFont(ofSize: 16)
+        tv.backgroundColor = UIColor.white
+        tv.font = UIFont.systemFont(ofSize: 12)
         return tv
     }()
     

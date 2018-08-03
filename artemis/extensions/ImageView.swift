@@ -18,7 +18,7 @@ class ProfileImageView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.primaryColor()
+        self.backgroundColor = UIColor.placeHolder()
         self.setupViews()
     }
     
@@ -27,7 +27,6 @@ class ProfileImageView: UIView {
     }
     
     //Components
-    
     var imageView: CircularImage = {
         let imgView = CircularImage(image: UIImage())
         return imgView
@@ -37,10 +36,10 @@ class ProfileImageView: UIView {
     private func setupViews() {
         self.addSubview(imageView)
         self.imageView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(4.5)
-            make.leading.equalToSuperview().offset(4.5)
-            make.trailing.equalToSuperview().offset(-4.5)
-            make.bottom.equalToSuperview().offset(-4.5)
+            make.top.equalToSuperview().offset(2.0)
+            make.leading.equalToSuperview().offset(2.0)
+            make.trailing.equalToSuperview().offset(-2.0)
+            make.bottom.equalToSuperview().offset(-2.0)
         }
     }
 }

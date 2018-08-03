@@ -16,8 +16,9 @@ class TabBarController: UITabBarController {
     }
     
     func setupTabBar(){
-        self.view.backgroundColor = UIColor.primaryColor()
-        self.tabBar.isTranslucent = true
+        //self.view.backgroundColor = UIColor.primaryColor()
+        self.tabBar.backgroundColor = UIColor.white
+        self.tabBar.isTranslucent = false
         self.tabBar.tintColor = UIColor.primaryDarkColor()
         
         /*
@@ -26,16 +27,19 @@ class TabBarController: UITabBarController {
         assistances.tabBarItem.selectedImage = UIImage(named: "ic_assistance_red")
         */
         
-        let layout = UICollectionViewFlowLayout()
-        let loginController = AssistanceMain(collectionViewLayout: layout)
+        let layoutAssistance = UICollectionViewFlowLayout()
+        let loginController = AssistanceController(collectionViewLayout: layoutAssistance)
         
         let assistances = UINavigationController(rootViewController: loginController)
         assistances.tabBarItem.image = UIImage(named: "ic_assistance_gray")
         assistances.tabBarItem.selectedImage = UIImage(named: "ic_assistance_red")
         
-        let absents = Util.getVCRef("KindOfReport", nameFile: "Main") as! ReportController
-        absents.tabBarItem.image = UIImage(named: "ic_absent_gray")
-        absents.tabBarItem.selectedImage = UIImage(named: "ic_absent_red")
+        let reportLayout = UICollectionViewFlowLayout()
+        let reportController = ReportController(collectionViewLayout: reportLayout)
+        
+        let reports = UINavigationController(rootViewController: reportController)
+        reports.tabBarItem.image = UIImage(named: "ic_absent_gray")
+        reports.tabBarItem.selectedImage = UIImage(named: "ic_absent_red")
         
         //let activity = UINavigationController(rootViewController: RegisterActivityController())
         let activity = Util.getVCRef("Activity", nameFile: "Main") as! ActivityController
@@ -51,7 +55,7 @@ class TabBarController: UITabBarController {
         user.tabBarItem.image = UIImage(named: "ic_user_gray")
         user.tabBarItem.selectedImage = UIImage(named: "ic_user_red")
         
-        viewControllers = [assistances, absents, activity, projects, user]
+        viewControllers = [assistances, reports, activity, projects, user]
     }
     
 }

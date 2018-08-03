@@ -15,6 +15,8 @@ class AssistenceModel: Decodable {
     var tms_time_fin_acti : String?
     var cantidad_horas : String?
     var vch_nom_ins_tra : String?
+    var vch_empleado : String?
+    var foto : String?
     
     private enum CodingKeys: String, CodingKey {
         case vch_cod_empleado = "vch_cod_empleado"
@@ -23,6 +25,8 @@ class AssistenceModel: Decodable {
         case tms_time_fin_acti = "tms_time_fin_acti"
         case cantidad_horas = "cantidad_horas"
         case vch_nom_ins_tra = "vch_nom_ins_tra"
+        case vch_empleado = "vch_empleado"
+        case foto = "foto"
     }
     
     required init(from decoder: Decoder) throws {
@@ -33,6 +37,8 @@ class AssistenceModel: Decodable {
         tms_time_fin_acti = try container.decode(String?.self, forKey: .tms_time_fin_acti)
         cantidad_horas = try container.decode(String?.self, forKey: .cantidad_horas)
         vch_nom_ins_tra = try container.decode(String?.self, forKey: .vch_nom_ins_tra)
+        //vch_empleado = try container.decode(String?.self, forKey: .vch_empleado)
+        //foto = try container.decode(String?.self, forKey: .foto)
     }
     
 }
