@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AbsentController: UIViewController, UICollectionViewDelegate{
+class ReportController: UIViewController, UICollectionViewDelegate{
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -60,7 +60,7 @@ class AbsentController: UIViewController, UICollectionViewDelegate{
     
 }
 
-extension AbsentController: UICollectionViewDataSource {
+extension ReportController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return kind_of_report.count

@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import SwiftyUserDefaults
 
-class AssistanceHistoryCell: UICollectionViewCell {
+class AssistanceHistoryCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    var assistances = [AssistenceModel]()
+    private let cellId:String = "AssistanceCell"
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,23 +24,91 @@ class AssistanceHistoryCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let assistanceCollectionView: UICollectionView = {
+    let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor.accentColor()
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        return collectionView
+        
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.backgroundColor = UIColor.clear
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        return cv
     }()
     
     func setupView(){
         print("setupView()")
-        backgroundColor = UIColor.black
+        backgroundColor = UIColor.clear
         
-        addSubview(assistanceCollectionView)
+        addSubview(collectionView)
         
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[v0]-16-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": assistanceCollectionView]))
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": assistanceCollectionView]))
+        collectionView.register(AssistanceCell.self, forCellWithReuseIdentifier: cellId)
+        
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[v0]-0-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": collectionView]))
+        
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": collectionView]))
+        
+        getService()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return assistances.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AssistanceCell
+        cell.item = self.assistances[indexPath.row]
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.frame.width, height: 120)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 8
+    }
+    
+    func getService(){
+        let code = Defaults[.employee_code]!
+        let parameters = ["vch_cod_empleado": code] as [String : Any]
+        
+        ApiService.sharedInstance.getHistoryAssistance(parameters: parameters) { (err, statusCode, json) in
+            
+            print("before error")
+            
+            if let error = err {
+                print("Error: \(error)")
+                return
+            }
+            
+            print("statusCode: \(statusCode)")
+            if let json = json {
+                let content = json["asistencias"]
+                print("asistencias: \(content)")
+                
+                if !content.isEmpty {
+                    do {
+                        print("Activities: \(content)")
+                        self.assistances = try JSONDecoder().decode([AssistenceModel].self, from: content.rawData())
+                        self.collectionView.reloadData()
+                    }catch let error {
+                        print("no se pudo decodificar",error)
+                        self.makeToast("Datos incorrectos")
+                    }
+                } else {
+                    print("Contenido vacio")
+                    self.makeToast("No se ha podido cargar los lugares de trabajo")
+                }
+            }
+        }
     }
     
 }
+
+
+
+
+
+
+

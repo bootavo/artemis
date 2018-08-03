@@ -42,6 +42,16 @@ class RegisterActivityView: UIView{
         datePicker?.datePickerMode = .date
         datePicker?.addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
         
+        let currentDate: Date = Date()
+        var calendar: Calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        calendar.timeZone = TimeZone(identifier: "UTC")!
+        var components: DateComponents = DateComponents()
+        components.calendar = calendar
+        components.year = -18
+        let maxDate: Date = calendar.date(byAdding: components, to: currentDate)!
+        
+        //datePicker?.maximumDate = maxDate//date.addingTimeInterval(0)
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(gestureRecognizer:)))
         self.addGestureRecognizer(tapGesture)
         

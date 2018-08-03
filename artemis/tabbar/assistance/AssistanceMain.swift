@@ -53,7 +53,7 @@ class AssistanceMain: UICollectionViewController, UICollectionViewDelegateFlowLa
     }()
     
     func setupCollectionView(){
-        collectionView?.backgroundColor = UIColor.blue
+        collectionView?.backgroundColor = UIColor.clear
         
         collectionView?.register(RegisterAssistanceCell.self, forCellWithReuseIdentifier: registerCell)
         collectionView?.register(AssistanceHistoryCell.self, forCellWithReuseIdentifier: assistanceHistoryCell)
@@ -122,7 +122,7 @@ class AssistanceMain: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: view.frame.height - 50) //50
+        return CGSize(width: view.frame.width, height: view.frame.height - 100) //50
     }
     
 }

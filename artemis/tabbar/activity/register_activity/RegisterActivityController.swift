@@ -86,7 +86,6 @@ class RegisterActivityController: UIViewController, UIApplicationDelegate{
             let parameters = ["activity": subParameters] as [String : Any]
             
             ApiService.sharedInstance.registerActivity(parameters: parameters) { (err, statusCode, json) in
-                print("before error")
                 
                 if let error = err {
                     print("Error: \(error)")
@@ -96,8 +95,13 @@ class RegisterActivityController: UIViewController, UIApplicationDelegate{
                 print("statusCode: \(statusCode)")
                 if statusCode == 200 {
                     print("registro satisfactorio")
+                    self.dismiss(animated: true, completion: nil)
+                    self.navigationController?.popViewController(animated: true)
+                    self.dismiss(animated: true, completion: nil)
+                    self.view.makeToast("Registro satisfactorio")
                 } else {
                     print("No registro")
+                    self.view.makeToast("Registro satisfactorio")
                 }
             }
         } else {

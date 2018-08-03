@@ -65,7 +65,7 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": registerCollectionView]))
         
-        let rect = CGRect(x: 0, y: 50, width: self.frame.width, height: self.frame.height)
+        let rect = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
         registerView = RegisterAssistanceView(frame: rect)
         registerCollectionView.addSubview(registerView!)
         
@@ -168,6 +168,7 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
         self.registerView.btn_assistance.setTitle(title: "Verificando...", color: UIColor.primaryColor())
         self.registerView.btn_assistance.isEnabled = false
         self.registerView.btn_assistance.backgroundColor = UIColor.primaryDarkColor()
+        self.registerView.btn_assistance.layer.borderColor = UIColor.primaryDarkColor().cgColor
         self.registerView.iv_not_wifi.isHidden = true
         self.registerView.tv_network.isHidden = false
         self.registerView.iv_network.isHidden = false
@@ -315,7 +316,8 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
         if !isFakeLocation {
             print("isFakeLocation")
             self.registerView.btn_assistance.setTitle(title: "ASISTENCIAS COMPLETADAS", color: UIColor.primaryColor())
-            self.registerView.btn_assistance.backgroundColor = UIColor.darkGray
+            self.registerView.btn_assistance.backgroundColor = UIColor.gray
+            self.registerView.btn_assistance.layer.borderColor = UIColor.gray.cgColor
         }
     }
     
@@ -327,6 +329,7 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
         if !isFakeLocation {
             self.registerView.btn_assistance.setTitle(title: "MARCAR ENTRADA", color: UIColor.primaryColor())
             self.registerView.btn_assistance.backgroundColor = UIColor.primaryDarkColor()
+            self.registerView.btn_assistance.layer.borderColor = UIColor.primaryDarkColor().cgColor
         }
     }
     
@@ -338,6 +341,7 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
         if !isFakeLocation {
             self.registerView.btn_assistance.setTitle(title: "MARCAR SALIDA", color: UIColor.primaryColor())
             self.registerView.btn_assistance.backgroundColor = UIColor.primaryDarkColor()
+            self.registerView.btn_assistance.layer.borderColor = UIColor.primaryDarkColor().cgColor
         }
     }
     

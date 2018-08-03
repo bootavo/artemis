@@ -516,10 +516,10 @@
             </objects>
             <point key="canvasLocation" x="669.60000000000002" y="104.7976011994003"/>
         </scene>
-        <!--Absent Controller-->
+        <!--Report Controller-->
         <scene sceneID="wxf-1g-ysC">
             <objects>
-                <viewController storyboardIdentifier="KindOfReport" id="NWU-xr-EpR" customClass="AbsentController" customModule="artemis" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="KindOfReport" id="NWU-xr-EpR" customClass="ReportController" customModule="artemis" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OiR-IL-Txs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

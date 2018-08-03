@@ -15,6 +15,8 @@
 		4E04157F20F6A3EA001080D4 /* RegisterAssistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04157E20F6A3E9001080D4 /* RegisterAssistanceView.swift */; };
 		4E04158120F7E939001080D4 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04158020F7E939001080D4 /* Project.swift */; };
 		4E04158320F7EBBB001080D4 /* ProjectViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04158220F7EBBB001080D4 /* ProjectViewCell.swift */; };
+		4E3D68C12113E48800CA403D /* AssistanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D68C02113E48800CA403D /* AssistanceModel.swift */; };
+		4E3D68C32113EE6C00CA403D /* AssistanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D68C22113EE6C00CA403D /* AssistanceCell.swift */; };
 		4E56053920FD602800C774B1 /* KindOfReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56053820FD602800C774B1 /* KindOfReport.swift */; };
 		4E56053B20FE537500C774B1 /* AssistanceMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56053A20FE537500C774B1 /* AssistanceMain.swift */; };
 		4E56053D20FE581500C774B1 /* RegisterAssistanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56053C20FE581500C774B1 /* RegisterAssistanceCell.swift */; };
@@ -48,7 +50,7 @@
 		875EDA0A20F2EB4E00CC09C3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875EDA0920F2EB4E00CC09C3 /* TabBarController.swift */; };
 		875EDA1220F2EDD600CC09C3 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875EDA1120F2EDD600CC09C3 /* UserController.swift */; };
 		875EDA1420F2EDDF00CC09C3 /* ProjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875EDA1320F2EDDF00CC09C3 /* ProjectController.swift */; };
-		875EDA1820F2EDF600CC09C3 /* AbsentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875EDA1720F2EDF600CC09C3 /* AbsentController.swift */; };
+		875EDA1820F2EDF600CC09C3 /* ReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875EDA1720F2EDF600CC09C3 /* ReportController.swift */; };
 		8770238120EFBB4F00C5B07F /* RegisterActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8770238020EFBB4F00C5B07F /* RegisterActivityController.swift */; };
 		8770238320EFC3C800C5B07F /* ElementsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8770238220EFC3C800C5B07F /* ElementsHelper.swift */; };
 		87BFC47320F281D400B24E19 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BFC47220F281D400B24E19 /* Constants.swift */; };
@@ -71,6 +73,8 @@
 		4E04157E20F6A3E9001080D4 /* RegisterAssistanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAssistanceView.swift; sourceTree = "<group>"; };
 		4E04158020F7E939001080D4 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		4E04158220F7EBBB001080D4 /* ProjectViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewCell.swift; sourceTree = "<group>"; };
+		4E3D68C02113E48800CA403D /* AssistanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistanceModel.swift; sourceTree = "<group>"; };
+		4E3D68C22113EE6C00CA403D /* AssistanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistanceCell.swift; sourceTree = "<group>"; };
 		4E56053820FD602800C774B1 /* KindOfReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KindOfReport.swift; sourceTree = "<group>"; };
 		4E56053A20FE537500C774B1 /* AssistanceMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistanceMain.swift; sourceTree = "<group>"; };
 		4E56053C20FE581500C774B1 /* RegisterAssistanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAssistanceCell.swift; sourceTree = "<group>"; };
@@ -106,7 +110,7 @@
 		875EDA0920F2EB4E00CC09C3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		875EDA1120F2EDD600CC09C3 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		875EDA1320F2EDDF00CC09C3 /* ProjectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectController.swift; sourceTree = "<group>"; };
-		875EDA1720F2EDF600CC09C3 /* AbsentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbsentController.swift; sourceTree = "<group>"; };
+		875EDA1720F2EDF600CC09C3 /* ReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportController.swift; sourceTree = "<group>"; };
 		8770238020EFBB4F00C5B07F /* RegisterActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterActivityController.swift; sourceTree = "<group>"; };
 		8770238220EFC3C800C5B07F /* ElementsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsHelper.swift; sourceTree = "<group>"; };
 		87BFC47220F281D400B24E19 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -163,6 +167,7 @@
 				4EFE73DB210F6E1A00A5C9C7 /* ResponseTask.swift */,
 				4EFE73DD2110FB4B00A5C9C7 /* ResponseKindOfActivity.swift */,
 				4EB5CD362113728B00E47882 /* ResponseActivity.swift */,
+				4E3D68C02113E48800CA403D /* AssistanceModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -228,11 +233,11 @@
 			children = (
 				4E04156F20F4064A001080D4 /* CustomCell.swift */,
 				8713E2D020EE7B5B004C6167 /* Extensions.swift */,
+				8730DA4120F9827D009691E0 /* ProgressDialog.swift */,
 				872985FD20F2B96200079961 /* Button.swift */,
 				872985FA20F2B68300079961 /* TextField.swift */,
 				4E04157120F408F0001080D4 /* ImageView.swift */,
 				4E04157720F52BDA001080D4 /* CustomCellRed.swift */,
-				8730DA4120F9827D009691E0 /* ProgressDialog.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -250,7 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				875EDA0B20F2EBCF00CC09C3 /* assistance */,
-				875EDA0C20F2EDA000CC09C3 /* absent */,
+				875EDA0C20F2EDA000CC09C3 /* report */,
 				875EDA0D20F2EDA800CC09C3 /* activity */,
 				875EDA0E20F2EDAE00CC09C3 /* project */,
 				875EDA0F20F2EDB400CC09C3 /* user */,
@@ -268,17 +273,18 @@
 				4E04157E20F6A3E9001080D4 /* RegisterAssistanceView.swift */,
 				4EC2F7E520FD0EC3002BC8DF /* AssistanceHistoryCell.swift */,
 				4E56053C20FE581500C774B1 /* RegisterAssistanceCell.swift */,
+				4E3D68C22113EE6C00CA403D /* AssistanceCell.swift */,
 			);
 			path = assistance;
 			sourceTree = "<group>";
 		};
-		875EDA0C20F2EDA000CC09C3 /* absent */ = {
+		875EDA0C20F2EDA000CC09C3 /* report */ = {
 			isa = PBXGroup;
 			children = (
-				875EDA1720F2EDF600CC09C3 /* AbsentController.swift */,
+				875EDA1720F2EDF600CC09C3 /* ReportController.swift */,
 				4EC2F7E920FD5EAF002BC8DF /* ReportCell.swift */,
 			);
-			path = absent;
+			path = report;
 			sourceTree = "<group>";
 		};
 		875EDA0D20F2EDA800CC09C3 /* activity */ = {
@@ -479,7 +485,7 @@
 				4E04158120F7E939001080D4 /* Project.swift in Sources */,
 				8713E2AD20EE79AE004C6167 /* LoginController.swift in Sources */,
 				872C0F0D20F9458700709522 /* UserModel.swift in Sources */,
-				875EDA1820F2EDF600CC09C3 /* AbsentController.swift in Sources */,
+				875EDA1820F2EDF600CC09C3 /* ReportController.swift in Sources */,
 				4E04158320F7EBBB001080D4 /* ProjectViewCell.swift in Sources */,
 				4E56053920FD602800C774B1 /* KindOfReport.swift in Sources */,
 				87C0D92420F919D600E04E66 /* ActivityViewCell.swift in Sources */,
@@ -497,10 +503,12 @@
 				875EDA0A20F2EB4E00CC09C3 /* TabBarController.swift in Sources */,
 				875EDA1420F2EDDF00CC09C3 /* ProjectController.swift in Sources */,
 				4E56053F20FE811800C774B1 /* DeviceHelper.swift in Sources */,
+				4E3D68C32113EE6C00CA403D /* AssistanceCell.swift in Sources */,
 				4E56053D20FE581500C774B1 /* RegisterAssistanceCell.swift in Sources */,
 				872985FB20F2B68300079961 /* TextField.swift in Sources */,
 				4EC2F7E820FD287C002BC8DF /* ViewCell.swift in Sources */,
 				4EC2F7EA20FD5EAF002BC8DF /* ReportCell.swift in Sources */,
+				4E3D68C12113E48800CA403D /* AssistanceModel.swift in Sources */,
 				8770238120EFBB4F00C5B07F /* RegisterActivityController.swift in Sources */,
 				4E04157820F52BDA001080D4 /* CustomCellRed.swift in Sources */,
 				87BFC47320F281D400B24E19 /* Constants.swift in Sources */,
