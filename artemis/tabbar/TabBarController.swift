@@ -41,21 +41,31 @@ class TabBarController: UITabBarController {
         reports.tabBarItem.image = UIImage(named: "ic_absent_gray")
         reports.tabBarItem.selectedImage = UIImage(named: "ic_absent_red")
         
-        //let activity = UINavigationController(rootViewController: RegisterActivityController())
-        let activity = Util.getVCRef("Activity", nameFile: "Main") as! ActivityController
-        activity.tabBarItem.image = UIImage(named: "ic_activity_gray")
-        activity.tabBarItem.selectedImage = UIImage(named: "ic_activity_red")
+        //let activity = Util.getVCRef("Activity", nameFile: "Main") as! ActivityController
+        //activity.tabBarItem.image = UIImage(named: "ic_activity_gray")
+        //activity.tabBarItem.selectedImage = UIImage(named: "ic_activity_red")
+        
+        let activityLayout = UICollectionViewFlowLayout()
+        let activityController = ActivityController2(collectionViewLayout: activityLayout)
+        
+        let activity2 = UINavigationController(rootViewController: activityController)
+        activity2.tabBarItem.image = UIImage(named: "ic_activity_gray")
+        activity2.tabBarItem.selectedImage = UIImage(named: "ic_activity_red")
         
         //let projects = UINavigationController(rootViewController: ProjectController())
-        let projects = Util.getVCRef("Project", nameFile: "Main") as! ProjectController
-        projects.tabBarItem.image = UIImage(named: "ic_project_gray")
-        projects.tabBarItem.selectedImage = UIImage(named: "ic_project_red")
+        //let projects = Util.getVCRef("Project", nameFile: "Main") as! ProjectController
+        let projectLayout = UICollectionViewFlowLayout()
+        let projectController = ProjectController2(collectionViewLayout: projectLayout)
+    
+        let project2 = UINavigationController(rootViewController: projectController)
+        project2.tabBarItem.image = UIImage(named: "ic_project_gray")
+        project2.tabBarItem.selectedImage = UIImage(named: "ic_project_red")
         
         let user = UINavigationController(rootViewController: UserController())
         user.tabBarItem.image = UIImage(named: "ic_user_gray")
         user.tabBarItem.selectedImage = UIImage(named: "ic_user_red")
         
-        viewControllers = [assistances, reports, activity, projects, user]
+        viewControllers = [assistances, reports, activity2, project2, user]
     }
     
 }

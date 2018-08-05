@@ -31,11 +31,6 @@ class AbsentCell: UICollectionViewCell{
         
     }
     
-    func getImageFromUrl(photo: String){
-        let url = URL(string: photo)
-        self.iv_picture.imageView.sd_setImage(with: url, completed: nil)
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -83,6 +78,11 @@ class AbsentCell: UICollectionViewCell{
         return image
     }()
     
+    func getImageFromUrl(photo: String){
+        let url = URL(string: photo)
+        self.iv_picture.imageView.sd_setImage(with: url, completed: nil)
+    }
+    
     func setupViews(){
         backgroundColor = UIColor.clear
         
@@ -114,7 +114,7 @@ class AbsentCell: UICollectionViewCell{
         addSubview(v_separator)
         v_separator.snp.makeConstraints { (make) -> Void in
             make.top.equalToSuperview().offset(99)
-            make.width.equalToSuperview().inset(8)
+            make.width.equalToSuperview().inset(16)
             make.height.equalTo(1)
             make.centerX.equalToSuperview()
         }

@@ -13,11 +13,13 @@ class ListLatersCell: UICollectionViewCell, UICollectionViewDelegate, UICollecti
     
     var employees = [EmployeeLater]()
     private let cellId:String = "latersCell"
+    private let refreshControl = UIRefreshControl()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         print("init()")
         setupView()
+        setupRefreshControl()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -91,16 +93,36 @@ class ListLatersCell: UICollectionViewCell, UICollectionViewDelegate, UICollecti
                     do {
                         self.employees = try JSONDecoder().decode([EmployeeLater].self, from: content.rawData())
                         self.collectionView.reloadData()
+                        self.stopRefreshControl()
                     }catch let error {
                         print("no se pudo decodificar",error)
                         self.makeToast("Datos incorrectos")
+                        self.stopRefreshControl()
                     }
                 } else {
                     print("Contenido vacio")
                     self.makeToast("No se ha podido cargar la lista de empleados que llegaro tarde")
+                    self.stopRefreshControl()
                 }
             }
         }
+    }
+    
+    func setupRefreshControl(){
+        collectionView.addSubview(refreshControl)
+        refreshControl.addTarget(self, action: #selector(refreshWeatherData(_:)), for: .valueChanged)
+        refreshControl.tintColor = UIColor.primaryDarkColor()
+        
+        let attributes = [NSAttributedStringKey.foregroundColor: UIColor.primaryDarkColor()]
+        refreshControl.attributedTitle = NSAttributedString(string: "Cargando ...", attributes: attributes)
+    }
+    
+    func stopRefreshControl(){
+        self.refreshControl.endRefreshing()
+    }
+    
+    @objc private func refreshWeatherData(_ sender: Any) {
+        getService()
     }
     
 }

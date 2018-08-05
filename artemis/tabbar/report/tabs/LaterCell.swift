@@ -39,11 +39,6 @@ class LaterCell: UICollectionViewCell{
         
     }
     
-    func getImageFromUrl(photo: String){
-        let url = URL(string: photo)
-        self.iv_picture.imageView.sd_setImage(with: url, completed: nil)
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -53,9 +48,15 @@ class LaterCell: UICollectionViewCell{
         fatalError("init(coder:) has been not implemented")
     }
     
+    lazy var iv_picture: ProfileImageView = {
+        let imgView = ProfileImageView()
+        return imgView
+    }()
+    
     let tv_name_employee: UITextView = {
         let text = UITextView()
-        text.font = UIFont(name: "NOMBRE", size: 14)
+        text.font = UIFont.systemFont(ofSize: 14)
+        text.contentInset = UIEdgeInsetsMake(-7, 0, 0, 0)
         text.text = "NOMBRE"
         text.textColor = UIColor.black
         text.textAlignment = .left
@@ -65,7 +66,8 @@ class LaterCell: UICollectionViewCell{
     
     let tv_cod_employee: UITextView = {
         let text = UITextView()
-        text.font = UIFont(name: "VF", size: 14)
+        text.font = UIFont.systemFont(ofSize: 12)
+        text.contentInset = UIEdgeInsetsMake(-7, 0, 0, 0)
         text.text = "VF   "
         text.textColor = UIColor.darkGray
         text.textAlignment = .left
@@ -75,7 +77,8 @@ class LaterCell: UICollectionViewCell{
     
     let tv_late: UITextView = {
         let text = UITextView()
-        text.font = UIFont(name: "VF", size: 14)
+        text.font = UIFont.systemFont(ofSize: 12)
+        text.contentInset = UIEdgeInsetsMake(-7, 0, 0, 0)
         text.text = "VF   "
         text.textColor = UIColor.darkGray
         text.textAlignment = .left
@@ -85,7 +88,8 @@ class LaterCell: UICollectionViewCell{
     
     let tv_assistance_registered: UITextView = {
         let text = UITextView()
-        text.font = UIFont(name: "VF", size: 14)
+        text.font = UIFont.systemFont(ofSize: 12)
+        text.contentInset = UIEdgeInsetsMake(-7, 0, 0, 0)
         text.text = "VF   "
         text.textColor = UIColor.darkGray
         text.textAlignment = .left
@@ -99,11 +103,6 @@ class LaterCell: UICollectionViewCell{
         return view
     }()
     
-    lazy var iv_picture: ProfileImageView = {
-        let imgView = ProfileImageView()
-        return imgView
-    }()
-    
     let iv_icon: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "ic_delay")
@@ -111,12 +110,25 @@ class LaterCell: UICollectionViewCell{
         return image
     }()
     
+    func getImageFromUrl(photo: String){
+        let url = URL(string: photo)
+        self.iv_picture.imageView.sd_setImage(with: url, completed: nil)
+    }
+    
     func setupViews(){
         backgroundColor = UIColor.clear
         
+        addSubview(iv_picture)
+        iv_picture.snp.makeConstraints { (make) -> Void in
+            make.left.equalToSuperview().offset(15)
+            make.width.equalTo(70)
+            make.height.equalTo(70)
+            make.centerY.equalToSuperview()
+        }
+        
         addSubview(tv_name_employee)
         tv_name_employee.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(10)
+            make.top.equalTo(15)
             make.left.equalToSuperview().offset(90)
             make.width.equalTo(300)
             make.height.equalTo(20)
@@ -127,39 +139,30 @@ class LaterCell: UICollectionViewCell{
             make.top.bottom.equalTo(tv_name_employee).offset(20)
             make.left.equalToSuperview().offset(90)
             make.width.equalTo(300)
-            make.height.equalTo(20)
+            make.height.equalTo(15)
         }
         
         addSubview(tv_assistance_registered)
         tv_assistance_registered.snp.makeConstraints { (make) in
-            make.top.bottom.equalTo(tv_cod_employee).offset(20)
+            make.top.bottom.equalTo(tv_cod_employee).offset(15)
             make.left.equalToSuperview().offset(90)
             make.width.equalTo(300)
-            make.height.equalTo(20)
+            make.height.equalTo(15)
         }
         
         addSubview(tv_late)
         tv_late.snp.makeConstraints { (make) in
-            make.top.bottom.equalTo(tv_assistance_registered).offset(20)
+            make.top.bottom.equalTo(tv_assistance_registered).offset(15)
             make.left.equalToSuperview().offset(90)
             make.width.equalTo(300)
-            make.height.equalTo(20)
-        }
-        
-        addSubview(iv_picture)
-        iv_picture.snp.makeConstraints { (make) -> Void in
-            make.left.equalToSuperview().offset(15)
-            make.top.equalToSuperview().offset(15)
-            make.width.equalTo(70)
-            make.height.equalTo(70)
-            //make.centerY.equalToSuperview()
+            make.height.equalTo(15)
         }
         
         addSubview(v_separator)
         v_separator.snp.makeConstraints { (make) -> Void in
             make.centerY.equalToSuperview()
             make.top.equalToSuperview().offset(99)
-            make.width.equalToSuperview().inset(8)
+            make.width.equalToSuperview().inset(16)
             make.height.equalTo(1)
             make.centerX.equalToSuperview()
         }

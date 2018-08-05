@@ -171,7 +171,7 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <viewLayoutGuide key="safeArea" id="rCG-CJ-Kce"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="XXb-gZ-hDU" id="GHr-wb-rPy"/>
@@ -239,15 +239,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ggT-VE-B0p" firstAttribute="bottom" secondItem="b5g-c9-5Mx" secondAttribute="bottom" id="93x-gU-0p6"/>
+                            <constraint firstItem="9C8-tQ-4fE" firstAttribute="bottom" secondItem="b5g-c9-5Mx" secondAttribute="bottom" id="93x-gU-0p6"/>
                             <constraint firstItem="kom-Ph-dan" firstAttribute="width" secondItem="Ipi-XI-OMz" secondAttribute="width" constant="-100" id="JS8-gI-xri"/>
-                            <constraint firstItem="b5g-c9-5Mx" firstAttribute="top" secondItem="ggT-VE-B0p" secondAttribute="top" id="JXJ-gL-Qob"/>
-                            <constraint firstItem="kom-Ph-dan" firstAttribute="centerX" secondItem="Ipi-XI-OMz" secondAttribute="centerX" id="dTE-CD-UEY"/>
-                            <constraint firstItem="ggT-VE-B0p" firstAttribute="trailing" secondItem="b5g-c9-5Mx" secondAttribute="trailing" id="gRf-13-oSo"/>
-                            <constraint firstItem="b5g-c9-5Mx" firstAttribute="leading" secondItem="ggT-VE-B0p" secondAttribute="leading" id="hGh-1V-D7e"/>
+                            <constraint firstItem="b5g-c9-5Mx" firstAttribute="top" secondItem="9C8-tQ-4fE" secondAttribute="top" id="JXJ-gL-Qob"/>
+                            <constraint firstItem="kom-Ph-dan" firstAttribute="centerX" secondItem="9C8-tQ-4fE" secondAttribute="centerX" id="dTE-CD-UEY"/>
+                            <constraint firstItem="9C8-tQ-4fE" firstAttribute="trailing" secondItem="b5g-c9-5Mx" secondAttribute="trailing" id="gRf-13-oSo"/>
+                            <constraint firstItem="b5g-c9-5Mx" firstAttribute="leading" secondItem="9C8-tQ-4fE" secondAttribute="leading" id="hGh-1V-D7e"/>
                             <constraint firstItem="kom-Ph-dan" firstAttribute="centerY" secondItem="Ipi-XI-OMz" secondAttribute="centerY" constant="-17.5" id="lfr-fT-Re0"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="ggT-VE-B0p"/>
+                        <viewLayoutGuide key="safeArea" id="9C8-tQ-4fE"/>
                     </view>
                     <connections>
                         <outlet property="pickerView" destination="Zen-Ub-lBY" id="H1g-0k-StM"/>
@@ -316,14 +316,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="SqH-94-Loa" firstAttribute="width" secondItem="zYR-Nb-Jbf" secondAttribute="width" constant="-60" id="0NT-je-vfD"/>
-                            <constraint firstItem="SqH-94-Loa" firstAttribute="centerX" secondItem="zYR-Nb-Jbf" secondAttribute="centerX" id="5lu-CR-pEy"/>
-                            <constraint firstItem="FrJ-Nl-0R1" firstAttribute="top" secondItem="LHO-sp-mpF" secondAttribute="top" id="BLo-Or-UGP"/>
-                            <constraint firstItem="LHO-sp-mpF" firstAttribute="trailing" secondItem="FrJ-Nl-0R1" secondAttribute="trailing" id="DIn-Yo-zzR"/>
+                            <constraint firstItem="SqH-94-Loa" firstAttribute="centerX" secondItem="38b-ci-lpW" secondAttribute="centerX" id="5lu-CR-pEy"/>
+                            <constraint firstItem="FrJ-Nl-0R1" firstAttribute="top" secondItem="38b-ci-lpW" secondAttribute="top" id="BLo-Or-UGP"/>
+                            <constraint firstItem="38b-ci-lpW" firstAttribute="trailing" secondItem="FrJ-Nl-0R1" secondAttribute="trailing" id="DIn-Yo-zzR"/>
                             <constraint firstItem="SqH-94-Loa" firstAttribute="centerY" secondItem="zYR-Nb-Jbf" secondAttribute="centerY" constant="-17.5" id="MT9-kb-5mC"/>
-                            <constraint firstItem="FrJ-Nl-0R1" firstAttribute="leading" secondItem="LHO-sp-mpF" secondAttribute="leading" id="cy2-DT-UPX"/>
-                            <constraint firstItem="LHO-sp-mpF" firstAttribute="bottom" secondItem="FrJ-Nl-0R1" secondAttribute="bottom" id="sIM-c6-qUW"/>
+                            <constraint firstItem="FrJ-Nl-0R1" firstAttribute="leading" secondItem="38b-ci-lpW" secondAttribute="leading" id="cy2-DT-UPX"/>
+                            <constraint firstItem="38b-ci-lpW" firstAttribute="bottom" secondItem="FrJ-Nl-0R1" secondAttribute="bottom" id="sIM-c6-qUW"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="LHO-sp-mpF"/>
+                        <viewLayoutGuide key="safeArea" id="38b-ci-lpW"/>
                     </view>
                     <connections>
                         <outlet property="pickerView" destination="RbO-UV-g7g" id="VZS-RQ-ZqG"/>
@@ -341,10 +341,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lKv-dF-tPO">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lKv-dF-tPO">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <viewLayoutGuide key="safeArea" id="drw-QH-yvR"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="n4f-fo-IYV">
                                     <size key="itemSize" width="374" height="89"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -414,7 +415,7 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="hMu-z0-9WK"/>
+                        <viewLayoutGuide key="safeArea" id="sLh-ET-GH4"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="lKv-dF-tPO" id="2BW-kw-lCJ"/>
@@ -506,7 +507,7 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="5bS-FJ-ug7"/>
+                        <viewLayoutGuide key="safeArea" id="YQG-Fv-oAW"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="5fW-PU-owD" id="4YH-8E-jJF"/>
@@ -574,15 +575,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="TfY-qM-W9H" firstAttribute="leading" secondItem="FD3-8O-5Wb" secondAttribute="leading" id="BKV-bz-nDQ"/>
-                            <constraint firstItem="FD3-8O-5Wb" firstAttribute="trailing" secondItem="TfY-qM-W9H" secondAttribute="trailing" id="IX3-Cp-RD3"/>
-                            <constraint firstItem="9SC-LJ-dK9" firstAttribute="centerX" secondItem="Yes-Cc-JiY" secondAttribute="centerX" id="IrM-Um-VSA"/>
+                            <constraint firstItem="TfY-qM-W9H" firstAttribute="leading" secondItem="umI-Ef-0Dy" secondAttribute="leading" id="BKV-bz-nDQ"/>
+                            <constraint firstItem="umI-Ef-0Dy" firstAttribute="trailing" secondItem="TfY-qM-W9H" secondAttribute="trailing" id="IX3-Cp-RD3"/>
+                            <constraint firstItem="9SC-LJ-dK9" firstAttribute="centerX" secondItem="umI-Ef-0Dy" secondAttribute="centerX" id="IrM-Um-VSA"/>
                             <constraint firstItem="9SC-LJ-dK9" firstAttribute="width" secondItem="Yes-Cc-JiY" secondAttribute="width" constant="-60" id="SiU-Qc-iYg"/>
-                            <constraint firstItem="FD3-8O-5Wb" firstAttribute="bottom" secondItem="TfY-qM-W9H" secondAttribute="bottom" id="Uet-i6-Cnq"/>
-                            <constraint firstItem="TfY-qM-W9H" firstAttribute="top" secondItem="FD3-8O-5Wb" secondAttribute="top" id="YOf-3O-SYY"/>
+                            <constraint firstItem="umI-Ef-0Dy" firstAttribute="bottom" secondItem="TfY-qM-W9H" secondAttribute="bottom" id="Uet-i6-Cnq"/>
+                            <constraint firstItem="TfY-qM-W9H" firstAttribute="top" secondItem="umI-Ef-0Dy" secondAttribute="top" id="YOf-3O-SYY"/>
                             <constraint firstItem="9SC-LJ-dK9" firstAttribute="centerY" secondItem="Yes-Cc-JiY" secondAttribute="centerY" constant="-17.5" id="zPR-Ap-LyI"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="FD3-8O-5Wb"/>
+                        <viewLayoutGuide key="safeArea" id="umI-Ef-0Dy"/>
                     </view>
                     <connections>
                         <outlet property="pickerView" destination="Wba-Ay-4gy" id="zeG-ft-BZf"/>
@@ -650,15 +651,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="QXz-b0-7Yp" firstAttribute="centerX" secondItem="7NX-zL-CSo" secondAttribute="centerX" id="DPe-3B-fKu"/>
-                            <constraint firstItem="x25-e5-1Gr" firstAttribute="bottom" secondItem="5fc-xQ-xTe" secondAttribute="bottom" id="FlF-My-bzF"/>
+                            <constraint firstItem="QXz-b0-7Yp" firstAttribute="centerX" secondItem="dHo-wm-WRO" secondAttribute="centerX" id="DPe-3B-fKu"/>
+                            <constraint firstItem="dHo-wm-WRO" firstAttribute="bottom" secondItem="5fc-xQ-xTe" secondAttribute="bottom" id="FlF-My-bzF"/>
                             <constraint firstItem="QXz-b0-7Yp" firstAttribute="width" secondItem="7NX-zL-CSo" secondAttribute="width" constant="-100" id="Plf-up-ynp"/>
-                            <constraint firstItem="5fc-xQ-xTe" firstAttribute="leading" secondItem="x25-e5-1Gr" secondAttribute="leading" id="YEH-Dk-ugc"/>
-                            <constraint firstItem="x25-e5-1Gr" firstAttribute="trailing" secondItem="5fc-xQ-xTe" secondAttribute="trailing" id="bzn-ZK-JTh"/>
-                            <constraint firstItem="5fc-xQ-xTe" firstAttribute="top" secondItem="x25-e5-1Gr" secondAttribute="top" id="hbJ-L5-BMI"/>
+                            <constraint firstItem="5fc-xQ-xTe" firstAttribute="leading" secondItem="dHo-wm-WRO" secondAttribute="leading" id="YEH-Dk-ugc"/>
+                            <constraint firstItem="dHo-wm-WRO" firstAttribute="trailing" secondItem="5fc-xQ-xTe" secondAttribute="trailing" id="bzn-ZK-JTh"/>
+                            <constraint firstItem="5fc-xQ-xTe" firstAttribute="top" secondItem="dHo-wm-WRO" secondAttribute="top" id="hbJ-L5-BMI"/>
                             <constraint firstItem="QXz-b0-7Yp" firstAttribute="centerY" secondItem="7NX-zL-CSo" secondAttribute="centerY" constant="-17.5" id="iGo-wZ-vIz"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="x25-e5-1Gr"/>
+                        <viewLayoutGuide key="safeArea" id="dHo-wm-WRO"/>
                     </view>
                     <connections>
                         <outlet property="pickerView" destination="Kxd-Gn-yML" id="2kr-ck-KVe"/>

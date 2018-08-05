@@ -56,7 +56,7 @@ class CircularImage: UIImageView {
         self.contentMode = UIViewContentMode.scaleAspectFill
         self.clipsToBounds = true
         self.layer.masksToBounds = true
-        self.backgroundColor = UIColor.placeHolder()
+        self.backgroundColor = UIColor.white
     }
     
     required init?(coder aDecoder: NSCoder) {

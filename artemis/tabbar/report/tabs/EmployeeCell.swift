@@ -25,15 +25,12 @@ class EmployeeCell: UICollectionViewCell{
             
             if let foto = item?.foto {
                 getImageFromUrl(photo: foto)
+            }else {
+                self.iv_picture.imageView.image = UIImage(named: "ic_user_red")
             }
             
         }
         
-    }
-    
-    func getImageFromUrl(photo: String){
-        let url = URL(string: photo)
-        self.iv_picture.imageView.sd_setImage(with: url, completed: nil)
     }
     
     override init(frame: CGRect) {
@@ -47,7 +44,7 @@ class EmployeeCell: UICollectionViewCell{
     
     let tv_name_employee: UITextView = {
         let text = UITextView()
-        text.font = UIFont(name: "NOMBRE", size: 14)
+        text.font = UIFont.systemFont(ofSize: 14)
         text.text = "NOMBRE"
         text.textColor = UIColor.black
         text.textAlignment = .left
@@ -57,7 +54,7 @@ class EmployeeCell: UICollectionViewCell{
     
     let tv_cod_employee: UITextView = {
         let text = UITextView()
-        text.font = UIFont(name: "VF", size: 14)
+        text.font = UIFont.systemFont(ofSize: 12)
         text.text = "VF   "
         text.textColor = UIColor.darkGray
         text.textAlignment = .left
@@ -76,8 +73,21 @@ class EmployeeCell: UICollectionViewCell{
         return imgView
     }()
     
+    func getImageFromUrl(photo: String){
+        let url = URL(string: photo)
+        self.iv_picture.imageView.sd_setImage(with: url, completed: nil)
+    }
+    
     func setupViews(){
         backgroundColor = UIColor.clear
+        
+        addSubview(iv_picture)
+        iv_picture.snp.makeConstraints { (make) -> Void in
+            make.left.equalToSuperview().offset(15)
+            make.width.equalTo(70)
+            make.height.equalTo(70)
+            make.centerY.equalToSuperview()
+        }
         
         addSubview(tv_name_employee)
         tv_name_employee.snp.makeConstraints { (make) -> Void in
@@ -95,18 +105,10 @@ class EmployeeCell: UICollectionViewCell{
             make.height.equalTo(20)
         }
         
-        addSubview(iv_picture)
-        iv_picture.snp.makeConstraints { (make) -> Void in
-            make.left.equalToSuperview().offset(15)
-            make.width.equalTo(70)
-            make.height.equalTo(70)
-            make.centerY.equalToSuperview()
-        }
-        
         addSubview(v_separator)
         v_separator.snp.makeConstraints { (make) -> Void in
             make.bottom.equalToSuperview()
-            make.width.equalToSuperview().inset(8)
+            make.width.equalToSuperview().inset(16)
             make.height.equalTo(1)
             make.centerX.equalToSuperview()
         }

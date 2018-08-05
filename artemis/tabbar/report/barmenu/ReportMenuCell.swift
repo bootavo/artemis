@@ -25,6 +25,7 @@ class ReportMenuCell: BaseCell {
         tv.highlightedTextColor = UIColor.rgb(red: 91, green: 14, blue: 13)
         tv.backgroundColor = UIColor.white
         tv.font = UIFont.systemFont(ofSize: 12)
+        tv.textAlignment = .center
         return tv
     }()
     
