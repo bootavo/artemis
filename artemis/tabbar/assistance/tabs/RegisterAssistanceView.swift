@@ -95,7 +95,7 @@ class RegisterAssistanceView: UIView {
             (make) -> Void in
             make.width.equalTo(300)
             make.height.equalTo(30)
-            make.topMargin.equalTo(370)
+            make.topMargin.equalTo(320)
             make.centerX.equalToSuperview()
         }
         
@@ -104,7 +104,7 @@ class RegisterAssistanceView: UIView {
             (make) -> Void in
             make.width.equalTo(250)
             make.height.equalTo(250)
-            make.topMargin.equalTo(100)
+            make.topMargin.equalTo(50)
             make.centerX.equalToSuperview()
         }
         

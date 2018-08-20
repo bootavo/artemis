@@ -14,4 +14,12 @@ class Constants {
     static let DEVICE_SMARTPHONE:String = "20"
     static let DEVICE_IPAD:String = "20"
     
+    static let MODULE_ASSISTANCE = "ASISTENCIA"
+    static let MODULE_REPORT = "REPORTE DE ASISTENCIA"
+    static let MODULE_ACTIVITY = "ACTIVIDADES"
+    static let MODULE_PROJECT = "PROYECTOS"
+    static let MODULE_USER = "USUARIO"
+    
+    static let APP_MODULES = [MODULE_ASSISTANCE, MODULE_REPORT, MODULE_ACTIVITY, MODULE_PROJECT, MODULE_USER]
+    
 }

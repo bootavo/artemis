@@ -80,13 +80,10 @@ class ApiService: NSObject {
             "Cache-Control": "no-cache"
         ]
         
-        print("parameters: \(parameters)")
-        
         request(url: url, httpMethod: .post, headers: headers, parameters: parameters, encoding: JSONEncoding.default, completion: completion)
     }
     
     func getKindOfActivities(parameters: Parameters,_ completion: @escaping (Error?,Int,JSON?) -> () ) {
-        print("Parameters: \(parameters)")
         
         var url = "https://wf1tocu2xl.execute-api.us-east-1.amazonaws.com/dev/artemis/tasks"
         let headers = [
@@ -95,7 +92,7 @@ class ApiService: NSObject {
             "Authorization": "Basic YXJ0ZW1pczpyM2JWVTFsZDNyTDRi",
             "Cache-Control": "no-cache"
         ]
-        print("Headers: \(headers)")
+        
         request(url: url, httpMethod: .get, headers: headers, parameters: parameters, encoding: URLEncoding.default, completion: completion)
     }
     
@@ -184,11 +181,7 @@ class ApiService: NSObject {
                  encoding: ParameterEncoding,
                  completion: @escaping (Error?,Int,JSON?) -> ()) {
         
-        print("parameters \(parameters)")
-        
         Alamofire.request(url, method: httpMethod, parameters: parameters, encoding: encoding, headers: headers).responseString { (dataResponse) in
-            
-            print("dataResponse \(dataResponse)")
             
             if let error = dataResponse.error {
                 DispatchQueue.main.async(execute: {

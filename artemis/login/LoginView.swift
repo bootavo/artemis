@@ -49,7 +49,7 @@ class LoginView: UIView, UITextFieldDelegate{
         addSubview(tf_username)
         tf_username.snp.makeConstraints{
             (make) -> Void in
-            make.topMargin.equalTo(400)
+            make.topMargin.equalTo(350)
             make.width.equalToSuperview().offset(offSet)
             make.centerX.equalToSuperview()
         }
@@ -119,12 +119,16 @@ class LoginView: UIView, UITextFieldDelegate{
     
     let tf_username: UITextField = {
         let tf = UITextField(placeholder: "Usuario")
+        tf.font = UIFont.systemFont(ofSize: 14)
         tf.keyboardType = UIKeyboardType.emailAddress
+        tf.textColor = UIColor.black
         return tf
     }()
     
     let tf_password: UITextField = {
         let tf = UITextField(placeholder: "Contraseña")
+        tf.font = UIFont.systemFont(ofSize: 14)
+        tf.textColor = UIColor.black
         tf.isSecureTextEntry = true
         return tf
     }()

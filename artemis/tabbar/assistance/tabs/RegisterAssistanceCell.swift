@@ -297,14 +297,15 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
     }
     
     func updateUserInterface(cod: Int){
+        print("------------------- updateUserInterface ------------------")
         print("cod user interface to update= \(cod)")
-        if cod == -1 {
+        if cod == -1 { //Registro completado
             congrats()
         }else if cod == 0 {
-            condition = true
+            condition = true //Marcar entrada
             markEntry()
         }else {
-            checkOut()
+            checkOut() //Marcar salida
         }
     }
     
@@ -413,8 +414,20 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
         return status
     }
     
+    func locale(){
+        locationManager.startUpdatingLocation()
+        guard let locValue: CLLocationCoordinate2D = locationManager.location?.coordinate else {
+            return
+        }
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        lat = locValue.latitude
+        lng = locValue.longitude
+    }
+    
     func calculateMetters() -> Double{
         print("-----> calculateMetters()")
+        
+        configLocationManager()
         let current_coordinate = CLLocation(latitude: lat!, longitude: lng!)
         let work_coordinate = CLLocation(latitude: lat_work, longitude: lng_work)
         
@@ -563,8 +576,10 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
             if verifySSIDWifi() { //Check red authorized
                 if(verifyCurrentLocation() && verifyWorkLocation() && verifDistanceToWorkStation()){
                     if condition {
+                        print("serviceMark registerEntry")
                         serviceRegisterEntry()
                     }else {
+                        print("serviceMark registerCheckOut")
                         serviceRegisterCheckOut()
                     }
                     print("---------> go to post service")
@@ -639,7 +654,7 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
                     self.condition = false
                     print("success")
                     self.makeToast("Registro satisfactorio")
-                    self.checkOut()
+                    self.updateUserInterface(cod: 2)
                 }else {
                     print("no se ha podido registrar, Intentelo nuevamente")
                     self.makeToast("No se ha podido registrar, Intentlo nuevamente")

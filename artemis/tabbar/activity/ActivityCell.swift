@@ -1,5 +1,5 @@
 //
-//  ActivityCell2.swift
+//  ActivityCell.swift
 //  artemis
 //
 //  Created by VF Consulting on 8/5/18.
@@ -7,36 +7,33 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class ActiityCell2 : UICollectionViewCell {
+class ActiityCell : SwipeCollectionViewCell {
     
-    var item: Task? {
-        
-        didSet {
-            
-            if let activity = item?.str_taskname {
-                self.tv_activity.text = "\(activity)"
-            }
-            
-            if let project_code = item?.str_project_cod {
-                self.tv_project_code.text = "\(project_code)"
-            }
-            
-            if let hours = item?.num_registered_hours, let minutes = item?.num_registered_minutes {
-                self.tv_hours.text = "\(hours)h \(minutes)min"
-            }
-            
-            if let date = item?.dte_activitydate {
-                self.tv_date.text = date
-            }
-            
-        }
-        
-    }
+    var item: Task? = nil
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
+    }
+    
+    func updateUI(task: Task){
+        if let activity = item?.str_taskname {
+            self.tv_activity.text = "\(activity)"
+        }
+        
+        if let project_code = item?.str_project_cod {
+            self.tv_project_code.text = "\(project_code)"
+        }
+        
+        if let hours = item?.num_registered_hours, let minutes = item?.num_registered_minutes {
+            self.tv_hours.text = "\(hours)h \(minutes)min"
+        }
+        
+        if let date = item?.dte_activitydate {
+            self.tv_date.text = date
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -47,6 +44,7 @@ class ActiityCell2 : UICollectionViewCell {
         let imgView = UIImageView()
         imgView.image = UIImage(named: "icon_idea_red")
         imgView.contentMode = .scaleAspectFill
+        imgView.translatesAutoresizingMaskIntoConstraints = false
         return imgView
     }()
     
@@ -104,7 +102,12 @@ class ActiityCell2 : UICollectionViewCell {
         
         backgroundColor = UIColor.clear
         
-        addSubview(iv_icon)
+        for subView:UIView in (contentView.subviews){
+            subView.removeFromSuperview()
+        }
+        contentView.contentMode = .scaleAspectFit
+        
+        contentView.addSubview(iv_icon)
         iv_icon.snp.makeConstraints { (make) -> Void in
             make.left.equalToSuperview().offset(32)
             make.top.equalToSuperview().offset(35)
@@ -113,7 +116,7 @@ class ActiityCell2 : UICollectionViewCell {
             make.centerY.equalToSuperview()
         }
         
-        addSubview(tv_activity)
+        contentView.addSubview(tv_activity)
         tv_activity.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(30)
             make.left.equalToSuperview().offset(70)
@@ -121,7 +124,7 @@ class ActiityCell2 : UICollectionViewCell {
             make.height.equalTo(20)
         }
         
-        addSubview(tv_project_code)
+        contentView.addSubview(tv_project_code)
         tv_project_code.snp.makeConstraints { (make) in
             make.top.bottom.equalTo(tv_activity).offset(20)
             make.left.equalToSuperview().offset(70)
@@ -129,7 +132,7 @@ class ActiityCell2 : UICollectionViewCell {
             make.height.equalTo(20)
         }
         
-        addSubview(tv_hours)
+        contentView.addSubview(tv_hours)
         tv_hours.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(30)
             make.right.equalToSuperview().offset(-15)
@@ -137,7 +140,7 @@ class ActiityCell2 : UICollectionViewCell {
             make.height.equalTo(20)
         }
         
-        addSubview(tv_date)
+        contentView.addSubview(tv_date)
         tv_date.snp.makeConstraints { (make) in
             make.top.bottom.equalTo(tv_hours).offset(20)
             make.right.equalToSuperview().offset(-15)
@@ -145,7 +148,7 @@ class ActiityCell2 : UICollectionViewCell {
             make.height.equalTo(20)
         }
         
-        addSubview(v_separator)
+        contentView.addSubview(v_separator)
         v_separator.snp.makeConstraints { (make) -> Void in
             make.centerY.equalToSuperview()
             make.top.equalToSuperview().offset(99)

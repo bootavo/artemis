@@ -11,6 +11,10 @@ import SwiftyUserDefaults
 
 class ListEmployeesCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    var bgHelper: BackgroundHelper? = nil
+    var reportController: ReportController?
+    var refreshHelper:RefreshControlHelper? = nil
+    
     var employees = [Employee]()
     private let cellId:String = "EmployeesCell"
     private let refreshControl = UIRefreshControl()
@@ -19,7 +23,6 @@ class ListEmployeesCell: UICollectionViewCell, UICollectionViewDelegate, UIColle
         super.init(frame: frame)
         print("init()")
         setupView()
-        setupRefreshControl()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -32,6 +35,7 @@ class ListEmployeesCell: UICollectionViewCell, UICollectionViewDelegate, UIColle
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = UIColor.clear
         cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.alwaysBounceVertical = true
         return cv
     }()
     
@@ -49,6 +53,12 @@ class ListEmployeesCell: UICollectionViewCell, UICollectionViewDelegate, UIColle
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[v0]-0-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": collectionView]))
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": collectionView]))
+        
+        refreshHelper = RefreshControlHelper(v: self, cv: collectionView, rc: refreshControl)
+        refreshHelper?.refreshAction = refreshData
+        refreshHelper?.showRefreshControl()
+        
+        bgHelper = BackgroundHelper(v: self.contentView, message: nil)
         
         getService()
     }
@@ -71,56 +81,64 @@ class ListEmployeesCell: UICollectionViewCell, UICollectionViewDelegate, UIColle
         return 8
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("click")
+        let employee = employees[indexPath.item]
+        reportController?.nextActivity(employee: employee)
+    }
+    
+    func refreshData(){
+        getService()
+    }
+    
     func getService(){
-        let code = Defaults[.employee_code]!
-        let parameters = ["vch_cod_empleado": code] as [String : Any]
-        
-        ApiService.sharedInstance.getEmployees(parameters: nil) { (err, statusCode, json) in
+        if NetworkHelper.isConnectedToNetwork(){
+            let code = Defaults[.employee_code]!
+            let parameters = ["vch_cod_empleado": code] as [String : Any]
             
-            if let error = err {
-                print("Error: \(error)")
-                return
-            }
-            
-            print("statusCode: \(statusCode)")
-            if let json = json {
-                let content = json["empleados"]
-                print("empleados: \(content)")
+            ApiService.sharedInstance.getEmployees(parameters: nil) { (err, statusCode, json) in
                 
-                if !content.isEmpty {
-                    do {
-                        self.employees = try JSONDecoder().decode([Employee].self, from: content.rawData())
-                        self.collectionView.reloadData()
-                        self.stopRefreshControl()
-                    }catch let error {
-                        print("no se pudo decodificar",error)
-                        self.makeToast("Datos incorrectos")
-                        self.stopRefreshControl()
+                if let error = err {
+                    print("Error: \(error)")
+                    self.bgHelper?.showServerError(state: true)
+                    return
+                }
+                
+                print("statusCode: \(statusCode)")
+                if let json = json {
+                    let content = json["empleados"]
+                    print("empleados: \(content)")
+                    
+                    if !content.isEmpty {
+                        do {
+                            self.employees = try JSONDecoder().decode([Employee].self, from: content.rawData())
+                            self.collectionView.reloadData()
+                            self.refreshHelper?.stopRefreshControl()
+                            self.bgHelper?.showNetworkProblems(state: false)
+                        }catch let error {
+                            print("no se pudo decodificar",error)
+                            self.makeToast("Datos incorrectos")
+                            self.refreshHelper?.stopRefreshControl()
+                            self.bgHelper?.showErrorNotAllowed(state: true)
+                        }
+                    } else {
+                        print("Contenido vacio")
+                        self.makeToast("No se ha podido cargar la lista de empleados")
+                        self.refreshHelper?.stopRefreshControl()
+                        self.bgHelper?.showDataEmpty(state: true)
                     }
-                } else {
-                    print("Contenido vacio")
-                    self.makeToast("No se ha podido cargar la lista de empleados")
-                    self.stopRefreshControl()
                 }
             }
+        }else {
+            self.refreshHelper?.stopRefreshControl()
+            
+            if employees.isEmpty {
+                self.bgHelper?.showNetworkProblems(state: true)
+            }else {
+                self.makeToast("Problemas de conexión a Internet \n Verifica el estado de tu red")
+            }
         }
-    }
-    
-    func setupRefreshControl(){
-        collectionView.addSubview(refreshControl)
-        refreshControl.addTarget(self, action: #selector(refreshWeatherData(_:)), for: .valueChanged)
-        refreshControl.tintColor = UIColor.primaryDarkColor()
         
-        let attributes = [NSAttributedStringKey.foregroundColor: UIColor.primaryDarkColor()]
-        refreshControl.attributedTitle = NSAttributedString(string: "Cargando ...", attributes: attributes)
-    }
-    
-    func stopRefreshControl(){
-        self.refreshControl.endRefreshing()
-    }
-    
-    @objc private func refreshWeatherData(_ sender: Any) {
-        getService()
     }
     
 }

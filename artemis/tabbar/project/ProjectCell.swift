@@ -1,5 +1,5 @@
 //
-//  ProjectCell2.swift
+//  ProjectCell.swift
 //  artemis
 //
 //  Created by VF Consulting on 8/5/18.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ProjectCell2: UICollectionViewCell {
+class ProjectCell: UICollectionViewCell {
     
     var item: Project? {
         

@@ -11,7 +11,10 @@ import SwiftyUserDefaults
 
 class AssistanceHistoryCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    var bgHelper: BackgroundHelper? = nil
+    var refreshHelper:RefreshControlHelper? = nil
     var assistances = [AssistenceModel]()
+    
     private let cellId:String = "AssistanceCell"
     private let refreshControl = UIRefreshControl()
     
@@ -19,7 +22,6 @@ class AssistanceHistoryCell: UICollectionViewCell, UICollectionViewDelegate, UIC
         super.init(frame: frame)
         print("init()")
         setupView()
-        setupRefreshControl()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -32,7 +34,25 @@ class AssistanceHistoryCell: UICollectionViewCell, UICollectionViewDelegate, UIC
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = UIColor.clear
         cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.alwaysBounceVertical = true
         return cv
+    }()
+    
+    let iv_not_wifi: UIImageView = {
+        var iv = UIImageView()
+        iv.image = UIImage(named: "ic_disconnect")
+        iv.contentMode = .scaleAspectFill
+        iv.isHidden = true
+        return iv
+    }()
+    
+    let tv_message: UITextView = {
+       var tv = UITextView()
+        tv.font = UIFont.systemFont(ofSize: 18)
+        tv.textAlignment = .center
+        tv.isHidden = true
+        tv.isEditable = false
+        return tv
     }()
     
     func setupView(){
@@ -40,7 +60,6 @@ class AssistanceHistoryCell: UICollectionViewCell, UICollectionViewDelegate, UIC
         backgroundColor = UIColor.clear
         
         addSubview(collectionView)
-        
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -49,6 +68,12 @@ class AssistanceHistoryCell: UICollectionViewCell, UICollectionViewDelegate, UIC
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[v0]-0-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": collectionView]))
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": collectionView]))
+        
+        refreshHelper = RefreshControlHelper(v: self, cv: collectionView, rc: refreshControl)
+        refreshHelper?.refreshAction = refreshData
+        refreshHelper?.showRefreshControl()
+        
+        bgHelper = BackgroundHelper(v: self.contentView, message: nil)
         
         getService()
     }
@@ -71,59 +96,62 @@ class AssistanceHistoryCell: UICollectionViewCell, UICollectionViewDelegate, UIC
         return 8
     }
     
+    func refreshData(){
+        getService()
+    }
+    
     func getService(){
-        let code = Defaults[.employee_code]!
-        let parameters = ["vch_cod_empleado": code] as [String : Any]
-        
-        ApiService.sharedInstance.getHistoryAssistance(parameters: parameters) { (err, statusCode, json) in
+        if NetworkHelper.isConnectedToNetwork(){
+            let code = Defaults[.employee_code]!
+            let parameters = ["vch_cod_empleado": code] as [String : Any]
             
-            print("before error")
-            
-            if let error = err {
-                print("Error: \(error)")
-                return
-            }
-            
-            print("statusCode: \(statusCode)")
-            if let json = json {
-                let content = json["asistencias"]
-                print("asistencias: \(content)")
+            ApiService.sharedInstance.getHistoryAssistance(parameters: parameters) { (err, statusCode, json) in
                 
-                if !content.isEmpty {
-                    do {
-                        print("Activities: \(content)")
-                        self.assistances = try JSONDecoder().decode([AssistenceModel].self, from: content.rawData())
-                        self.collectionView.reloadData()
-                        self.stopRefreshControl()
-                    }catch let error {
-                        print("no se pudo decodificar",error)
-                        self.makeToast("Datos incorrectos")
-                        self.stopRefreshControl()
+                print("before error")
+                
+                if let error = err {
+                    print("Error: \(error)")
+                    self.bgHelper?.showServerError(state: true)
+                    return
+                }
+                
+                print("statusCode: \(statusCode)")
+                if let json = json {
+                    let content = json["asistencias"]
+                    print("asistencias: \(content)")
+                    
+                    if !content.isEmpty {
+                        do {
+                            print("Activities: \(content)")
+                            self.assistances = try JSONDecoder().decode([AssistenceModel].self, from: content.rawData())
+                            self.collectionView.reloadData()
+                            self.refreshHelper?.stopRefreshControl()
+                            self.bgHelper?.showNetworkProblems(state: false)
+                        }catch let error {
+                            print("no se pudo decodificar",error)
+                            self.makeToast("Datos incorrectos")
+                            self.refreshHelper?.stopRefreshControl()
+                            self.bgHelper?.showErrorNotAllowed(state: true)
+                        }
+                    } else {
+                        print("Contenido vacio")
+                        self.makeToast("No se ha podido cargar los lugares de trabajo")
+                        self.refreshHelper?.stopRefreshControl()
+                        self.bgHelper?.showDataEmpty(state: true)
                     }
-                } else {
-                    print("Contenido vacio")
-                    self.makeToast("No se ha podido cargar los lugares de trabajo")
-                    self.stopRefreshControl()
                 }
             }
+        }else {
+            self.refreshHelper?.stopRefreshControl()
+            
+            if assistances.isEmpty {
+                self.bgHelper?.showNetworkProblems(state: true)
+            }else {
+                self.makeToast("Problemas de conexión a Internet \n Verifica el estado de tu red")
+            }
+            
         }
-    }
-    
-    func setupRefreshControl(){
-        collectionView.addSubview(refreshControl)
-        refreshControl.addTarget(self, action: #selector(refreshWeatherData(_:)), for: .valueChanged)
-        refreshControl.tintColor = UIColor.primaryDarkColor()
         
-        let attributes = [NSAttributedStringKey.foregroundColor: UIColor.primaryDarkColor()]
-        refreshControl.attributedTitle = NSAttributedString(string: "Cargando ...", attributes: attributes)
-    }
-    
-    func stopRefreshControl(){
-        self.refreshControl.endRefreshing()
-    }
-    
-    @objc private func refreshWeatherData(_ sender: Any) {
-        getService()
     }
     
 }

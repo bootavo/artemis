@@ -15,6 +15,13 @@ extension DefaultsKeys {
     static let patternLastName = DefaultsKey<String?>("patternLastName")
     static let matternLastName = DefaultsKey<String?>("matternLastName")
     static let foto = DefaultsKey<String?>("foto")
+    static let modulesTest = DefaultsKey<[Module]>("modulesTest")
+    
+    static let moduleAssistance = DefaultsKey<String?>("module")
+    static let moduleReport = DefaultsKey<String?>("report")
+    static let moduleActivity = DefaultsKey<String?>("activity")
+    static let moduleProject = DefaultsKey<String?>("project")
+    static let moduleUser = DefaultsKey<String?>("user")
 }
 
 class UserModel: Decodable {

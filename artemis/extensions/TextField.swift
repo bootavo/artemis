@@ -29,7 +29,7 @@ extension UITextField{
         self.leftViewMode = UITextFieldViewMode.always
         
         var placeHolder = NSMutableAttributedString()
-        placeHolder = NSMutableAttributedString(attributedString: NSAttributedString(string: placeholder, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16), .foregroundColor: UIColor.placeHolder() ]))
+        placeHolder = NSMutableAttributedString(attributedString: NSAttributedString(string: placeholder, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), .foregroundColor: UIColor.placeHolder() ]))
         self.attributedPlaceholder = placeHolder
         self.setAnchor(width: 0, height: 40)
         self.textAlignment = .left

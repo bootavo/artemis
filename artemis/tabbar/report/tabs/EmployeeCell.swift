@@ -44,8 +44,7 @@ class EmployeeCell: UICollectionViewCell{
     
     let tv_name_employee: UITextView = {
         let text = UITextView()
-        text.font = UIFont.systemFont(ofSize: 14)
-        text.text = "NOMBRE"
+        text.font = UIFont(name: "", size: 14)
         text.textColor = UIColor.black
         text.textAlignment = .left
         text.isUserInteractionEnabled = false
@@ -54,8 +53,7 @@ class EmployeeCell: UICollectionViewCell{
     
     let tv_cod_employee: UITextView = {
         let text = UITextView()
-        text.font = UIFont.systemFont(ofSize: 12)
-        text.text = "VF   "
+        text.font = UIFont(name: "", size: 14)
         text.textColor = UIColor.darkGray
         text.textAlignment = .left
         text.isUserInteractionEnabled = false
@@ -91,10 +89,10 @@ class EmployeeCell: UICollectionViewCell{
         
         addSubview(tv_name_employee)
         tv_name_employee.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(25)
-            make.left.equalToSuperview().offset(90)
+            make.top.equalTo(20)
+            make.left.equalTo(90)
             make.width.equalTo(300)
-            make.height.equalTo(20)
+            make.height.equalTo(40)
         }
         
         addSubview(tv_cod_employee)

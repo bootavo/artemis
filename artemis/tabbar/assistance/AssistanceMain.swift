@@ -18,7 +18,7 @@ class AssistanceController: UICollectionViewController, UICollectionViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.primaryColor()
+        view.backgroundColor = UIColor.white
     }
     
     override func viewWillAppear(_ animated: Bool) {

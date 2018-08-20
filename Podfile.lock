@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (4.6.0)
+  - BEMCheckBox (1.4.1)
+  - DatePickerDialog (2.0)
   - IGListKit (3.4.0):
     - IGListKit/Default (= 3.4.0)
   - IGListKit/Default (3.4.0):
@@ -13,10 +15,13 @@ PODS:
   - SwiftyJSON (4.0.0)
   - SwiftyTimer (2.0.0)
   - SwiftyUserDefaults (3.0.1)
+  - SwipeCellKit (2.4.3)
   - Toast (4.0.0)
 
 DEPENDENCIES:
   - Alamofire
+  - BEMCheckBox
+  - DatePickerDialog
   - IGListKit
   - IQKeyboardManagerSwift
   - SDWebImage
@@ -24,11 +29,14 @@ DEPENDENCIES:
   - SwiftyJSON
   - SwiftyTimer
   - SwiftyUserDefaults
+  - SwipeCellKit
   - Toast (~> 4.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - BEMCheckBox
+    - DatePickerDialog
     - IGListKit
     - IQKeyboardManagerSwift
     - SDWebImage
@@ -36,10 +44,13 @@ SPEC REPOS:
     - SwiftyJSON
     - SwiftyTimer
     - SwiftyUserDefaults
+    - SwipeCellKit
     - Toast
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
+  DatePickerDialog: 5e1c24d9fe6506cd45dbc573eed7b0a251b1c09d
   IGListKit: 7a5d788e9fb746bcd402baa8e8b24bc3bd2a5a07
   IQKeyboardManagerSwift: 30fb3a61de1af53a95e02b80fb54ed0a19d5ede5
   SDWebImage: 47e9b5b925cbce75946c23f0c42dd19464189af4
@@ -47,8 +58,9 @@ SPEC CHECKSUMS:
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   SwiftyTimer: 2efd74b060d69ad4f1496baf5bbedbe132125fcf
   SwiftyUserDefaults: 3d273b1739b68ada3145dc754a70ec775bc5c8be
+  SwipeCellKit: cee9906e6d3a36e22ad1a852fba7f8fa0839d113
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
 
-PODFILE CHECKSUM: 8756b70c6a3a2b4f053b67917532627113e69772
+PODFILE CHECKSUM: 5f13421126415a6dd1888e723cb5565ca51f89d8
 
 COCOAPODS: 1.5.3

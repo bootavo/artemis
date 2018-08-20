@@ -42,6 +42,8 @@ class ReportController: UICollectionViewController, UICollectionViewDelegateFlow
         titleLabel.textAlignment = .center
         self.navigationItem.titleView = titleLabel
         
+        navigationItem.title = "Reportes"
+        
         setupCollectionView()
         setupMenuBar()
     }
@@ -84,6 +86,17 @@ class ReportController: UICollectionViewController, UICollectionViewDelegateFlow
         menuBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
     }
     
+    func nextActivity(employee: Employee){
+        //let detailEmployeeHistoryController = UIViewController()
+        //navigationController?.pushViewController(detailEmployeeHistoryController, animated: true)
+        let layout = UICollectionViewFlowLayout()
+        let employeepDetailHistoryController = EmployeeDetailHistoryController(collectionViewLayout: layout)
+        employeepDetailHistoryController.employee = employee
+        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        navigationController?.pushViewController(employeepDetailHistoryController, animated: true)
+    }
+    
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         menuBar.horizontalBarLeftAnchorConstraint?.constant = scrollView.contentOffset.x / 3
     }
@@ -106,23 +119,25 @@ class ReportController: UICollectionViewController, UICollectionViewDelegateFlow
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        var identifier: String
         if indexPath.item == 0 {
-            identifier = employeesCell
-            return collectionView.dequeueReusableCell(withReuseIdentifier: employeesCell, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: employeesCell, for: indexPath) as! ListEmployeesCell
+            cell.contentView.isUserInteractionEnabled = false
+            cell.reportController = self
+            return cell
         } else if indexPath.item == 1 {
-            identifier = absentsCell
-            return collectionView.dequeueReusableCell(withReuseIdentifier: absentsCell, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: absentsCell, for: indexPath) as! ListAbsentsCell
+            cell.contentView.isUserInteractionEnabled = false
+            return cell
         } else if indexPath.item == 2 {
-            identifier = absentsCell
-            return collectionView.dequeueReusableCell(withReuseIdentifier: latersCell, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: latersCell, for: indexPath) as! ListLatersCell
+            cell.contentView.isUserInteractionEnabled = false
+            return cell
         } else {
-            identifier = latersCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: employeesCell, for: indexPath) as! ListEmployeesCell
+            cell.contentView.isUserInteractionEnabled = false
+            return cell
         }
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
-        cell.contentView.isUserInteractionEnabled = false
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

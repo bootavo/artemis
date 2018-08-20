@@ -56,6 +56,7 @@ class LoginController: UIViewController, UIApplicationDelegate {
                     if let error = err {
                         print(error)
                         UIViewController.removeSpinner(spinner: sv)
+                        self.view.makeToast("Verifique su conexión a internet")
                         return
                     }
                     print(statusCode)
@@ -69,6 +70,20 @@ class LoginController: UIViewController, UIApplicationDelegate {
                             Defaults[.patternLastName] = user.patternLastName!
                             Defaults[.matternLastName] = user.matternLastName!
                             Defaults[.foto] = user.foto!
+                            
+                            for module in user.modules! {
+                                print("Modulo: \(module.vch_nom_modulo!)")
+                                print("-----------------")
+                                switch module.vch_nom_modulo! {
+                                    case Constants.MODULE_ASSISTANCE: Defaults[.moduleAssistance] = Constants.MODULE_ASSISTANCE
+                                    case Constants.MODULE_REPORT: Defaults[.moduleReport] = Constants.MODULE_REPORT
+                                    case Constants.MODULE_ACTIVITY: Defaults[.moduleActivity] = Constants.MODULE_ACTIVITY
+                                    case Constants.MODULE_PROJECT: Defaults[.moduleProject] = Constants.MODULE_PROJECT
+                                    case Constants.MODULE_USER: Defaults[.moduleUser] = Constants.MODULE_USER
+                                default: break
+                                }
+                            }
+                            
                             print("save data")
                             self.pushToNextVC()
                         }catch let error {
@@ -113,6 +128,6 @@ class LoginController: UIViewController, UIApplicationDelegate {
         newVC.navigationItem.hidesBackButton = true;
         self.navigationController?.pushViewController(newVC, animated: true)
     }
-
+    
 }
 

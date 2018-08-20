@@ -15,15 +15,55 @@ import Toast
 
 var user: User = User()
 
-class UserController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class UserController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate {
     
-    public let heighOfNavigationBar: CGFloat = 60
-    public let heightOfCells: CGFloat = 55
-    public let separationBetweenCells: CGFloat = 0 //30
+    var categoryProjects: [CategoryProjects]?
+    var listProjects: [Project]?
+    
+    let cellId = "cellId"
+    let cellId2 = "cellId2"
+    
+    private let refreshControl = UIRefreshControl()
+    
+    //public let heighOfNavigationBar: CGFloat = 60
+    //public let heightOfCells: CGFloat = 55
+    //public let separationBetweenCells: CGFloat = 0 //30
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.primaryColor()
+        
+        print("------------------------------> UserController <------------------------------")
+        setCategoryProjects()
+        
+        collectionView?.backgroundColor = UIColor.white
+        
+        collectionView?.register(ProjectStatusCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(ProjectStatusCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.contentInset = UIEdgeInsetsMake(140, 0, 0, 0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 0)
+        collectionView?.alwaysBounceVertical = false
+        collectionView?.bounces = false
+        //collectionView?.flashScrollIndicators()
+        
+        setupViews()
+        setupUserInfo()
+        
+        getService()
+        
+    }
+    
+    func setCategoryProjects(){
+        print("--------- > setCategoryProjects()")
+        //build project data
+        let categoryDoing = CategoryProjects()
+        categoryDoing.category_name = "PROYECTOS EN CURSO"
+        
+        let categoryDone = CategoryProjects()
+        categoryDone.category_name = "PROYECTOS FINALIZADOS"
+        
+        self.categoryProjects = [categoryDoing, categoryDone]
+        
+        print("--------- > /setCategoryProjects()")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,117 +80,78 @@ class UserController: UIViewController, UIImagePickerControllerDelegate, UINavig
         titleLabel.textColor = UIColor.primaryColor()
         titleLabel.textAlignment = .center
         self.navigationItem.titleView = titleLabel
-        
-        setupView()
-        setupUserInfo()
     }
     
-    func setupUserInfo(){
-        fullNameLabel.text = "\(Defaults[.name]!)"
-        rolLabel.text = "\(Defaults[.name]!)"
-        print("\(Defaults[.foto]!)")
-        profileImageView.imageView.sd_setImage(with: URL(string: "\(Defaults[.foto]!)"), completed: nil)
-    }
-    
-    func setupView(){
-        //self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        self.view.addSubview(scrollView)
-        scrollView.backgroundColor = UIColor.primaryColor()
-        scrollView.snp.makeConstraints { (make) in
-            make.top.equalTo(30)
-            make.width.equalToSuperview()
-            make.size.equalToSuperview()
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(self.view.safeAreaLayoutGuide)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ProjectStatusCell
+        //cell.categoryProjects = categoryProjects?[indexPath.item]
+        
+        print("----------> cellForItemAt()")
+        if let xd = categoryProjects?[0].projects?[0], let xd2 = categoryProjects?[1].projects?[0] {
+            print("---count caegories: \(categoryProjects!.count)")
+            print("---count project 1: \(categoryProjects![0].projects?.count)")
+            print("---count project 2: \(categoryProjects![1].projects?.count)")
+            cell.categoryProjects = categoryProjects?[indexPath.item]
         }
+        print("----------> /cellForItemAt()")
         
-        scrollView.addSubview(profileImageView)
+        return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("----------> numberOfItemSection()")
+        print("---count caegories: \(categoryProjects!.count)")
+        print("---count project 1: \(categoryProjects![0].projects?.count)")
+        print("---count project 2: \(categoryProjects![1].projects?.count)")
+        print("----------> /numberOfItemSection()")
+        return categoryProjects!.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: 190)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func setupViews(){
+        self.view.addSubview(profileImageView)
         profileImageView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(0)
+            make.top.equalToSuperview().offset(30)
             make.leftMargin.equalTo(20)
             make.size.equalTo(CGSize(width: 80, height: 80))
         }
         
-        scrollView.addSubview(fullNameLabel)
+        self.view.addSubview(fullNameLabel)
         fullNameLabel.snp.makeConstraints { (make) in
             make.top.bottom.equalTo(profileImageView).offset(0)
             make.left.equalTo(profileImageView.snp.right).offset(20)
+            make.size.equalTo(CGSize(width: 200, height: 80))
         }
         
-        scrollView.addSubview(rolLabel)
+        self.view.addSubview(rolLabel)
         rolLabel.snp.makeConstraints { (make) in
-            make.top.bottom.equalTo(fullNameLabel).offset(15)
+            make.top.bottom.equalTo(fullNameLabel).offset(30).constraint
             make.left.equalTo(profileImageView.snp.right).offset(20)
-        }
-        
-        scrollView.addSubview(projectsCell)
-        projectsCell.snp.makeConstraints { (make) in
-            make.top.equalTo(profileImageView.snp.bottom).offset(20)
-            make.centerX.equalToSuperview()
-            make.width.equalToSuperview()
-            make.height.equalTo(heightOfCells)
-        }
-        
-        scrollView.addSubview(quantityProjects)
-        quantityProjects.snp.makeConstraints { (make) in
-            make.top.equalTo(projectsCell.snp.bottom).offset(separationBetweenCells)
-            make.centerX.equalToSuperview()
-            make.width.equalToSuperview()
-            make.height.equalTo(heightOfCells)
-        }
-        
-        scrollView.addSubview(finishedProjects)
-        finishedProjects.snp.makeConstraints { (make) in
-            make.top.equalTo(quantityProjects.snp.bottom).offset(separationBetweenCells)
-            make.centerX.equalToSuperview()
-            make.width.equalToSuperview()
-            make.height.equalTo(heightOfCells)
-        }
-        
-        scrollView.addSubview(proy1)
-        proy1.snp.makeConstraints { (make) in
-            make.top.equalTo(finishedProjects.snp.bottom).offset(separationBetweenCells)
-            make.centerX.equalToSuperview()
-            make.width.equalToSuperview()
-            make.height.equalTo(heightOfCells)
-        }
-        
-        scrollView.addSubview(proy2)
-        proy2.snp.makeConstraints { (make) in
-            make.top.equalTo(proy1.snp.bottom)
-            make.centerX.equalToSuperview()
-            make.width.equalToSuperview()
-            make.height.equalTo(heightOfCells)
-        }
-        
-        scrollView.addSubview(blankSpace)
-        blankSpace.snp.makeConstraints { (make) in
-            make.top.equalTo(proy2.snp.bottom).offset(separationBetweenCells)
-            make.centerX.equalToSuperview()
-            make.width.equalToSuperview()
-            make.height.equalTo(heightOfCells)
-        }
-        
-        scrollView.addSubview(endSession)
-        endSession.snp.makeConstraints { (make) in
-            make.top.equalTo(blankSpace.snp.bottom).offset(separationBetweenCells)
-            make.centerX.equalToSuperview()
-            make.width.equalToSuperview()
-            make.height.equalTo(heightOfCells)
         }
     }
     
-    let scrollView: UIScrollView = {
-        let view = UIScrollView()
-        view.backgroundColor = UIColor.scroll()
-        return view
-    }()
-
+    func setupUserInfo(){
+        
+        fullNameLabel.text = "\(Defaults[.name]!) \(Defaults[.patternLastName]!) \(Defaults[.matternLastName]!) "
+        rolLabel.text = "\(Defaults[.employee_code]!)"
+        profileImageView.imageView.sd_setImage(with: URL(string: "\(Defaults[.foto]!)"), completed: nil)
+        
+        //scrollView.alwaysBounceVertical = true
+        
+    }
+    
     lazy var profileImageView: ProfileImageView = {
         let imgView = ProfileImageView()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
-        imgView.addGestureRecognizer(tap)
+        //let tap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        //imgView.addGestureRecognizer(tap)
         imgView.isUserInteractionEnabled = true
         return imgView
     }()
@@ -165,13 +166,14 @@ class UserController: UIViewController, UIImagePickerControllerDelegate, UINavig
         label.sizeToFit()
         return label
     }()
-
+    
     let fullNameLabel: UILabel = {
         let label = UILabel()
         label.text = ""
         label.textColor = UIColor.title()
         label.font = UIFont.systemFont(ofSize: 16)
         label.sizeToFit()
+        label.numberOfLines = 2
         return label
     }()
     
@@ -184,117 +186,58 @@ class UserController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return label
     }()
     
-    lazy var projectsCell: MyAccountCell = {
-        let view = MyAccountCell()
-        view.addTarget(self, action: #selector(miCuentaTapped), for: UIControlEvents.touchUpInside)
-        view.title.text = "PROYECTOS EN CURSO"
-        view.type = MyAccountCell.TypeOfCell.first
-        view.backgroundColor = UIColor.scroll()
-        view.detailImageView.isHidden = true
-        return view
-    }()
-    
-    lazy var quantityProjects: MyAccountCell = {
-        let view = MyAccountCell()
-        view.addTarget(self, action: #selector(miCuentaTapped), for: UIControlEvents.touchUpInside)
-        view.title.text = "3 Proyectos"
-        view.type = MyAccountCell.TypeOfCell.between
-        return view
-    }()
-    
-    lazy var finishedProjects: MyAccountCell = {
-        let view = MyAccountCell()
-        view.addTarget(self, action: #selector(miCuentaTapped), for: UIControlEvents.touchUpInside)
-        view.title.text = "PROYECTOS FINALIZADOS"
-        view.type = MyAccountCell.TypeOfCell.between
-        view.backgroundColor = UIColor.scroll()
-        view.detailImageView.isHidden = true
-        return view
-    }()
-    
-    lazy var proy1: MyAccountCell = {
-        let view = MyAccountCell()
-        view.addTarget(self, action: #selector(terminosTapped), for: UIControlEvents.touchUpInside)
-        view.title.text = "PRY-072-NOMBREPROYECTO"
-        view.type = MyAccountCell.TypeOfCell.between
-        return view
-    }()
-    
-    lazy var proy2: MyAccountCell = {
-        let view = MyAccountCell()
-        view.addTarget(self, action: #selector(cambiarContrasenaTapped), for: UIControlEvents.touchUpInside)
-        view.title.text = "PRY-072-NOMBREPROYECTO"
-        view.type = MyAccountCell.TypeOfCell.between
-        return view
-    }()
-    
-    lazy var blankSpace: MyAccountCell = {
-        let view = MyAccountCell()
-        view.addTarget(self, action: #selector(miCuentaTapped), for: UIControlEvents.touchUpInside)
-        view.title.text = ""
-        view.type = MyAccountCell.TypeOfCell.between
-        view.backgroundColor = UIColor.scroll()
-        view.detailImageView.isHidden = true
-        return view
-    }()
-    
-    lazy var endSession: MyAccountCellRed = {
-        let view = MyAccountCellRed()
-        view.addTarget(self, action: #selector(closeSession), for: UIControlEvents.touchUpInside)
-        view.title.text = "Cerrar Sesion"
-        view.type = MyAccountCellRed.TypeOfCell.alone
-        view.backgroundColor = UIColor.primaryDarkColor()
-        view.title.textColor = UIColor.primaryColor()
-        //view.backgroundColor = view.isHighlighted ? UIColor.primaryDarkColor() : UIColor.primaryDarkColor()
-        //view.backgroundColor = view.isSelected ? UIColor.primaryDarkColor() : UIColor.primaryDarkColor()
-        view.detailImageView.isHidden = true
-        return view
-    }()
-    
-    @objc private func imageTapped() {
-        print("imageTapped")
-    }
-
-    @objc func miCuentaTapped() {
-        //let vc = MiPerfilViewController()
-        //self.present(vc, animated: true, completion: nil)
-        print("miCuentaTapped()")
-    }
-    
-    @objc func miSuscripcionTapped() {
-        //let vc = MiPerfilViewController()
-        //self.present(vc, animated: true, completion: nil)
-        print("miSuscripcionTapped()")
-    }
-    
-    @objc func compartirTapped() {
-        //let vc = MiPerfilViewController()
-        //self.present(vc, animated: true, completion: nil)
-        print("compartirTapped()")
-    }
-    
-    @objc func terminosTapped() {
-        //let vc = MiPerfilViewController()
-        //self.present(vc, animated: true, completion: nil)
-        print("terminosTapped()")
-    }
-    
-    @objc func compartirTapped(_ sender: UIButton) {
-        //let vc = MiPerfilViewController()
-        //self.present(vc, animated: true, completion: nil)
-        print("compartirTapped()")
-    }
-    
-    @objc func cambiarContrasenaTapped() {
-        //let vc = MiPerfilViewController()
-        //self.present(vc, animated: true, completion: nil)
-        print("cambiarContrasenaTapped()")
-    }
-    
-    @objc func closeSession() {
-        //let vc = MiPerfilViewController()
-        //self.present(vc, animated: true, completion: nil)
-        print("endSession()")
+    func getService() {
+        
+        let code = Defaults[.employee_code]
+        let parameters = ["str_resource_id": code!] as [String : Any]
+        
+        ApiService.sharedInstance.getProjectsByResourceId(parameters: parameters) { (err, statusCode, json) in
+            print("before error")
+            
+            if let error = err {
+                print("Error: \(error)")
+                return
+            }
+            
+            print("statusCode: \(statusCode)")
+            if let json = json {
+                let content = json["content"]
+                //print("Content: \(content)")
+                
+                if !content.isEmpty {
+                    do {
+                        
+                        let attributes = content["project_teams"]
+                        if !attributes.isEmpty {
+                            print("Activities: \(attributes)")
+                            self.listProjects = try JSONDecoder().decode([Project].self, from: attributes.rawData())
+                            
+                            let project = self.listProjects?[0]
+                            
+                            //self.categoryProjects![0].projects = try JSONDecoder().decode([Project].self, from: attributes.rawData())
+                            
+                            self.categoryProjects![0].projects = [project,project,project,project,project,project] as! [Project]
+                            
+                            //self.categoryProjects![1].projects = try JSONDecoder().decode([Project].self, from: attributes.rawData())
+                            
+                            self.categoryProjects![1].projects = [project,project,project,project,project,project] as! [Project]
+                            
+                            print("reload")
+                            self.collectionView?.reloadData()
+                        }else {
+                            print("Actividades vacias")
+                        }
+                    }catch let error {
+                        print("no se pudo decodificar",error)
+                        self.view.makeToast("Datos incorrectos")
+                    }
+                } else {
+                    print("Contenido vacio")
+                    self.view.makeToast("No se ha podido cargar los lugares de trabajo")
+                }
+            }
+        }
+        
     }
     
 }

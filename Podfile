@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '11.0'
+platform :ios, '11.0'
 
 target 'artemis' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -16,6 +16,8 @@ pod 'BEMCheckBox'
 pod 'SnapKit'
 pod 'Toast', '~> 4.0'
 pod 'SDWebImage'
+pod 'SwipeCellKit'
+#pod 'SwipeCellKit', :git => 'https://github.com/SwipeCellKit/SwipeCellKit.git', :branch => 'develop'
 
 pod 'SwiftyUserDefaults'
 pod 'SwiftyTimer'
