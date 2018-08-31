@@ -19,6 +19,8 @@ class PopUpKindOfActivity: UIViewController {
     
     var selectedIndex = 0
     
+    var state = false
+    
     var delegate: PopUpKindOfActivityDelegate? = nil
     
     //Catch parameter id of project
@@ -78,9 +80,16 @@ class PopUpKindOfActivity: UIViewController {
     }
     
     @IBAction func popUpDone(_ sender: Any) {
-        let item = data[selectedIndex]
-        delegate?.didSelectItemKindOfActivity(item: item)
-        self.dismiss(animated: true, completion: nil)
+        
+        if state {
+            let item = data[selectedIndex]
+            delegate?.didSelectItemKindOfActivity(item: item)
+            self.dismiss(animated: true, completion: nil)
+        }else {
+            print("else data Niiiiilllllll")
+            self.dismiss(animated: true, completion: nil)
+        }
+        
     }
     
 }
@@ -95,6 +104,7 @@ extension PopUpKindOfActivity: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        state = true;
         return data[row].str_taskname
     }
     

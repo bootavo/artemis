@@ -35,7 +35,7 @@ class KindOfActivity:Decodable {
     var num_project_id:Int?
     var str_taskname:String?
     var num_task_id:Int?
-    var num_time_expected:Int?
+    var num_time_expected:Float?
     
     private enum CodingKeys: String, CodingKey {
         case str_project_name = "str_project_name"
@@ -50,10 +50,10 @@ class KindOfActivity:Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         str_project_name = try container.decode(String?.self, forKey: .str_project_name)
         str_project_cod = try container.decode(String?.self, forKey: .str_project_cod)
-        num_project_id = try container.decode(Int?.self, forKey: .num_project_id)
+        num_project_id = try container.decode(Int?.self, forKey: .num_project_id)	
         str_taskname = try container.decode(String?.self, forKey: .str_taskname)
         num_task_id = try container.decode(Int?.self, forKey: .num_task_id)
-        num_time_expected = try container.decode(Int?.self, forKey: .num_time_expected)
+        num_time_expected = try container.decode(Float?.self, forKey: .num_time_expected)
     }
     
 }

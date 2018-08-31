@@ -36,11 +36,11 @@ class ApiService: NSObject {
     }
     
     func getActivitiesByResourceId(parameters: Parameters,_ completion: @escaping (Error?,Int,JSON?) -> () ) {
-        var url = "https://ck5hd1j060.execute-api.us-east-1.amazonaws.com/dev/artemis/activities"
+        var url = "https://8rsrait419.execute-api.us-east-1.amazonaws.com/dev/artemis/activities"
         let headers = [
             "Content-Type": "application/json",
             "Accept": "application/json",
-            "Authorization": "Basic YXJ0ZW1pczpyM2JWVTFsZDNyTDRi",
+            "Authorization": "Basic ZGlhbmE6RGlhbmE=",
             "Cache-Control": "no-cache"
         ]
         
@@ -48,7 +48,7 @@ class ApiService: NSObject {
     }
     
     func getTasksByProjectId(parameters: Parameters,_ completion: @escaping (Error?,Int,JSON?) -> () ) {
-        var url = "https://wf1tocu2xl.execute-api.us-east-1.amazonaws.com/dev/artemis/tasks"
+        var url = "https://853ufpi521.execute-api.us-east-1.amazonaws.com/dev/artemis/tasks"
         let headers = [
             "Content-Type": "application/json",
             "Accept": "application/json",
@@ -60,7 +60,7 @@ class ApiService: NSObject {
     }
     
     func getProjectsByResourceId(parameters: Parameters,_ completion: @escaping (Error?,Int,JSON?) -> () ) {
-        var url = "https://1nwq4ulevd.execute-api.us-east-1.amazonaws.com/dev/artemis/project_teams"
+        var url = "https://k9umylksqe.execute-api.us-east-1.amazonaws.com/dev/artemis/project_teams"
         let headers = [
             "Content-Type": "application/json",
             "Accept": "application/json",
@@ -72,7 +72,7 @@ class ApiService: NSObject {
     }
     
     func registerActivity(parameters: Parameters,_ completion: @escaping (Error?,Int,JSON?) -> () ) {
-        var url = "https://ck5hd1j060.execute-api.us-east-1.amazonaws.com/dev/artemis/activities"
+        var url = "https://8rsrait419.execute-api.us-east-1.amazonaws.com/dev/artemis/activities"
         let headers = [
             "Content-Type": "application/json",
             "Accept": "application/json",
@@ -85,11 +85,11 @@ class ApiService: NSObject {
     
     func getKindOfActivities(parameters: Parameters,_ completion: @escaping (Error?,Int,JSON?) -> () ) {
         
-        var url = "https://wf1tocu2xl.execute-api.us-east-1.amazonaws.com/dev/artemis/tasks"
+        var url = "https://853ufpi521.execute-api.us-east-1.amazonaws.com/dev/artemis/tasks"
         let headers = [
             "Content-Type": "application/json",
             "Accept": "application/json",
-            "Authorization": "Basic YXJ0ZW1pczpyM2JWVTFsZDNyTDRi",
+            "Authorization": "Basic ZGlhbmE6RGlhbmE=",
             "Cache-Control": "no-cache"
         ]
         

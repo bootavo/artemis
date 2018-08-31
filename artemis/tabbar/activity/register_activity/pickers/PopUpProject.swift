@@ -17,7 +17,10 @@ class PopUpProject: UIViewController {
     
     //array
     var data:[Project] = []
+    
     var selectedIndex = 0
+    
+    var state = false
     
     var delegate: PopUpProjectDelegate? = nil
     
@@ -77,9 +80,15 @@ class PopUpProject: UIViewController {
     
     @IBAction func popUpDone(_ sender: Any) {
         
-        let item = data[selectedIndex]
-        delegate?.didSelectItemProject(item: item)
-        self.dismiss(animated: true, completion: nil)
+        if (state){
+            let item = data[selectedIndex]
+            delegate?.didSelectItemProject(item: item)
+            self.dismiss(animated: true, completion: nil)
+        }else{
+            print("else data Niiiiilllllll")
+            self.dismiss(animated: true, completion: nil)
+        }
+
     }
     
 }
@@ -94,6 +103,7 @@ extension PopUpProject: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        state = true;
         return data[row].str_project_name
     }
     

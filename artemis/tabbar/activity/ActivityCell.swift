@@ -19,19 +19,22 @@ class ActiityCell : SwipeCollectionViewCell {
     }
     
     func updateUI(task: Task){
-        if let activity = item?.str_taskname {
+        
+        print("task: \(task.num_task_id)")
+        
+        if let activity = task.str_taskname {
             self.tv_activity.text = "\(activity)"
         }
         
-        if let project_code = item?.str_project_cod {
+        if let project_code = task.str_project_cod {
             self.tv_project_code.text = "\(project_code)"
         }
         
-        if let hours = item?.num_registered_hours, let minutes = item?.num_registered_minutes {
+        if let hours = task.num_registered_hours, let minutes = task.num_registered_minutes {
             self.tv_hours.text = "\(hours)h \(minutes)min"
         }
         
-        if let date = item?.dte_activitydate {
+        if let date = task.dte_activitydate {
             self.tv_date.text = date
         }
     }
