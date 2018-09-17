@@ -120,7 +120,7 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
         self.view.addSubview(profileImageView)
         profileImageView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(30)
-            make.leftMargin.equalTo(20)
+            make.leftMargin.equalTo(0)
             make.size.equalTo(CGSize(width: 80, height: 80))
         }
         
@@ -133,9 +133,31 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         self.view.addSubview(rolLabel)
         rolLabel.snp.makeConstraints { (make) in
-            make.top.bottom.equalTo(fullNameLabel).offset(30).constraint
+            make.top.bottom.equalTo(fullNameLabel).offset(30)
             make.left.equalTo(profileImageView.snp.right).offset(20)
         }
+        
+        self.view.addSubview(btnEndSession)
+        btnEndSession.snp.makeConstraints{ (make) in
+            make.top.bottom.equalTo(rolLabel).offset(20)
+            make.left.equalTo(profileImageView.snp.right).offset(10)
+            make.size.equalTo(CGSize(width: 200, height: 80))
+        }
+        
+        self.view.addSubview(done_message)
+        done_message.snp.makeConstraints{ (make) in
+            make.top.equalToSuperview().offset(190)
+            make.centerX.equalToSuperview()
+            make.size.equalTo(CGSize(width: 200, height: 40))
+        }
+        
+        self.view.addSubview(inprogress_message)
+        inprogress_message.snp.makeConstraints{ (make) in
+            make.top.equalToSuperview().offset(380)
+            make.centerX.equalToSuperview()
+            make.size.equalTo(CGSize(width: 200, height: 40))
+        }
+        
     }
     
     func setupUserInfo(){
@@ -186,6 +208,46 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
         return label
     }()
     
+    let btnEndSession: UIButton = {
+        let button = UIButton()
+        button.setTitle(title: "Cerrar sesión", color: UIColor.title())
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(endSession), for: .touchUpInside)
+        return button
+    }()
+    
+    let done_message: UILabel = {
+        let label = UILabel()
+        label.text = "Cargando..."
+        label.textColor = UIColor.subTitleList()
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textAlignment = .center
+        return label;
+    }()
+    
+    let inprogress_message: UILabel = {
+        let label = UILabel()
+        label.text = "Cargando..."
+        label.textColor = UIColor.subTitleList()
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textAlignment = .center
+        return label;
+    }()
+    
+    @objc func endSession() {
+        Defaults.removeAll()
+        let sv = UIViewController.displaySpinner(onView: self.view)
+        let vc = LoginController()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        Timer.after(1.second) {
+            UIViewController.removeSpinner(spinner: sv)
+            exit(0)
+//            self.present(vc, animated: true, completion: nil)
+//            UIApplication.shared.endIgnoringInteractionEvents()
+
+        }
+    }
+    
     func getService() {
         
         let code = Defaults[.employee_code]
@@ -212,15 +274,34 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
                             print("Activities: \(attributes)")
                             self.listProjects = try JSONDecoder().decode([Project].self, from: attributes.rawData())
                             
-                            let project = self.listProjects?[0]
+                            var projectsDone : [Project]?
+                            var projectsInProgress : [Project]?
                             
-                            //self.categoryProjects![0].projects = try JSONDecoder().decode([Project].self, from: attributes.rawData())
+                            for project in self.listProjects! {
+                                if (project.str_project_status == "In Progress"){
+                                    projectsDone?.append(project)
+                                } else if (project.str_project_status == "Done") {
+                                    projectsInProgress?.append(project)
+                                }
+                            }
                             
-                            self.categoryProjects![0].projects = [project,project,project,project,project,project] as! [Project]
+                            if projectsDone == nil {
+                                self.done_message.isHidden = false
+                                self.done_message.text = "No cuenta con proyectos realizados"
+                            }else {
+                                self.done_message.isHidden = true
+                            }
                             
-                            //self.categoryProjects![1].projects = try JSONDecoder().decode([Project].self, from: attributes.rawData())
+                            if projectsInProgress == nil {
+                                self.inprogress_message.isHidden = false
+                                self.inprogress_message.text = "No cuenta con proyectos en curso"
+                            }else {
+                                self.inprogress_message.isHidden = true
+                            }
                             
-                            self.categoryProjects![1].projects = [project,project,project,project,project,project] as! [Project]
+                            self.categoryProjects![0].projects = projectsInProgress
+                            
+                            self.categoryProjects![1].projects = projectsDone
                             
                             print("reload")
                             self.collectionView?.reloadData()
