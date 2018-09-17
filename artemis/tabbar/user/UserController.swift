@@ -145,16 +145,16 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
             make.size.equalTo(CGSize(width: 200, height: 80))
         }
         
-        self.view.addSubview(done_message)
-        done_message.snp.makeConstraints{ (make) in
-            make.top.equalToSuperview().offset(190)
+        self.view.addSubview(inprogress_message)
+        inprogress_message.snp.makeConstraints{ (make) in
+            make.top.equalToSuperview().offset(200)
             make.centerX.equalToSuperview()
             make.size.equalTo(CGSize(width: 200, height: 40))
         }
         
-        self.view.addSubview(inprogress_message)
-        inprogress_message.snp.makeConstraints{ (make) in
-            make.top.equalToSuperview().offset(380)
+        self.view.addSubview(done_message)
+        done_message.snp.makeConstraints{ (make) in
+            make.top.equalToSuperview().offset(390)
             make.centerX.equalToSuperview()
             make.size.equalTo(CGSize(width: 200, height: 40))
         }
@@ -283,7 +283,7 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
                             var projectsInProgress : [Project] = []
                             
                             
-                            if self.listProjects! != nil{
+                            if self.listProjects! != nil {
                                 for project in self.listProjects! {
                                     if project.str_project_status != nil {
                                         if (project.str_project_status! == "In Progress"){
