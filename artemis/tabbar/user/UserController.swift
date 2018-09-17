@@ -63,6 +63,7 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         self.categoryProjects = [categoryDoing, categoryDone]
         
+        print(categoryProjects)
         print("--------- > /setCategoryProjects()")
     }
     
@@ -88,10 +89,10 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
         //cell.categoryProjects = categoryProjects?[indexPath.item]
         
         print("----------> cellForItemAt()")
-        if let xd = categoryProjects?[0].projects?[0], let xd2 = categoryProjects?[1].projects?[0] {
+        if let xd = categoryProjects?[0], let xd2 = categoryProjects?[1] {
             print("---count caegories: \(categoryProjects!.count)")
-            print("---count project 1: \(categoryProjects![0].projects?.count)")
-            print("---count project 2: \(categoryProjects![1].projects?.count)")
+            //print("---count project 1: \(categoryProjects![0].projects?.count)")
+            //print("---count project 2: \(categoryProjects![1].projects?.count)")
             cell.categoryProjects = categoryProjects?[indexPath.item]
         }
         print("----------> /cellForItemAt()")
@@ -221,6 +222,8 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
         label.text = "Cargando..."
         label.textColor = UIColor.subTitleList()
         label.font = UIFont.systemFont(ofSize: 16)
+        label.sizeToFit()
+        label.numberOfLines = 2
         label.textAlignment = .center
         return label;
     }()
@@ -230,6 +233,8 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
         label.text = "Cargando..."
         label.textColor = UIColor.subTitleList()
         label.font = UIFont.systemFont(ofSize: 16)
+        label.sizeToFit()
+        label.numberOfLines = 2
         label.textAlignment = .center
         return label;
     }()
@@ -274,34 +279,40 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
                             print("Activities: \(attributes)")
                             self.listProjects = try JSONDecoder().decode([Project].self, from: attributes.rawData())
                             
-                            var projectsDone : [Project]?
-                            var projectsInProgress : [Project]?
+                            var projectsDone : [Project] = []
+                            var projectsInProgress : [Project] = []
                             
-                            for project in self.listProjects! {
-                                if (project.str_project_status == "In Progress"){
-                                    projectsDone?.append(project)
-                                } else if (project.str_project_status == "Done") {
-                                    projectsInProgress?.append(project)
+                            
+                            if self.listProjects! != nil{
+                                for project in self.listProjects! {
+                                    if project.str_project_status != nil {
+                                        if (project.str_project_status! == "In Progress"){
+                                            projectsDone.append(project)
+                                        } else if (project.str_project_status! == "Done") {
+                                            projectsInProgress.append(project)
+                                        }
+                                        projectsDone.append(project)
+                                        projectsInProgress.append(project)
+                                    }
                                 }
+                                if projectsDone.isEmpty {
+                                    self.done_message.isHidden = false
+                                    self.done_message.text = "No cuenta con proyectos realizados"
+                                }else {
+                                    self.done_message.isHidden = true
+                                }
+                                
+                                if projectsInProgress.isEmpty {
+                                    self.inprogress_message.isHidden = false
+                                    self.inprogress_message.text = "No cuenta con proyectos en curso"
+                                }else {
+                                    self.inprogress_message.isHidden = true
+                                }
+                                
+                                self.categoryProjects![0].projects = projectsInProgress as? [Project]
+                                
+                                self.categoryProjects![1].projects = projectsDone as? [Project]
                             }
-                            
-                            if projectsDone == nil {
-                                self.done_message.isHidden = false
-                                self.done_message.text = "No cuenta con proyectos realizados"
-                            }else {
-                                self.done_message.isHidden = true
-                            }
-                            
-                            if projectsInProgress == nil {
-                                self.inprogress_message.isHidden = false
-                                self.inprogress_message.text = "No cuenta con proyectos en curso"
-                            }else {
-                                self.inprogress_message.isHidden = true
-                            }
-                            
-                            self.categoryProjects![0].projects = projectsInProgress
-                            
-                            self.categoryProjects![1].projects = projectsDone
                             
                             print("reload")
                             self.collectionView?.reloadData()
