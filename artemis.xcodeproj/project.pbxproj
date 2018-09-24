@@ -19,6 +19,7 @@
 		4E3D68C32113EE6C00CA403D /* AssistanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D68C22113EE6C00CA403D /* AssistanceCell.swift */; };
 		4E3D68C72114A2BD00CA403D /* ReportMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D68C62114A2BD00CA403D /* ReportMenuBar.swift */; };
 		4E3D68C92114A33400CA403D /* ReportMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D68C82114A33400CA403D /* ReportMenuCell.swift */; };
+		4E4D0B0221598B9C0051198F /* MFMailComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D0B0121598B9C0051198F /* MFMailComposeView.swift */; };
 		4E56053920FD602800C774B1 /* KindOfReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56053820FD602800C774B1 /* KindOfReport.swift */; };
 		4E56053B20FE537500C774B1 /* AssistanceMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56053A20FE537500C774B1 /* AssistanceMain.swift */; };
 		4E56053D20FE581500C774B1 /* RegisterAssistanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56053C20FE581500C774B1 /* RegisterAssistanceCell.swift */; };
@@ -94,6 +95,7 @@
 		4E3D68C22113EE6C00CA403D /* AssistanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistanceCell.swift; sourceTree = "<group>"; };
 		4E3D68C62114A2BD00CA403D /* ReportMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMenuBar.swift; sourceTree = "<group>"; };
 		4E3D68C82114A33400CA403D /* ReportMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMenuCell.swift; sourceTree = "<group>"; };
+		4E4D0B0121598B9C0051198F /* MFMailComposeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFMailComposeView.swift; sourceTree = "<group>"; };
 		4E56053820FD602800C774B1 /* KindOfReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KindOfReport.swift; sourceTree = "<group>"; };
 		4E56053A20FE537500C774B1 /* AssistanceMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistanceMain.swift; sourceTree = "<group>"; };
 		4E56053C20FE581500C774B1 /* RegisterAssistanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAssistanceCell.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				872985FA20F2B68300079961 /* TextField.swift */,
 				4E04157120F408F0001080D4 /* ImageView.swift */,
 				4E04157720F52BDA001080D4 /* CustomCellRed.swift */,
+				4E4D0B0121598B9C0051198F /* MFMailComposeView.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -510,8 +513,10 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/BEMCheckBox/BEMCheckBox.framework",
 				"${BUILT_PRODUCTS_DIR}/DatePickerDialog/DatePickerDialog.framework",
+				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
 				"${BUILT_PRODUCTS_DIR}/IGListKit/IGListKit.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -525,8 +530,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BEMCheckBox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DatePickerDialog.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IGListKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -606,6 +613,7 @@
 				872985FB20F2B68300079961 /* TextField.swift in Sources */,
 				4EC2F7E820FD287C002BC8DF /* ViewCell.swift in Sources */,
 				4ED5127C211B39A1000CF87E /* BackgroundsHelper.swift in Sources */,
+				4E4D0B0221598B9C0051198F /* MFMailComposeView.swift in Sources */,
 				4E3D68C12113E48800CA403D /* AssistanceModel.swift in Sources */,
 				8770238120EFBB4F00C5B07F /* RegisterActivityController.swift in Sources */,
 				4E04157820F52BDA001080D4 /* CustomCellRed.swift in Sources */,

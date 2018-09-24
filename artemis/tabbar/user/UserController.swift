@@ -12,10 +12,12 @@ import SwiftyUserDefaults
 import SDWebImage
 import SwiftyTimer
 import Toast
+import PopupDialog
+import MessageUI
 
 var user: User = User()
 
-class UserController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate {
+class UserController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, MFMailComposeViewControllerDelegate {
     
     var categoryProjects: [CategoryProjects]?
     var listProjects: [Project]?
@@ -23,14 +25,28 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
     let cellId = "cellId"
     let cellId2 = "cellId2"
     
+    var viewCustom:UIView?
+    
     private let refreshControl = UIRefreshControl()
     
     //public let heighOfNavigationBar: CGFloat = 60
     //public let heightOfCells: CGFloat = 55
     //public let separationBetweenCells: CGFloat = 0 //30
     
+    
+    //Dialog objects
+    // Prepare the popup assets
+    let titlePopUp = "ARTEMIS"
+    let messagePopUp = """
+                        Para cualquier bug o sugerencia hacia la aplicacion, enviar su screenshot y mensaje a:
+                        artemis.app.support@vfcons.com
+                        """
+    let imagePopUp = UIImage(named: "appIcon")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewCustom = self.view
         
         print("------------------------------> UserController <------------------------------")
         setCategoryProjects()
@@ -110,7 +126,16 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 190)
+        
+        var heighCollecitonView:CGFloat = 0
+        
+        if ScreenHelper.init().getDevice() == Constants.DEVICE_SMARTPHONE {
+            heighCollecitonView = 160
+        }else {
+            heighCollecitonView = 190
+        }
+        
+        return CGSize(width: view.frame.width, height: heighCollecitonView)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -118,6 +143,7 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func setupViews(){
+        
         self.view.addSubview(profileImageView)
         profileImageView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(30)
@@ -154,11 +180,42 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         self.view.addSubview(done_message)
         done_message.snp.makeConstraints{ (make) in
-            make.top.equalToSuperview().offset(390)
+            if ScreenHelper.init().getDevice() == Constants.DEVICE_SMARTPHONE {
+                make.top.equalToSuperview().offset(360)
+            }else {
+                make.top.equalToSuperview().offset(390)
+            }
             make.centerX.equalToSuperview()
             make.size.equalTo(CGSize(width: 200, height: 40))
         }
         
+        self.view.addSubview(v_separator)
+        v_separator.snp.makeConstraints { (make) -> Void in
+            make.centerY.equalToSuperview()
+            
+            if ScreenHelper.init().getDevice() == Constants.DEVICE_SMARTPHONE {
+                make.top.equalToSuperview().offset(480)
+            }else{
+                make.top.equalToSuperview().offset(520)
+            }
+            
+            make.width.equalToSuperview().inset(32)
+            make.height.equalTo(1)
+            make.centerX.equalToSuperview()
+        }
+        
+        self.view.addSubview(btnHelp)
+        btnHelp.snp.makeConstraints{ (make) in
+            
+            if ScreenHelper.init().getDevice() == Constants.DEVICE_SMARTPHONE {
+                make.top.equalToSuperview().offset(495)
+            }else {
+                make.top.equalToSuperview().offset(530)
+            }
+            
+            make.centerX.equalToSuperview()
+            make.size.equalTo(CGSize(width: 200, height: 40))
+        }
     }
     
     func setupUserInfo(){
@@ -239,8 +296,44 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
         return label;
     }()
     
+    let v_separator: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+        return view
+    }()
+    
+    let btnHelp: RoundedButton = {
+        let button = RoundedButton()
+        button.setTitle(title: "Ayuda y Sugerencias", color: UIColor.white)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(help), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func help() {
+//        let popup = PopupDialog(title: self.titlePopUp, message: self.messagePopUp, image: imagePopUp)
+//        popup.addButtons([buttonOne, buttonTwo])
+//        self.present(popup, animated: true, completion: nil)
+        
+        let alert = UIAlertController(title: titlePopUp, message: messagePopUp, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Enciar correo", style: .default, handler: { action in
+            print("Yay! You brought your towel!")
+            self.sendEmail()
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true)
+    }
+    
+    public func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        // Dismiss the mail compose view controller.
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
     @objc func endSession() {
         Defaults.removeAll()
+        
         let sv = UIViewController.displaySpinner(onView: self.view)
         let vc = LoginController()
         UIApplication.shared.beginIgnoringInteractionEvents()
@@ -251,6 +344,24 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
 //            UIApplication.shared.endIgnoringInteractionEvents()
 
         }
+    }
+    
+    // Create buttons
+    let buttonOne = CancelButton(title: "ATRAS") {
+        print("You canceled the car dialog.")
+    }
+    
+    // This button will not the dismiss the dialog
+    let buttonTwo = DefaultButton(title: "ENVIAR EMAIL", height: 60, dismissOnTap: true) {
+        
+    }
+    
+    func sendEmail(){
+        let picker = MFMailComposeViewController()
+        picker.mailComposeDelegate = self
+        picker.setToRecipients(["artemis.app.support@vfcons.com"])
+        picker.setSubject("Sugerencias / Bug")
+        present(picker, animated: true, completion: nil)
     }
     
     func getService() {
@@ -295,23 +406,24 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
                                         projectsInProgress.append(project)
                                     }
                                 }
-                                if projectsDone.isEmpty {
-                                    self.done_message.isHidden = false
-                                    self.done_message.text = "No cuenta con proyectos realizados"
-                                }else {
-                                    self.done_message.isHidden = true
-                                }
-                                
-                                if projectsInProgress.isEmpty {
-                                    self.inprogress_message.isHidden = false
-                                    self.inprogress_message.text = "No cuenta con proyectos en curso"
-                                }else {
-                                    self.inprogress_message.isHidden = true
-                                }
                                 
                                 self.categoryProjects![0].projects = projectsInProgress as? [Project]
                                 
                                 self.categoryProjects![1].projects = projectsDone as? [Project]
+                            }
+                            
+                            if projectsDone.isEmpty {
+                                self.done_message.isHidden = false
+                                self.done_message.text = "No cuenta con proyectos realizados"
+                            }else {
+                                self.done_message.isHidden = true
+                            }
+                            
+                            if projectsInProgress.isEmpty {
+                                self.inprogress_message.isHidden = false
+                                self.inprogress_message.text = "No cuenta con proyectos en curso"
+                            }else {
+                                self.inprogress_message.isHidden = true
                             }
                             
                             print("reload")
@@ -325,7 +437,9 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
                     }
                 } else {
                     print("Contenido vacio")
-                    self.view.makeToast("No se ha podido cargar los lugares de trabajo")
+                    //self.view.makeToast("No se ha podido cargar los lugares de trabajo")
+                    self.done_message.text = "No cuenta con proyectos realizados"
+                    self.inprogress_message.text = "No cuenta con proyectos en curso"
                 }
             }
         }

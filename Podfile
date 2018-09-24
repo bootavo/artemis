@@ -13,10 +13,11 @@ pod 'IGListKit'
 pod 'DatePickerDialog'
 pod 'BEMCheckBox'
 
-pod 'SnapKit'
+pod 'SnapKit'/Users/vfcons/Documents/XcodeProjects/artemis/Podfile
 pod 'Toast', '~> 4.0'
 pod 'SDWebImage'
 pod 'SwipeCellKit'
+pod 'PopupDialog'
 #pod 'SwipeCellKit', :git => 'https://github.com/SwipeCellKit/SwipeCellKit.git', :branch => 'develop'
 
 pod 'SwiftyUserDefaults'

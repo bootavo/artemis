@@ -15,11 +15,12 @@ class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupTabBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupTabBar()
+        super.viewWillAppear(true)
+        
     }
     
     func setupTabBar(){
