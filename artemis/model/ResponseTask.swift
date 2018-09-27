@@ -38,7 +38,6 @@ class Task:Decodable {
     var dte_activitydate:String?
     var str_project_cod:String?
     var num_activity_id:Int?
-    var str_resource_id:String?
     var num_task_id:Int?
     
     private enum CodingKeys: String, CodingKey {
@@ -50,7 +49,6 @@ class Task:Decodable {
         case dte_activitydate = "dte_activitydate"
         case str_project_cod = "str_project_cod"
         case num_activity_id = "num_activity_id"
-        case str_resource_id = "str_resource_id"
         case num_task_id = "num_task_id"
     }
     
@@ -64,7 +62,6 @@ class Task:Decodable {
         dte_activitydate = try container.decode(String?.self, forKey: .dte_activitydate)
         str_project_cod = try container.decode(String?.self, forKey: .str_project_cod)
         num_activity_id = try container.decode(Int?.self, forKey: .num_activity_id)
-        str_resource_id = try container.decode(String?.self, forKey: .str_resource_id)
         num_task_id = try container.decode(Int?.self, forKey: .num_task_id)
     }
     

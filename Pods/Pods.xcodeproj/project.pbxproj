@@ -3118,6 +3118,42 @@
 			};
 			name = Release;
 		};
+		29D32D09D71F3D00785119DE327163AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4793D694491CE60FAE18C72526ABE33D /* SwipeCellKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwipeCellKit/SwipeCellKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwipeCellKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwipeCellKit/SwipeCellKit.modulemap";
+				PRODUCT_MODULE_NAME = SwipeCellKit;
+				PRODUCT_NAME = SwipeCellKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		2CA218F1F27FEEAF870154F0DC527E6D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0293F76C03907AA4D41009BC92D3B143 /* Toast.xcconfig */;
@@ -3729,7 +3765,7 @@
 			};
 			name = Release;
 		};
-		CE3BD8C6C719AE4628AC0DD0296A79E7 /* Debug */ = {
+		D32F491244C37781F7C22EE8D5C9B507 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4793D694491CE60FAE18C72526ABE33D /* SwipeCellKit.xcconfig */;
 			buildSettings = {
@@ -3757,13 +3793,14 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		E5E82E33824A229925E4556BE59E0EAB /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -3837,43 +3874,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		EA26E7E0459FD3395DC6113A1696008B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4793D694491CE60FAE18C72526ABE33D /* SwipeCellKit.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SwipeCellKit/SwipeCellKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwipeCellKit/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/SwipeCellKit/SwipeCellKit.modulemap";
-				PRODUCT_MODULE_NAME = SwipeCellKit;
-				PRODUCT_NAME = SwipeCellKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		EAD7A0EE318B366F8E795F654EA68C75 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -4020,8 +4020,8 @@
 		D859FD37915A8568188928E0A1954F2C /* Build configuration list for PBXNativeTarget "SwipeCellKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CE3BD8C6C719AE4628AC0DD0296A79E7 /* Debug */,
-				EA26E7E0459FD3395DC6113A1696008B /* Release */,
+				29D32D09D71F3D00785119DE327163AB /* Debug */,
+				D32F491244C37781F7C22EE8D5C9B507 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

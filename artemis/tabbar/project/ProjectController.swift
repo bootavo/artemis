@@ -93,7 +93,7 @@ class ProjectController: UICollectionViewController, UICollectionViewDelegateFlo
                             }
                         }catch let error {
                             print("no se pudo decodificar",error)
-                            self.view.makeToast("Datos incorrectos")
+//                            self.view.makeToast("Datos incorrectos")
                             self.refreshHelper?.stopRefreshControl()
                             self.bgHelper?.showErrorNotAllowed(state: true)
                         }

@@ -18,7 +18,7 @@ PODS:
   - SwiftyJSON (4.0.0)
   - SwiftyTimer (2.0.0)
   - SwiftyUserDefaults (3.0.1)
-  - SwipeCellKit (2.4.3)
+  - SwipeCellKit (2.5.0)
   - Toast (4.0.0)
 
 DEPENDENCIES:
@@ -33,7 +33,7 @@ DEPENDENCIES:
   - SwiftyJSON
   - SwiftyTimer
   - SwiftyUserDefaults
-  - SwipeCellKit
+  - SwipeCellKit (from `https://github.com/SwipeCellKit/SwipeCellKit.git`, branch `develop`)
   - Toast (~> 4.0)
 
 SPEC REPOS:
@@ -50,8 +50,17 @@ SPEC REPOS:
     - SwiftyJSON
     - SwiftyTimer
     - SwiftyUserDefaults
-    - SwipeCellKit
     - Toast
+
+EXTERNAL SOURCES:
+  SwipeCellKit:
+    :branch: develop
+    :git: https://github.com/SwipeCellKit/SwipeCellKit.git
+
+CHECKOUT OPTIONS:
+  SwipeCellKit:
+    :commit: 9c69084b9b331c3c9f4767add20afe72112adee8
+    :git: https://github.com/SwipeCellKit/SwipeCellKit.git
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
@@ -66,9 +75,9 @@ SPEC CHECKSUMS:
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   SwiftyTimer: 2efd74b060d69ad4f1496baf5bbedbe132125fcf
   SwiftyUserDefaults: 3d273b1739b68ada3145dc754a70ec775bc5c8be
-  SwipeCellKit: cee9906e6d3a36e22ad1a852fba7f8fa0839d113
+  SwipeCellKit: d8f2617538ce3021cb0a11d1b93856a06a2f2e20
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
 
-PODFILE CHECKSUM: 188d28d1b35ff1fda9cf96bddc94dcfb15517381
+PODFILE CHECKSUM: f042b4955245bca92405bdc1ad4841df647aa5a0
 
 COCOAPODS: 1.5.3

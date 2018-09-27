@@ -142,6 +142,7 @@ class RegisterActivityController: UIViewController, UIApplicationDelegate{
     
     func done(){
         print("done")
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     func getProjects() {

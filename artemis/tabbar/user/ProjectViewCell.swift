@@ -75,7 +75,7 @@ class ProjectViewCell: UICollectionViewCell {
     }()
     
     func setupViews(){
-        backgroundColor = UIColor.black
+        backgroundColor = UIColor.clear
         
         addSubview(iv_picture)
         iv_picture.snp.makeConstraints { (make) -> Void in

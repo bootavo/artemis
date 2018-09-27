@@ -97,7 +97,7 @@ class LoginView: UIView, UITextFieldDelegate{
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
         if textField == tf_username{
-            let limitLength = 25
+            let limitLength = 50
             guard let text = textField.text else { return true }
             let newLength = text.characters.count + string.characters.count - range.length
             return newLength <= limitLength
