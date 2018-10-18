@@ -20,7 +20,6 @@ class TabBarController: UITabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
     }
     
     func setupTabBar(){
@@ -107,7 +106,7 @@ class TabBarController: UITabBarController {
                     self.viewControllers2.append(activity2)
                     print("activity2")
                 case Constants.MODULE_PROJECT:
-                    self.viewControllers2.append(project2)
+                    //self.viewControllers2.append(project2)
                     print("project2")
                     
                 case Constants.MODULE_USER:

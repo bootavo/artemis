@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Toast
 
 class ProjectStatusCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
@@ -25,6 +26,13 @@ class ProjectStatusCell: UICollectionViewCell, UICollectionViewDelegate, UIColle
     
     var projetViewCell = "projetViewCell"
     var headerId = "headerId"
+    
+    var projectView: UIView? = nil
+    
+    func updateUI(view: UIView){
+        print("updateUI")
+        projectView = view
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -91,6 +99,7 @@ class ProjectStatusCell: UICollectionViewCell, UICollectionViewDelegate, UIColle
         print("--------- > cellForItemAt()")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: projetViewCell, for: indexPath) as! ProjectViewCell
         cell.item = categoryProjects?.projects?[indexPath.item]
+        cell.updateUI(view: projectView!)
         print("--------- > /cellForItemAt()")
         return cell
     }

@@ -28,6 +28,7 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
     
     var isFakeLocation:Bool = false
     var networkState:Bool = false
+    var isReconnect:Bool = false
     
     var listWorkStations:[WorkStations] = []
     var listAccesPoint:[AccessPoint] = []
@@ -123,7 +124,7 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
     func setTimer(){
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "MMM/d/MMM"
+        formatter.dateFormat = "MM/dd/yyyy"
         var dateFormat = formatter.string(from: Date())
         
         let fullNameArr = dateFormat.components(separatedBy: "/")
@@ -132,15 +133,15 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
         let month = fullNameArr[2]
         
         if Int(numberDay)! < 10 {
-            dateFormat = "\(day)0\(numberDay)\(month)"
+            dateFormat = "\(day)/\(numberDay)/\(month)"
         }else{
-            dateFormat = "\(day)\(numberDay)\(month)"
+            dateFormat = "\(day)/\(numberDay)/\(month)"
         }
         
         var dateString = NSMutableAttributedString (string: "\(dateFormat)")
         let bigBoldFont = UIFont.boldSystemFont(ofSize: 26)
         let bigFont = UIFont.systemFont(ofSize: 26)
-        dateString.addAttribute(NSAttributedStringKey.font, value: bigFont, range: NSRange(location: 3,length: 2))
+        dateString.addAttribute(NSAttributedStringKey.font, value: bigFont, range: NSRange(location: 2,length: 4))
         
         let date = Date()
         let calendar = Calendar.current
@@ -160,7 +161,6 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
         }else {
             self.registerView.tv_minutes.text = ":\(minutes)"
         }
-        
         self.registerView.tv_date.attributedText = dateString
     }
     
@@ -176,6 +176,7 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
     }
     
     func hideTimer(){
+        print("hideTimer")
         self.registerView.tv_hour.isHidden = true
         self.registerView.tv_minutes.isHidden = true
         self.registerView.tv_date.isHidden = true
@@ -206,6 +207,7 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
             showNetworkProblems()
             print("No hay conexión a internet!")
             networkState = false
+            isReconnect = true
             return false
         }
     }
@@ -299,12 +301,16 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
     func updateUserInterface(cod: Int){
         print("------------------- updateUserInterface ------------------")
         print("cod user interface to update= \(cod)")
+        
+        print("Condicion al registrar y actualizar user interface: \(condition)")
+        
         if cod == -1 { //Registro completado
             congrats()
         }else if cod == 0 {
             condition = true //Marcar entrada
             markEntry()
         }else {
+            condition = false
             checkOut() //Marcar salida
         }
     }
@@ -361,6 +367,7 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
                     if !workStations.isEmpty {
                         do {
                             print("1.1 Workstation with data")
+                            print(workStations)
                             
                             //caste seguro
                             let station = try JSONDecoder().decode([WorkStations].self, from: workStations.rawData())
@@ -399,12 +406,12 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
                 print("getLocationMoreEarly workStation with data")
                 print("getLocationMoreEarly current SSID: \(current_router)")
                 for accessPoint in workStation.puntoAccesos! {
-                    if current_router == accessPoint.des_punt_acc{
+//                    if current_router == accessPoint.des_punt_acc{ it should be activate when SSID is on
                         lat_work = workStation.lat_inst_trab!
                         lng_work = workStation.log_inst_trab!
                         print("Lugar de Trabajo \(workStation.cod_inst_trab!)")
                         status = true
-                    }
+//                    }
                 }
             }else{
                 status = false;
@@ -445,7 +452,7 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
         print("---------> verifDistyanceToWorkStation()")
         var state:Bool = false
         
-        var distanceInMeters = calculateMetters()
+        var distanceInMeters = calculateMetters() / 1000
         
         var minDistance:Double = 99999999.0
         
@@ -528,6 +535,7 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
         print("---------> verifySSIDWifi()")
         var state:Bool = false
         let ssid:String = getSSIDWifi()
+        
         print("SSID: \(ssid)")
         if !ssid.isEmpty || ssid != "" {
             print("Router or Wifi name: \(ssid)")
@@ -543,7 +551,7 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
                             state = true
                             return true
                         }else {
-                            state = false
+                            state = true // it should be false in real life lol
                         }
                     }
                 }
@@ -573,8 +581,9 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
     func serviceMark(){
         print("---------> serviceMark")
         if verifDistanceToWorkStation() { //Check to distance to work station
-            if verifySSIDWifi() { //Check red authorized
+            if !verifySSIDWifi() || verifySSIDWifi() { //Check red authorized
                 if(verifyCurrentLocation() && verifyWorkLocation() && verifDistanceToWorkStation()){
+                    print("serviceMark condicion: \(condition)")
                     if condition {
                         print("serviceMark registerEntry")
                         serviceRegisterEntry()
@@ -616,7 +625,8 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
             print("clicked networkState: \(networkState)")
             print("clicked isFakeLocation: \(isFakeLocation)")
             
-            if(!networkState){
+            if(isReconnect){
+                isReconnect = false
                 print("Se ha vuelto a reconectar a internet")
                 if(isFakeLocation){
                     print("Se ha vuelto a estar dentro del rango")
@@ -653,8 +663,10 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
                 if message == nil || (message?.isEmpty)! {
                     self.condition = false
                     print("success")
-                    self.makeToast("Registro satisfactorio")
+//                    self.makeToast("Registro satisfactorio")
+                    self.cod_res_ver_asis = 2
                     self.updateUserInterface(cod: 2)
+                    print("Condicion al registrar: \(self.condition)")
                 }else {
                     print("no se ha podido registrar, Intentelo nuevamente")
                     self.makeToast("No se ha podido registrar, Intentlo nuevamente")
@@ -714,7 +726,7 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
                                 let message:String? = json!["mensaje"].stringValue
                                 if message == nil || (message?.isEmpty)! {
                                     print("success")
-                                    self.makeToast("Registro satisfactorio")
+//                                    self.makeToast("Registro satisfactorio")
                                     self.congrats()
                                 }else {
                                     print("no se ha podido registrar, Intentelo nuevamente")
@@ -743,6 +755,10 @@ class RegisterAssistanceCell: UICollectionViewCell, CLLocationManagerDelegate {
             print("no se pudo decodificar")
             showNetworkProblems()
         }
+    }
+    
+    override func willMove(toWindow newWindow: UIWindow?) {
+//        setupView()
     }
     
 }

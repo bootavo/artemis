@@ -37,7 +37,7 @@ class RegisterAssistanceView: UIView {
             (make) -> Void in
             make.width.equalTo(280)
             make.height.equalTo(40)
-            make.topMargin.equalTo(430)
+            make.topMargin.equalTo(400)
             make.centerX.equalToSuperview()
         }
         addSubview(tv_hour)
@@ -64,7 +64,7 @@ class RegisterAssistanceView: UIView {
         tv_date.text = "Mar 26 Jun"
         tv_date.snp.makeConstraints{
             (make) -> Void in
-            make.width.equalTo(100)
+            make.width.equalTo(200)
             make.height.equalTo(50)
             make.topMargin.equalTo(250)
             make.centerX.equalToSuperview()
@@ -94,7 +94,7 @@ class RegisterAssistanceView: UIView {
         tv_message.snp.makeConstraints{
             (make) -> Void in
             make.width.equalTo(300)
-            make.height.equalTo(30)
+            make.height.equalTo(60)
             make.topMargin.equalTo(320)
             make.centerX.equalToSuperview()
         }
@@ -157,10 +157,11 @@ class RegisterAssistanceView: UIView {
     
     let tv_message: UILabel = {
         var tv = UILabel()
+        tv.font = UIFont.systemFont(ofSize: 14)
         tv.text = "message"
         tv.textAlignment = .center
         tv.baselineAdjustment = .alignCenters
-        tv.numberOfLines = 2
+        tv.numberOfLines = 3
         return tv
     }()
     

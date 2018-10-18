@@ -8,26 +8,54 @@
 
 import UIKit
 import SwipeCellKit
+import Toast
 
 class ActiityCell : SwipeCollectionViewCell {
     
     var item: Task? = nil
+    var activityView: UIView? = nil
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
     }
     
-    func updateUI(task: Task){
-        
+    override var isSelected: Bool{
+        didSet{
+            if self.isSelected{
+                showMessage(isSelected: true)
+            }else{
+                showMessage(isSelected: false)
+            }
+        }
+    }
+    
+    func showMessage(isSelected: Bool) {
+        if isSelected {
+            activityView?.hideToast()
+            activityView?.makeToast("\(item?.str_act_description)")
+            print("isSelected")
+        }else{
+            print("isNotSelected")
+        }
+    }
+    
+    func updateUI(task: Task, view: UIView){
+    
+        item = task
+        activityView = view
+    
         print("task: \(task.num_task_id)")
         
-        if let activity = task.str_taskname {
+        if let activity = task.str_act_description {
             self.tv_activity.text = "\(activity)"
+//            if activity.count >= 24 {
+//                updateConstraint()
+//            }
         }
         
-        if let project_code = task.str_project_cod {
-            self.tv_project_code.text = "\(project_code)"
+        if let kind_of_activity = task.str_taskname, let project_code = task.str_project_cod {
+            self.tv_project_code.text = "\(kind_of_activity) - \(project_code)"
         }
         
         if let hours = task.num_registered_hours, let minutes = task.num_registered_minutes {
@@ -53,12 +81,15 @@ class ActiityCell : SwipeCollectionViewCell {
     
     let tv_activity: UITextView = {
         let text = UITextView()
-        text.font = UIFont.systemFont(ofSize: 14)
+        text.font = UIFont.systemFont(ofSize: 12)
         text.text = "DESARROLLO"
         text.textColor = UIColor.black
         text.textAlignment = .left
         text.contentInset = UIEdgeInsetsMake(-7, 0, 0, 0)
         text.isUserInteractionEnabled = false
+        text.textContainer.maximumNumberOfLines = 2
+        text.setAnchor(width: 0, height: 35)
+        text.centerVertically()
         return text
     }()
     
@@ -121,25 +152,26 @@ class ActiityCell : SwipeCollectionViewCell {
         
         contentView.addSubview(tv_activity)
         tv_activity.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(30)
+            make.top.equalTo(20)
             make.left.equalToSuperview().offset(70)
-            make.width.equalTo(150)
-            make.height.equalTo(20)
+            make.width.equalTo(190)
+            make.height.equalTo(35)
         }
         
         contentView.addSubview(tv_project_code)
         tv_project_code.snp.makeConstraints { (make) in
-            make.top.bottom.equalTo(tv_activity).offset(20)
+//            make.top.bottom.equalTo(tv_activity).offset(10)
+            make.top.equalToSuperview().offset(55)
             make.left.equalToSuperview().offset(70)
-            make.width.equalTo(150)
+            make.width.equalTo(190)
             make.height.equalTo(20)
         }
         
         contentView.addSubview(tv_hours)
         tv_hours.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(30)
-            make.right.equalToSuperview().offset(-15)
-            make.width.equalTo(120)
+            make.right.equalToSuperview().offset(-35)
+            make.width.equalTo(80)
             make.height.equalTo(20)
         }
         
@@ -160,6 +192,19 @@ class ActiityCell : SwipeCollectionViewCell {
             make.centerX.equalToSuperview()
         }
         
+    }
+    
+    func updateConstraint() {
+        tv_activity.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(30)
+            make.height.equalTo(20)
+        }
+        
+        tv_project_code.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(35)
+            make.height.equalTo(20)
+        }
+        super.updateConstraints()
     }
     
 }

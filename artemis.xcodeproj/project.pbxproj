@@ -416,8 +416,8 @@
 		87C3F84D20F849C70005CAAB /* utilities */ = {
 			isa = PBXGroup;
 			children = (
-				87C3F84E20F84A150005CAAB /* NetworkHelper.swift */,
 				87C3F85020F84A270005CAAB /* SSIDHelper.swift */,
+				87C3F84E20F84A150005CAAB /* NetworkHelper.swift */,
 				87C3F85220F84A3F0005CAAB /* LocationHelper.swift */,
 				870DE0B720F8652C00D162B2 /* InstanceVCWSB.swift */,
 				4E56053E20FE811800C774B1 /* DeviceHelper.swift */,
@@ -793,7 +793,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vfconsulting.artemis;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vf.artemis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -813,7 +813,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vfconsulting.artemis;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vf.artemis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import SwiftyUserDefaults
+import PopupDialog
 
 class RegisterActivityController: UIViewController, UIApplicationDelegate{
     
@@ -52,6 +53,7 @@ class RegisterActivityController: UIViewController, UIApplicationDelegate{
         titleLabel.textColor = UIColor.primaryColor()
         titleLabel.textAlignment = .center
         self.tabBarController?.navigationItem.titleView = titleLabel
+        getProjectsA()
     }
     
     func setupView(){
@@ -104,8 +106,6 @@ class RegisterActivityController: UIViewController, UIApplicationDelegate{
                     self.view.makeToast("Registro satisfactorio")
                 }
             }
-        } else {
-            self.view.makeToast("Complete todos los campos")
         }
     }
     
@@ -116,25 +116,31 @@ class RegisterActivityController: UIViewController, UIApplicationDelegate{
                     self.registerActivityView.tf_hours.text == "" ||
             self.registerActivityView.tf_minutes.text == "" {
             
-            print("true")
-            print("""
-                Datos para enviar al json:
-                cod proy: \(project!.num_project_id!)
-                cod kindOfActivity: \(kindOfActivity!.num_task_id!)
-                hours: \(hours)
-                minutes: \(minutes)
-                """)
-            
+//            print("true")
+//            print("""
+//                Datos para enviar al json:
+//                cod proy: \(project!.num_project_id!)
+//                cod kindOfActivity: \(kindOfActivity!.num_task_id!)
+//                hours: \(hours)
+//                minutes: \(minutes)
+//                """)
+            self.view.makeToast("Complete todos los campos")
             return false
         }else {
             print("true")
-            print("""
-                Datos para enviar al json:
-                cod proy: \(project!.num_project_id!)
-                cod kindOfActivity: \(kindOfActivity!.num_task_id!)
-                hours: \(hours)
-                minutes: \(minutes)
-                """)
+//            print("""
+//                Datos para enviar al json:
+//                cod proy: \(project!.num_project_id!)
+//                cod kindOfActivity: \(kindOfActivity!.num_task_id!)
+//                hours: \(hours)
+//                minutes: \(minutes)
+//                """)
+            
+            if hours == 0 && minutes == 0{
+                self.view.makeToast("La actividad debe ser 05 min como mínimo")
+                return false
+            }
+            
             return true
         }
         
@@ -168,7 +174,7 @@ class RegisterActivityController: UIViewController, UIApplicationDelegate{
     func gethours(){
         print("gethours")
         self.popUpTime.modalPresentationStyle = .overCurrentContext
-        self.popUpTime.modalTransitionStyle = .crossDissolve
+        self.popUpTime.modalTransitionStyle = .crossDissolve        
         self.present(popUpTime, animated: true, completion: nil)
     }
     
@@ -196,6 +202,89 @@ class RegisterActivityController: UIViewController, UIApplicationDelegate{
         return ("\(stringNumber)\(timeTag)")
     }
     
+    func getProjectsA(){
+        
+        let code = Defaults[.employee_code]
+        let parameters = ["str_resource_id": code!] as [String : Any]
+        
+        ApiService.sharedInstance.getProjectsByResourceId(parameters: parameters) { (err, statusCode, json) in
+            print("before error")
+            
+            if let error = err {
+                print("Error: \(error)")
+                return
+            }
+            
+            print("statusCode: \(statusCode)")
+            if let json = json {
+                let content = json["content"]
+                print("Content: \(content)")
+                
+                if !content.isEmpty {
+                    do {
+                        print("attributes")
+                        
+                        let attributes = content["project_teams"]
+                        if !attributes.isEmpty {
+                            print("Activities: \(attributes)")
+                            let data = try JSONDecoder().decode([Project].self, from: attributes.rawData())
+                            Constants.PROJECTS = data
+                        }else {
+                            print("Actividades vacias")
+                        }
+                    }catch let error {
+                        print("no se pudo decodificar",error)
+                        self.view.makeToast("Datos incorrectos")
+                    }
+                } else {
+                    print("Contenido vacio")
+                    self.view.makeToast("No se ha podido cargar los lugares de trabajo")
+                }
+            }
+        }
+        
+    }
+    
+    func getKindOfActivtyA(){
+        let parameters = ["num_project_id": project?.num_project_id] as [String : Any]
+        
+        ApiService.sharedInstance.getKindOfActivities(parameters: parameters) { (err, statusCode, json) in
+            print("before error")
+            
+            if let error = err {
+                print("Error: \(error)")
+                return
+            }
+            
+            print("statusCode: \(statusCode)")
+            if let json = json {
+                let content = json["content"]
+                print("Content: \(content)")
+                
+                if !content.isEmpty {
+                    do {
+                        print("attributes")
+                        
+                        let attributes = content["tasks"]
+                        if !attributes.isEmpty {
+                            print("Tasks: \(attributes)")
+                            let data = try JSONDecoder().decode([KindOfActivity].self, from: attributes.rawData())
+                            Constants.TASKS = data
+                        }else {
+                            print("Actividades vacias")
+                        }
+                    }catch let error {
+                        print("no se pudo decodificar",error)
+                        self.view.makeToast("Datos incorrectos")
+                    }
+                } else {
+                    print("Contenido vacio")
+                    self.view.makeToast("No se ha podido cargar los lugares de trabajo")
+                }
+            }
+        }
+    }
+    
 }
 
 extension RegisterActivityController: PopUpTimeDelegate {
@@ -214,8 +303,10 @@ extension RegisterActivityController: PopUpMinutesDelegate {
 
 extension RegisterActivityController: PopUpProjectDelegate {
     func didSelectItemProject(item: Project) {
+        print("didSelectItemProject")
         project = item
         self.registerActivityView.tf_project.text = "\(project!.str_project_name!)"
+        self.getKindOfActivtyA()
     }
 }
 

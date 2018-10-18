@@ -22,4 +22,10 @@ class Constants {
     
     static let APP_MODULES = [MODULE_ASSISTANCE, MODULE_REPORT, MODULE_ACTIVITY, MODULE_PROJECT, MODULE_USER]
     
+    static let JAVA_ENVIROMENT = "/prod"
+    static let PYTHON_ENVIROMENT  = "/PRODENV"
+    
+    static var PROJECTS: [Project]? = nil
+    static var TASKS: [KindOfActivity]? = nil
+    
 }

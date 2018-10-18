@@ -73,7 +73,7 @@ class AssistanceHistoryCell: UICollectionViewCell, UICollectionViewDelegate, UIC
         refreshHelper?.refreshAction = refreshData
         refreshHelper?.showRefreshControl()
         
-        bgHelper = BackgroundHelper(v: self.contentView, message: nil)
+        bgHelper = BackgroundHelper(v: collectionView, message: nil)
         
         getService()
     }
@@ -135,7 +135,9 @@ class AssistanceHistoryCell: UICollectionViewCell, UICollectionViewDelegate, UIC
                         }
                     } else {
                         print("Contenido vacio")
-                        self.makeToast("No se ha podido cargar los lugares de trabajo")
+//                        self.makeToast("No se ha podido cargar los lugares de trabajo")
+                        self.assistances.removeAll()
+                        self.collectionView.reloadData()
                         self.refreshHelper?.stopRefreshControl()
                         self.bgHelper?.showDataEmpty(state: true)
                     }

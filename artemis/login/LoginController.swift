@@ -69,7 +69,11 @@ class LoginController: UIViewController, UIApplicationDelegate {
                             Defaults[.name] = user.name!
                             Defaults[.patternLastName] = user.patternLastName!
                             Defaults[.matternLastName] = user.matternLastName!
-                            Defaults[.foto] = user.foto!
+                            
+                            if user.foto != nil{
+                                Defaults[.foto] = user.foto!
+                                print("photo login: \(Defaults[.foto]!)")
+                            }
                             
                             for module in user.modules! {
                                 print("Modulo: \(module.vch_nom_modulo!)")

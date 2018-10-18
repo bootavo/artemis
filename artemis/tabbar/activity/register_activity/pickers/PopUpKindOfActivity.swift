@@ -71,8 +71,16 @@ class PopUpKindOfActivity: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if Constants.TASKS != nil{
+            data = Constants.TASKS!
+        }else{
+            getService()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         print("PopUpKindOFActivity Id capturado: \(projectId)")
-        getService()
     }
     
     @IBAction func popUpExit(_ sender: Any) {

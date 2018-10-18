@@ -22,6 +22,10 @@ extension DefaultsKeys {
     static let moduleActivity = DefaultsKey<String?>("activity")
     static let moduleProject = DefaultsKey<String?>("project")
     static let moduleUser = DefaultsKey<String?>("user")
+    
+    static let projects = DefaultsKey<[Project]>("projects")
+    static let tasks = DefaultsKey<[KindOfActivity]>("tasks")
+    
 }
 
 class UserModel: Decodable {

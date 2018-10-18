@@ -38,7 +38,7 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
     // Prepare the popup assets
     let titlePopUp = "ARTEMIS"
     let messagePopUp = """
-                        Para cualquier bug o sugerencia hacia la aplicacion, enviar su screenshot y mensaje a:
+                        Para cualquier bug o sugerencia hacia la aplicación, enviar su screenshot y mensaje a:
                         artemis.app.support@vfcons.com
                         """
     let imagePopUp = UIImage(named: "appIcon")
@@ -110,6 +110,7 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
             //print("---count project 1: \(categoryProjects![0].projects?.count)")
             //print("---count project 2: \(categoryProjects![1].projects?.count)")
             cell.categoryProjects = categoryProjects?[indexPath.item]
+            cell.updateUI(view: self.view)
         }
         print("----------> /cellForItemAt()")
         
@@ -166,9 +167,9 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         self.view.addSubview(btnEndSession)
         btnEndSession.snp.makeConstraints{ (make) in
-            make.top.bottom.equalTo(rolLabel).offset(20)
+            make.top.equalTo(rolLabel.snp.bottom).offset(-40)
             make.left.equalTo(profileImageView.snp.right).offset(10)
-            make.size.equalTo(CGSize(width: 200, height: 80))
+            make.size.equalTo(CGSize(width: 200, height: 40))
         }
         
         self.view.addSubview(inprogress_message)
@@ -212,7 +213,6 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
             }else {
                 make.top.equalToSuperview().offset(530)
             }
-            
             make.centerX.equalToSuperview()
             make.size.equalTo(CGSize(width: 200, height: 40))
         }
@@ -222,7 +222,10 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         fullNameLabel.text = "\(Defaults[.name]!) \(Defaults[.patternLastName]!) \(Defaults[.matternLastName]!) "
         rolLabel.text = "\(Defaults[.employee_code]!)"
-        profileImageView.imageView.sd_setImage(with: URL(string: "\(Defaults[.foto]!)"), completed: nil)
+        
+        if (Defaults[.foto]?.contains("https") ?? false) {
+            profileImageView.imageView.sd_setImage(with: URL(string: Defaults[.foto]!), completed: nil)
+        }
         
         //scrollView.alwaysBounceVertical = true
         
@@ -317,7 +320,7 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         let alert = UIAlertController(title: titlePopUp, message: messagePopUp, preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Enciar correo", style: .default, handler: { action in
+        alert.addAction(UIAlertAction(title: "Enviar correo", style: .default, handler: { action in
             print("Yay! You brought your towel!")
             self.sendEmail()
         }))
@@ -361,6 +364,7 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
         picker.mailComposeDelegate = self
         picker.setToRecipients(["artemis.app.support@vfcons.com"])
         picker.setSubject("Sugerencias / Bug")
+        picker.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         present(picker, animated: true, completion: nil)
     }
     
@@ -380,30 +384,27 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
             print("statusCode: \(statusCode)")
             if let json = json {
                 let content = json["content"]
-                //print("Content: \(content)")
+                print("Content: \(content)")
                 
                 if !content.isEmpty {
                     do {
                         
+                        var projectsDone : [Project] = []
+                        var projectsInProgress : [Project] = []
+                        
                         let attributes = content["project_teams"]
                         if !attributes.isEmpty {
-                            print("Activities: \(attributes)")
+                            print("projects: \(attributes)")
                             self.listProjects = try JSONDecoder().decode([Project].self, from: attributes.rawData())
-                            
-                            var projectsDone : [Project] = []
-                            var projectsInProgress : [Project] = []
-                            
                             
                             if self.listProjects! != nil {
                                 for project in self.listProjects! {
-                                    if project.str_project_status != nil {
-                                        if (project.str_project_status! == "In Progress"){
+                                    if project.num_project_status != nil {
+                                        if (project.num_project_status! == 3){
                                             projectsDone.append(project)
-                                        } else if (project.str_project_status! == "Done") {
+                                        } else if (project.num_project_status! == 2) {
                                             projectsInProgress.append(project)
                                         }
-                                        projectsDone.append(project)
-                                        projectsInProgress.append(project)
                                     }
                                 }
                                 
@@ -414,7 +415,7 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
                             
                             if projectsDone.isEmpty {
                                 self.done_message.isHidden = false
-                                self.done_message.text = "No cuenta con proyectos realizados"
+                                self.done_message.text = "No cuenta con proyectos finalizados"
                             }else {
                                 self.done_message.isHidden = true
                             }
@@ -429,7 +430,20 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
                             print("reload")
                             self.collectionView?.reloadData()
                         }else {
-                            print("Actividades vacias")
+                            print("Projectos vacios")
+                            if projectsDone.isEmpty {
+                                self.done_message.isHidden = false
+                                self.done_message.text = "No cuenta con proyectos finalziados"
+                            }else {
+                                self.done_message.isHidden = true
+                            }
+                            
+                            if projectsInProgress.isEmpty {
+                                self.inprogress_message.isHidden = false
+                                self.inprogress_message.text = "No cuenta con proyectos en curso"
+                            }else {
+                                self.inprogress_message.isHidden = true
+                            }
                         }
                     }catch let error {
                         print("no se pudo decodificar",error)

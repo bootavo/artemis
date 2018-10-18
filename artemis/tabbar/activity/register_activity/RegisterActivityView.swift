@@ -9,7 +9,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-class RegisterActivityView: UIView{
+class RegisterActivityView: UIView, UITextViewDelegate{
     
     var offSet: Float = -60
     
@@ -141,7 +141,7 @@ class RegisterActivityView: UIView{
             (make) -> Void in
             make.width.equalTo(120)
             make.height.equalTo(40)
-            make.right.equalTo(tf_hours).offset(120)
+            make.right.equalTo(tf_hours).offset(130)
             make.centerY.equalToSuperview()
         }
         
@@ -149,15 +149,18 @@ class RegisterActivityView: UIView{
         tf_description.snp.makeConstraints{
             (make) -> Void in
             make.top.equalTo(v_duration).offset(50)
-            make.height.equalTo(40)
+            make.height.equalTo(100)
             make.width.equalToSuperview().offset(offSet)
             make.centerX.equalToSuperview()
         }
+        tf_description.textColor = UIColor.placeHolder()
+        tf_description.text = "Ingrese una descripción"
+        tf_description.delegate = self
         
         addSubview(btn_save)
         btn_save.snp.makeConstraints{
             (make) -> Void in
-            make.top.equalTo(tf_description).offset(50)
+            make.top.equalTo(tf_description).offset(150)
             make.width.equalToSuperview().offset(offSet)
             make.centerX.equalToSuperview()
         }
@@ -172,15 +175,15 @@ class RegisterActivityView: UIView{
     }
     
     let tf_date: UITextField = {
-        let user = UITextField(placeholder: "27/06/2018")
-        user.withImage(direction: .Right, image: UIImage(named: "icon_calendar_gray")!, colorSeparator: UIColor.primaryColor(), colorBorder: UIColor.primaryColor())
+        let user = UITextField(placeholder: "Seleccione la fecha")
+        user.withImage(direction: .Right, image: UIImage(named: "icon_calendar_gray")!, colorSeparator: UIColor.primaryColor(), colorBorder: UIColor.primaryColor(), action:1)
         user.font = UIFont.systemFont(ofSize: 14)
         return user
     }()
     
     let tf_project: UITextField = {
         let user = UITextField(placeholder: "Proyecto")
-        user.withImage(direction: .Right, image: UIImage(named: "ic_drop_down_arrow")!, colorSeparator: UIColor.primaryColor(), colorBorder: UIColor.primaryColor())
+        user.withImage(direction: .Right, image: UIImage(named: "ic_drop_down_arrow")!, colorSeparator: UIColor.primaryColor(), colorBorder: UIColor.primaryColor(), action:2)
         user.addTarget(self, action: #selector(getProjects), for: .touchDown)
         user.font = UIFont.systemFont(ofSize: 14)
         user.isEnabled = true
@@ -189,7 +192,7 @@ class RegisterActivityView: UIView{
     
     let tf_activity: UITextField = {
         let user = UITextField(placeholder: "Actividad")
-        user.withImage(direction: .Right, image: UIImage(named: "ic_drop_down_arrow")!, colorSeparator: UIColor.primaryColor(), colorBorder: UIColor.primaryColor())
+        user.withImage(direction: .Right, image: UIImage(named: "ic_drop_down_arrow")!, colorSeparator: UIColor.primaryColor(), colorBorder: UIColor.primaryColor(), action: 3)
         user.addTarget(self, action: #selector(getKindOfActivities), for: .touchDown)
         user.font = UIFont.systemFont(ofSize: 14)
         user.isEnabled = true
@@ -245,7 +248,7 @@ class RegisterActivityView: UIView{
         user.setAnchor(width: 0, height: 40)
         user.textAlignment = .left
         
-        user.withImage(direction: .Right, image: UIImage(named: "ic_drop_down_arrow")!, colorSeparator: UIColor.primaryColor(), colorBorder: UIColor.primaryColor())
+        user.withImage(direction: .Right, image: UIImage(named: "ic_drop_down_arrow")!, colorSeparator: UIColor.primaryColor(), colorBorder: UIColor.primaryColor(), action: 4)
         
         user.addTarget(self, action: #selector(getHours), for: .touchDown)
         user.isEnabled = true
@@ -261,7 +264,9 @@ class RegisterActivityView: UIView{
         user.attributedPlaceholder = placeHolder
         user.textAlignment = .left
         
-        user.withImage(direction: .Right, image: UIImage(named: "ic_drop_down_arrow")!, colorSeparator: UIColor.primaryColor(), colorBorder: UIColor.primaryColor())
+        user.withImage(direction: .Right, image: UIImage(named: "ic_drop_down_arrow")!, colorSeparator: UIColor.primaryColor(), colorBorder: UIColor.primaryColor(), action:5)
+        
+        
         
         user.addTarget(self, action: #selector(getMinutes), for: .touchDown)
         user.isEnabled = true
@@ -269,10 +274,10 @@ class RegisterActivityView: UIView{
         return user
     }()
     
-    let tf_description: UITextField = {
-        let user = UITextField(placeholder: "Actividad de tarea ...")
-        user.setAnchor(width: 0, height: 80)
-        user.addTarget(self, action: #selector(activateKeyboard), for: .touchDown)
+    let tf_description: UITextView = {
+        let user = UITextView(placeholder: "Actividad de tarea ...")
+        user.setAnchor(width: 0, height: 100)
+//        user.addTarget(self, action: #selector(activateKeyboard), for: .touchDown)
         return user
     }()
     
@@ -346,6 +351,26 @@ class RegisterActivityView: UIView{
         }
     }
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        print("textViewDidBeginEditing")
+        if tf_description.textColor == UIColor.placeHolder() {
+            tf_description.text = nil
+            tf_description.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        print("textViewDidEndEditing")
+        if tf_description.text.isEmpty {
+            tf_description.text = "Ingrese una descripción"
+            tf_description.textColor = UIColor.lightGray
+        }
+    }
+    
+    @objc func test(){
+        print("hola2")
+    }
+    
 }
 
 extension UITextField {
@@ -356,7 +381,7 @@ extension UITextField {
     }
     
     // add image to textfield
-    func withImage(direction: Direction, image: UIImage, colorSeparator: UIColor, colorBorder: UIColor){
+    func withImage(direction: Direction, image: UIImage, colorSeparator: UIColor, colorBorder: UIColor, action: Int){
         let mainView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 45))
         mainView.layer.cornerRadius = 5
         
@@ -366,11 +391,12 @@ extension UITextField {
         view.layer.cornerRadius = 5
         view.layer.borderWidth = CGFloat(0.5)
         view.layer.borderColor = colorBorder.cgColor*/
+        view.isUserInteractionEnabled = true
         mainView.addSubview(view)
         
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
-        imageView.frame = CGRect(x: 12.0, y: 10.0, width: 24.0, height: 24.0)
+        imageView.frame = CGRect(x: 12.0, y: 10.0, width: 18.0, height: 18.0)
         view.addSubview(imageView)
         
         let seperatorView = UIView()
@@ -392,4 +418,37 @@ extension UITextField {
         
     }
     
+//    func setTapGesure(target: UITapGestureRecognizer){
+//        imageView.isUserInteractionEnabled = true
+//        imageView.addGestureRecognizer(target)
+//    }
+    
 }
+
+
+
+//func getTarget(action: Int) -> UITapGestureRecognizer {
+//
+//    var tapGestureRecognizer: UITapGestureRecognizer? = nil
+//
+//    switch action {
+//    case 1: // date
+//        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RegisterActivityView.test))
+//        break
+//    case 2: // project
+//        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RegisterActivityView.getProjects))
+//        break
+//    case 3: // activity
+//        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RegisterActivityView.getKindOfActivities))
+//        break
+//    case 4: // hour
+//        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RegisterActivityView.getHours))
+//        break
+//    case 5: // min
+//        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RegisterActivityView.getMinutes))
+//        break
+//    default:
+//        break
+//    }
+//    return tapGestureRecognizer!
+//}

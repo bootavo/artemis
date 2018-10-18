@@ -28,9 +28,9 @@ class BackgroundHelper {
         view.addSubview(iv_background)
         iv_background.snp.makeConstraints{
             (make) -> Void in
-            make.width.equalTo(250)
-            make.height.equalTo(250)
-            make.topMargin.equalTo(50)
+            make.width.equalTo(180)
+            make.height.equalTo(180)
+            make.topMargin.equalTo(100)
             make.centerX.equalToSuperview()
         }
         

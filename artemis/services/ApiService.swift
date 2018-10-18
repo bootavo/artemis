@@ -36,19 +36,32 @@ class ApiService: NSObject {
     }
     
     func getActivitiesByResourceId(parameters: Parameters,_ completion: @escaping (Error?,Int,JSON?) -> () ) {
-        var url = "https://8rsrait419.execute-api.us-east-1.amazonaws.com/dev/artemis/activities"
+        var url = "https://kchhyxd33f.execute-api.us-east-1.amazonaws.com/prod/artemis/activities"
         let headers = [
             "Content-Type": "application/json",
             "Accept": "application/json",
-            "Authorization": "Basic ZGlhbmE6RGlhbmE=",
+            "Authorization": "Basic YXJ0ZW1pczpyM2JWVTFsZDNyTDRi",
             "Cache-Control": "no-cache"
         ]
         
         request(url: url, httpMethod: .get, headers: headers, parameters: parameters, encoding: URLEncoding.default, completion: completion)
     }
     
+//    num_activity_id
+    func deleteActivityById(id:Int,_ completion: @escaping (Error?,Int,JSON?) -> () ) {
+        var url = "https://kchhyxd33f.execute-api.us-east-1.amazonaws.com/prod/artemis/activities/\(id)"
+        let headers = [
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Authorization": "Basic YXJ0ZW1pczpyM2JWVTFsZDNyTDRi",
+            "Cache-Control": "no-cache"
+        ]
+        
+        request(url: url, httpMethod: .delete, headers: headers, parameters: nil, encoding: JSONEncoding.default, completion: completion)
+    }
+    
     func getTasksByProjectId(parameters: Parameters,_ completion: @escaping (Error?,Int,JSON?) -> () ) {
-        var url = "https://853ufpi521.execute-api.us-east-1.amazonaws.com/dev/artemis/tasks"
+        var url = "https://853ufpi521.execute-api.us-east-1.amazonaws.com/dev/artemis/activities"
         let headers = [
             "Content-Type": "application/json",
             "Accept": "application/json",
@@ -60,7 +73,7 @@ class ApiService: NSObject {
     }
     
     func getProjectsByResourceId(parameters: Parameters,_ completion: @escaping (Error?,Int,JSON?) -> () ) {
-        var url = "https://k9umylksqe.execute-api.us-east-1.amazonaws.com/dev/artemis/project_teams"
+        var url = "https://5zc7ep3gjb.execute-api.us-east-1.amazonaws.com/prod/artemis/project_teams"
         let headers = [
             "Content-Type": "application/json",
             "Accept": "application/json",
@@ -72,7 +85,7 @@ class ApiService: NSObject {
     }
     
     func registerActivity(parameters: Parameters,_ completion: @escaping (Error?,Int,JSON?) -> () ) {
-        var url = "https://8rsrait419.execute-api.us-east-1.amazonaws.com/dev/artemis/activities"
+        var url = "https://kchhyxd33f.execute-api.us-east-1.amazonaws.com/prod/artemis/activities"
         let headers = [
             "Content-Type": "application/json",
             "Accept": "application/json",
@@ -85,11 +98,11 @@ class ApiService: NSObject {
     
     func getKindOfActivities(parameters: Parameters,_ completion: @escaping (Error?,Int,JSON?) -> () ) {
         
-        var url = "https://853ufpi521.execute-api.us-east-1.amazonaws.com/dev/artemis/tasks"
+        var url = "https://6xgzmzqrc8.execute-api.us-east-1.amazonaws.com/prod/artemis/tasks"
         let headers = [
             "Content-Type": "application/json",
             "Accept": "application/json",
-            "Authorization": "Basic ZGlhbmE6RGlhbmE=",
+            "Authorization": "Basic YXJ0ZW1pczpyM2JWVTFsZDNyTDRi",
             "Cache-Control": "no-cache"
         ]
         

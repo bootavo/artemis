@@ -71,7 +71,11 @@ class PopUpProject: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getService()
+        if Constants.PROJECTS != nil{
+            data = Constants.PROJECTS!
+        }else{
+            getService()
+        }
     }
     
     @IBAction func popUpExit(_ sender: Any) {
@@ -84,6 +88,7 @@ class PopUpProject: UIViewController {
             let item = data[selectedIndex]
             delegate?.didSelectItemProject(item: item)
             self.dismiss(animated: true, completion: nil)
+            print(item.num_project_id!)
         }else{
             print("else data Niiiiilllllll")
             self.dismiss(animated: true, completion: nil)

@@ -46,6 +46,16 @@ class AssistanceController: UICollectionViewController, UICollectionViewDelegate
         setupMenuBar()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        if collectionView != nil {
+            collectionView!.collectionViewLayout.invalidateLayout()
+            collectionView!.reloadData()
+        }
+        
+    }
+    
     lazy var menuBar: AssistanceMenuBar = {
         let mb = AssistanceMenuBar()
         mb.homeController = self
@@ -110,10 +120,8 @@ class AssistanceController: UICollectionViewController, UICollectionViewDelegate
         var identifier: String
         if indexPath.item == 0 {
             identifier = registerCell
-            return collectionView.dequeueReusableCell(withReuseIdentifier: registerCell, for: indexPath)
         } else if indexPath.item == 1 {
             identifier = assistanceHistoryCell
-            return collectionView.dequeueReusableCell(withReuseIdentifier: assistanceHistoryCell, for: indexPath)
         } else {
             identifier = registerCell
         }

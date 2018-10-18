@@ -11,6 +11,8 @@ import UIKit
 
 class ProjectViewCell: UICollectionViewCell {
     
+    var projectView: UIView? = nil
+    
     var item: Project? {
         
         didSet {
@@ -28,6 +30,31 @@ class ProjectViewCell: UICollectionViewCell {
             
         }
         
+    }
+    
+    func updateUI(view: UIView){
+        print("updateUI")
+        projectView = view
+    }
+    
+    override var isSelected: Bool{
+        didSet{
+            if self.isSelected{
+                showMessage(isSelected: true)
+            }else{
+                showMessage(isSelected: false)
+            }
+        }
+    }
+    
+    func showMessage(isSelected: Bool) {
+        if isSelected {
+            projectView?.hideToast()
+            projectView?.makeToast("\(item?.str_project_cod) - \(item?.str_project_name)")
+            print("isSelected")
+        }else{
+            print("isNotSelected")
+        }
     }
     
     override init(frame: CGRect) {

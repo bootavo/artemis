@@ -36,3 +36,35 @@ extension UITextField{
     }
     
 }
+
+extension UITextView{
+    
+    public convenience init(placeholder: String){
+        self.init()
+        self.translatesAutoresizingMaskIntoConstraints = false
+//        self.borderStyle = .none
+        self.layer.cornerRadius = 10
+        self.backgroundColor = UIColor.primaryColor()
+        self.textColor = UIColor.title()
+        self.font = UIFont.systemFont(ofSize: 16)
+        self.autocorrectionType = .no
+        self.layer.masksToBounds = true
+        self.layer.borderColor = UIColor.placeHolder().cgColor
+        self.layer.borderWidth = 1.0
+        self.autocapitalizationType = .none
+        
+        self.contentInset = UIEdgeInsetsMake(5, 5, 5, 5)
+        
+        self.setAnchor(width: 0, height: 100)
+        self.textAlignment = .left
+    }
+    
+    func centerVertically() {
+        let fittingSize = CGSize(width: bounds.width, height: CGFloat.greatestFiniteMagnitude)
+        let size = sizeThatFits(fittingSize)
+        let topOffset = (bounds.size.height - size.height * zoomScale) / 2
+        let positiveTopOffset = max(1, topOffset)
+        contentOffset.y = -positiveTopOffset
+    }
+    
+}

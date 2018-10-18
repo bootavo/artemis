@@ -22,8 +22,6 @@ class LoginView: UIView, UITextFieldDelegate{
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
-        tf_username.text = "gustavo.tufino@vfcons.com"
-        tf_password.text = "STAFF2018"
     }
     
     required init?(coder aDecoder: NSCoder) {
